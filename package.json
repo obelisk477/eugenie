@@ -11,9 +11,10 @@
     "build": "cd client && npm run build",
     "lint": "eslint . --ext .js,.jsx"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/jbohde/vite-apollo-mongo.git"
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.14.2"
   },
   "author": "",
   "license": "ISC",
