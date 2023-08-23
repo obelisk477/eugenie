@@ -6,19 +6,32 @@ const typeDefs = `#graphql
     email: String
     password: String
   }
+  type Brand {
+    _id: ID
+    brandName: String
+    email: String
+    password: String
+  }
 
-  type Auth {
+  type creatorAuth {
     token: ID!
     currentCreator: Creator
+  }
+  type brandAuth {
+    token: ID!
+    currentBrand: Brand
   }
 
   type Query {
     currentCreator(email: String!): Creator
+    currentBrand(email: String!): Brand
   }
 
   type Mutation {
-    register(firstName: String!, lastName: String!, email: String!, password: String!): Auth
-    login(email: String!, password: String!): Auth
+    registerCreator(firstName: String!, lastName: String!, email: String!, password: String!): creatorAuth
+    loginCreator(email: String!, password: String!): creatorAuth
+    registerBrand(brandName: String!, email: String!, password: String!): brandAuth
+    loginBrand(email: String!, password: String!): brandAuth
   }
 `;
 
