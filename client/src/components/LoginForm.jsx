@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { Link, useNavigate } from 'react-router-dom';
 
-import { LOGIN_USER } from '../graphql/mutations';
+import { LOGIN_CREATOR } from '../graphql/mutations';
 
 import { useCurrentUserContext } from '../context/CurrentUser';
 
@@ -14,7 +14,7 @@ export default function Login() {
     password: ''
   });
 
-  const [login, { error }] = useMutation(LOGIN_USER);
+  const [login, { error }] = useMutation(LOGIN_CREATOR);
 
   const handleFormSubmit = async event => {
     event.preventDefault();
