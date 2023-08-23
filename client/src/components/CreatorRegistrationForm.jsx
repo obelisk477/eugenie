@@ -2,40 +2,41 @@ import { useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { Link, useNavigate } from 'react-router-dom';
 
-import { LOGIN_CREATOR } from '../graphql/mutations';
-import { LOGIN_BRAND } from '../graphql/mutations';
+import { REGISTER_CREATOR } from '../graphql/mutations';
 
 import { useCurrentUserContext } from '../context/CurrentUser';
 
-export default function Login() {
+export default function Registration() {
   const { loginUser } = useCurrentUserContext();
   const navigate = useNavigate();
   const [formState, setFormState] = useState({
+    firstName: '',
+    lastName: '',
     email: '',
     password: ''
   });
 
-  const [loginCreator, { error: creatorError }] = useMutation(LOGIN_CREATOR);
-  const [loginBrand, { error: brandError }] = useMutation(LOGIN_BRAND);
+  const [registerCreator, { error }] = useMutation(REGISTER_CREATOR);
 
   const handleFormSubmit = async event => {
     event.preventDefault();
-    // Set single login function to handle 
-    const login = event.nativeEvent.submitter.id == 'creator-login' ? loginCreator : loginBrand
     try {
-      const mutationResponse = await login({
+      const mutationResponse = await registerCreator({
         variables: {
+          firstName: formState.firstName,
+          lastName: formState.lastName,
           email: formState.email,
           password: formState.password,
         },
       });
-      let mutationObj = mutationResponse.data[Object.keys(mutationResponse.data)[0]]
-      console.log(mutationObj)
-      const { token } = mutationObj;
-      const user = mutationObj[Object.keys(mutationObj)[Object.keys(mutationObj).findIndex(el => el.includes('current'))]]
-      loginUser(user, token);
+      console.log(mutationResponse.data)
+      const { token, currentCreator } = mutationResponse.data.registerCreator;
+      console.log(token)
+      console.log(currentCreator)
+      loginUser(currentCreator, token);
       navigate('/dashboard');
     } catch (e) {
+    // eslint-disable-next-line no-console
       console.log(e);
     }
   };
@@ -47,13 +48,33 @@ export default function Login() {
 
   return (
     <>
-      {(creatorError || brandError) ? (
+      {error ? (
         <div>
           <p className="error-text">The provided credentials are incorrect</p>
         </div>
       ) : null}
-      <form id="login-form" onSubmit={handleFormSubmit}>
-        <h2>Login</h2>
+      <form id="registration-form" onSubmit={handleFormSubmit}>
+        <h2>Register</h2>
+        <label htmlFor="firstName">
+          First name:
+          <input
+            type="text"
+            id="firstName"
+            name="firstName"
+            value={formState.firstName}
+            onChange={handleChange}
+          />
+        </label>
+        <label htmlFor="lastName">
+          Last name:
+          <input
+            type="text"
+            id="lastName"
+            name="lastName"
+            value={formState.lastName}
+            onChange={handleChange}
+          />
+        </label>
         <label htmlFor="email">
           Email:
           <input
@@ -74,14 +95,11 @@ export default function Login() {
             onChange={handleChange}
           />
         </label>
-        <button type="submit" id="creator-login">
-          Creator Login
-        </button>
-        <button type="submit" id="brand-login">
-          Brand Login
+        <button type="submit">
+          Sign Up
         </button>
         <p>
-          Need an account? Sign up
+          Already have an account? Login
           {' '}
           <Link to="/register">here</Link>
         </p>

@@ -1,6 +1,5 @@
 import { gql } from '@apollo/client';
 
-// eslint-disable-next-line import/prefer-default-export
 export const QUERY_CURRENT_CREATOR = gql`
   query getCurrentCreator($email: String!) {
     currentCreator(email: $email) {
@@ -8,6 +7,15 @@ export const QUERY_CURRENT_CREATOR = gql`
       email
       firstName
       lastName
+    }
+  }
+`;
+export const QUERY_CURRENT_BRAND = gql`
+  query getCurrentBrand($email: String!) {
+    currentBrand(email: $email) {
+      _id
+      brandName
+      email
     }
   }
 `;
