@@ -1,14 +1,14 @@
 const db = require('../config/connection');
-const { User } = require('../models');
+const { Creator } = require('../models');
 const cleanDB = require('./cleanDB');
 
-const users = require('./users.json');
+const creators = require('./creators.json');
 
 db.once('open', async () => {
-  await cleanDB('User', 'users');
+  await cleanDB('Creator', 'creators');
 
-  await User.insertMany(users);
+  await Creator.insertMany(creators);
 
-  console.log('Users seeded!');
+  console.log('Creators seeded!');
   process.exit(0);
 });

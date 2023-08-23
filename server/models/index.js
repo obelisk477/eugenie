@@ -1,5 +1,7 @@
-const User = require('./User');
+const Creator = require('./Creator');
+const Campaign = require('./Campaign')
 
 module.exports = {
-  User
+  Creator,
+  Campaign
 }

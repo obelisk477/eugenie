@@ -1,5 +1,5 @@
 const typeDefs = `#graphql
-  type User {
+  type Creator {
     _id: ID
     firstName: String
     lastName: String
@@ -9,11 +9,11 @@ const typeDefs = `#graphql
 
   type Auth {
     token: ID!
-    currentUser: User
+    currentCreator: Creator
   }
 
   type Query {
-    currentUser(email: String!): User
+    currentCreator(email: String!): Creator
   }
 
   type Mutation {
