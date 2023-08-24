@@ -9,7 +9,7 @@ import { setContext } from "@apollo/client/link/context";
 import { Outlet } from "react-router-dom";
 import { useCookies } from "react-cookie";
 
-import Header from "./components/Header";
+import MainHeader from "./components/Header";
 import Footer from "./components/Footer";
 
 function App() {
@@ -33,7 +33,7 @@ function App() {
 
   return (
     <ApolloProvider client={client}>
-      <Header />
+      <MainHeader />
       <main>
         <Outlet />
       </main>
