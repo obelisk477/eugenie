@@ -10,12 +10,24 @@ export const QUERY_CURRENT_CREATOR = gql`
     }
   }
 `;
+
 export const QUERY_CURRENT_BRAND = gql`
   query getCurrentBrand($email: String!) {
     currentBrand(email: $email) {
       _id
       brandName
       email
+    }
+  }
+`;
+
+export const QUERY_CURRENT_CHAT = gql`
+  query getChat($brand: ID!, $creator: ID!) {
+    getChat(brand: $brand, creator: $creator) {
+      _id
+      brand
+      creator
+      chatLog
     }
   }
 `;
