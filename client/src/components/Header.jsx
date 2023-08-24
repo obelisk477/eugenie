@@ -14,7 +14,8 @@ import { useCurrentUserContext } from '../context/CurrentUser';
       ) : (
         <>
           <Link to="/login">Login</Link>
-          <Link to="/register">Sign Up</Link>
+          <Link to="/creator-registration">Creator Signup</Link>
+          <Link to="/brand-registration">Brand Signup</Link>
         </>
       )}
     </nav>

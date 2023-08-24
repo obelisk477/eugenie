@@ -15,7 +15,8 @@ import Error from "./pages/Error";
 import Landing from "./pages/Landing";
 import Dashboard from "./pages/Dashboard";
 import Login from "./pages/Login";
-import Register from "./pages/Register";
+import BrandRegister from "./pages/BrandRegister";
+import CreatorRegister from "./pages/CreatorRegister";
 
 import ProtectedRoute from "./components/ProtectedRoute";
 
@@ -25,7 +26,8 @@ const router = createBrowserRouter(
     <Route path="/" element={<App />} errorElement={<Error />}>
       <Route index element={<Landing />} />
       <Route path="login" element={<Login />} />
-      <Route path="register" element={<Register />} />
+      <Route path="creator-registration" element={<CreatorRegister />} />
+      <Route path="brand-registration" element={<BrandRegister />} />
       <Route
         path="dashboard"
         element={

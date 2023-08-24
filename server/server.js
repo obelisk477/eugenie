@@ -9,9 +9,32 @@ const db = require('./config/connection');
 
 const PORT = process.env.PORT || 3001;
 const app = express();
+
+
+
+const BASIC_LOGGING = {
+  requestDidStart(requestContext) {
+      console.log("request started");
+      console.log(requestContext.request.query);
+      console.log(requestContext.request.variables);
+      return {
+          didEncounterErrors(requestContext) {
+              console.log("an error happened in response to query " + requestContext.request.query);
+              console.log(requestContext.errors);
+          }
+      };
+  },
+
+  willSendResponse(requestContext) {
+      console.log("response sent", requestContext.response);
+  }
+};
+
+
 const server = new ApolloServer({
   typeDefs,
   resolvers,
+  plugins: [BASIC_LOGGING]
 });
 
 const startApolloServer = async () => {

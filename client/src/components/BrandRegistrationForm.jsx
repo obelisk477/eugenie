@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { Link, useNavigate } from 'react-router-dom';
 
-import { REGISTER_USER } from '../graphql/mutations';
+import { REGISTER_BRAND } from '../graphql/mutations';
 
 import { useCurrentUserContext } from '../context/CurrentUser';
 
@@ -10,27 +10,25 @@ export default function Registration() {
   const { loginUser } = useCurrentUserContext();
   const navigate = useNavigate();
   const [formState, setFormState] = useState({
-    firstName: '',
-    lastName: '',
+    brandName: '',
     email: '',
     password: ''
   });
 
-  const [register, { error }] = useMutation(REGISTER_USER);
+  const [registerBrand, { error }] = useMutation(REGISTER_BRAND);
 
   const handleFormSubmit = async event => {
     event.preventDefault();
     try {
-      const mutationResponse = await register({
+      const mutationResponse = await registerBrand({
         variables: {
-          firstName: formState.firstName,
-          lastName: formState.lastName,
+          brandName: formState.brandName,
           email: formState.email,
           password: formState.password,
         },
       });
-      const { token, user } = mutationResponse.data.register;
-      loginUser(user, token);
+      const { token, currentBrand } = mutationResponse.data.registerBrand;
+      loginUser(currentBrand, token);
       navigate('/dashboard');
     } catch (e) {
     // eslint-disable-next-line no-console
@@ -52,23 +50,13 @@ export default function Registration() {
       ) : null}
       <form id="registration-form" onSubmit={handleFormSubmit}>
         <h2>Register</h2>
-        <label htmlFor="firstName">
-          First name:
+        <label htmlFor="brandName">
+          Brand name:
           <input
             type="text"
-            id="firstName"
-            name="firstName"
-            value={formState.firstName}
-            onChange={handleChange}
-          />
-        </label>
-        <label htmlFor="lastName">
-          Last name:
-          <input
-            type="text"
-            id="lastName"
-            name="lastName"
-            value={formState.lastName}
+            id="brandName"
+            name="brandName"
+            value={formState.brandName}
             onChange={handleChange}
           />
         </label>
@@ -98,7 +86,7 @@ export default function Registration() {
         <p>
           Already have an account? Login
           {' '}
-          <Link to="/register">here</Link>
+          <Link to="/login">here</Link>
         </p>
       </form>
     </>
