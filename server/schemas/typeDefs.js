@@ -41,7 +41,6 @@ const typeDefs = `#graphql
     deliverables: String!
     compensation: Int!
     payoutBy: String!
-    # dates are not a string but may need to convert them into one
 }
 
 

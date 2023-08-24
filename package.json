@@ -1,5 +1,5 @@
 {
-  "name": "vite-apollo-mongo",
+  "name": "Eugenie",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -19,10 +19,6 @@
   },
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/jbohde/vite-apollo-mongo/issues"
-  },
-  "homepage": "https://github.com/jbohde/vite-apollo-mongo#readme",
   "devDependencies": {
     "concurrently": "^8.2.0",
     "eslint": "^8.47.0",
