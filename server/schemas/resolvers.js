@@ -1,67 +1,33 @@
-const { Creator, Chat, Brand } = require('../models');
+const { User } = require('../models');
 const { signToken, AuthenticationError } = require('../utils');
 
 const resolvers = {
   Query: {
-    currentCreator: async (parent, { email }) => Creator.findOne({ email }),
-    currentBrand: async (parent, { email }) => Brand.findOne({ email }),
-    getChat: async (parent, {brand, creator}) => Chat.findOne({ brand, creator })
+    currentUser: async (parent, { email }) => User.findOne({ email }),
   },
 
   Mutation: {
-    createChat: async (parent, { brand, creator, chatLog }) => {
-      console.log(`>>>>>>>>>>> ${brand}`)
-      const chat = await Chat.create({brand, creator, chatLog})
-      return chat
-      
+    register: async (parent, { firstName, lastName, email, password }) => {
+      const user = await User.create({ firstName, lastName, email, password });
+      const token = signToken(user);
+      return { token, currentUser: user };
     },
+    login: async (parent, { email, password }) => {
+      const user = await User.findOne({ email });
 
-    registerCreator: async (parent, { firstName, lastName, email, password }) => {
-      const creator = await Creator.create({ firstName, lastName, email, password });
-      const token = signToken(creator);
-      return { token, currentCreator: creator };
-    },
-
-    registerBrand: async (parent, { brandName, email, password }) => {
-      const brand = await Brand.create({ brandName, email, password });
-      const token = signToken(brand);
-      return { token, currentBrand: brand };
-    },
-
-    loginCreator: async (parent, { email, password }) => {
-      const creator = await Creator.findOne({ email });
-
-      if (!creator) {
+      if (!user) {
         throw AuthenticationError;
       }
 
-      const correctPw = await creator.isCorrectPassword(password);
+      const correctPw = await user.isCorrectPassword(password);
 
       if (!correctPw) {
         throw AuthenticationError;
       }
 
-      const token = signToken(creator);
+      const token = signToken(user);
 
-      return { token, currentCreator: creator };
-    },
-
-    loginBrand: async (parent, { email, password }) => {
-      const brand = await Brand.findOne({ email });
-
-      if (!brand) {
-        throw AuthenticationError;
-      }
-
-      const correctPw = await brand.isCorrectPassword(password);
-
-      if (!correctPw) {
-        throw AuthenticationError;
-      }
-
-      const token = signToken(brand);
-
-      return { token, currentBrand: brand };
+      return { token, currentUser: user };
     },
   },
 };

@@ -2,8 +2,7 @@ import { useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { Link, useNavigate } from 'react-router-dom';
 
-import { LOGIN_CREATOR } from '../graphql/mutations';
-import { LOGIN_BRAND } from '../graphql/mutations';
+import { LOGIN_USER } from '../graphql/mutations';
 
 import { useCurrentUserContext } from '../context/CurrentUser';
 
@@ -15,24 +14,18 @@ export default function Login() {
     password: ''
   });
 
-  const [loginCreator, { error: creatorError }] = useMutation(LOGIN_CREATOR);
-  const [loginBrand, { error: brandError }] = useMutation(LOGIN_BRAND);
+  const [login, { error }] = useMutation(LOGIN_USER);
 
   const handleFormSubmit = async event => {
     event.preventDefault();
-    // Set single login function to handle 
-    const login = event.nativeEvent.submitter.id == 'creator-login' ? loginCreator : loginBrand
     try {
       const mutationResponse = await login({
         variables: {
           email: formState.email,
-          password: formState.password,
+          password: formState.password
         },
       });
-      let mutationObj = mutationResponse.data[Object.keys(mutationResponse.data)[0]]
-      console.log(mutationObj)
-      const { token } = mutationObj;
-      const user = mutationObj[Object.keys(mutationObj)[Object.keys(mutationObj).findIndex(el => el.includes('current'))]]
+      const { token, user } = mutationResponse.data.login;
       loginUser(user, token);
       navigate('/dashboard');
     } catch (e) {
@@ -47,7 +40,7 @@ export default function Login() {
 
   return (
     <>
-      {(creatorError || brandError) ? (
+      {error ? (
         <div>
           <p className="error-text">The provided credentials are incorrect</p>
         </div>
@@ -74,11 +67,8 @@ export default function Login() {
             onChange={handleChange}
           />
         </label>
-        <button type="submit" id="creator-login">
-          Creator Login
-        </button>
-        <button type="submit" id="brand-login">
-          Brand Login
+        <button type="submit">
+          Login
         </button>
         <p>
           Need an account? Sign up

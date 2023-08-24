@@ -1,5 +1,5 @@
 const typeDefs = `#graphql
-  type Creator {
+  type User {
     _id: ID
     firstName: String
     lastName: String
@@ -7,42 +7,18 @@ const typeDefs = `#graphql
     password: String
   }
 
-  type Brand {
-    _id: ID
-    brandName: String
-    email: String
-    password: String
-  }
-
-  type Chat {
-    _id: ID
-    brand: ID
-    creator: ID
-    chatLog: String
-  }
-
-  type creatorAuth {
+  type Auth {
     token: ID!
-    currentCreator: Creator
-  }
-
-  type brandAuth {
-    token: ID!
-    currentBrand: Brand
+    currentUser: User
   }
 
   type Query {
-    currentCreator(email: String!): Creator
-    currentBrand(email: String!): Brand
-    getChat(brand: ID!, creator: ID!): Chat
+    currentUser(email: String!): User
   }
 
   type Mutation {
-    createChat(brand: ID!, creator: ID!, chatLog: String!): Chat
-    registerCreator(firstName: String!, lastName: String!, email: String!, password: String!): creatorAuth
-    loginCreator(email: String!, password: String!): creatorAuth
-    registerBrand(brandName: String!, email: String!, password: String!): brandAuth
-    loginBrand(email: String!, password: String!): brandAuth
+    register(firstName: String!, lastName: String!, email: String!, password: String!): Auth
+    login(email: String!, password: String!): Auth
   }
 `;
 

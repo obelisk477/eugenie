@@ -1,33 +1,13 @@
 import { gql } from '@apollo/client';
 
-export const QUERY_CURRENT_CREATOR = gql`
-  query getCurrentCreator($email: String!) {
-    currentCreator(email: $email) {
+// eslint-disable-next-line import/prefer-default-export
+export const QUERY_CURRENT_USER = gql`
+  query getCurrentUser($email: String!) {
+    currentUser(email: $email) {
       _id
       email
       firstName
       lastName
-    }
-  }
-`;
-
-export const QUERY_CURRENT_BRAND = gql`
-  query getCurrentBrand($email: String!) {
-    currentBrand(email: $email) {
-      _id
-      brandName
-      email
-    }
-  }
-`;
-
-export const QUERY_CURRENT_CHAT = gql`
-  query getChat($brand: ID!, $creator: ID!) {
-    getChat(brand: $brand, creator: $creator) {
-      _id
-      brand
-      creator
-      chatLog
     }
   }
 `;

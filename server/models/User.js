@@ -2,8 +2,13 @@
 const { Schema, model } = require('mongoose');
 const bcrypt = require('bcryptjs');
 
-const brandSchema = new Schema({
-  brandName: {
+const userSchema = new Schema({
+  firstName: {
+    type: String,
+    required: true,
+    trim: true,
+  },
+  lastName: {
     type: String,
     required: true,
     trim: true,
@@ -21,7 +26,7 @@ const brandSchema = new Schema({
   },
 });
 
-brandSchema.pre('save', async function (next) {
+userSchema.pre('save', async function (next) {
   if (this.isNew || this.isModified('password')) {
     const saltRounds = 10;
     this.password = await bcrypt.hash(this.password, saltRounds);
@@ -29,10 +34,10 @@ brandSchema.pre('save', async function (next) {
   next();
 });
 
-brandSchema.methods.isCorrectPassword = async function (password) {
+userSchema.methods.isCorrectPassword = async function (password) {
   return bcrypt.compare(password, this.password);
 };
 
-const Brand = model('Brand', brandSchema);
+const User = model('User', userSchema);
 
-module.exports = Brand;
+module.exports = User;
