@@ -30,11 +30,26 @@ const typeDefs = `#graphql
     token: ID!
     currentBrand: Brand
   }
+  type Campaign {
+    _id: ID!
+    brand: ID!
+    title: String!
+    description: String!
+    applyBy: String!
+    postBy: String!
+    requirements: String!
+    deliverables: String!
+    compensation: Int!
+    payoutBy: String!
+    # dates are not a string but may need to convert them into one
+}
+
 
   type Query {
     currentCreator(email: String!): Creator
     currentBrand(email: String!): Brand
     getChat(brand: ID!, creator: ID!): Chat
+    getAllCampaignsByBrand(brand: ID!): Campaign
   }
 
   type Mutation {
@@ -43,6 +58,7 @@ const typeDefs = `#graphql
     loginCreator(email: String!, password: String!): creatorAuth
     registerBrand(brandName: String!, email: String!, password: String!): brandAuth
     loginBrand(email: String!, password: String!): brandAuth
+    createCampaign(brand: ID!, title: String!, description: String!, applyBy: String!, postBy: String!, requirements: String!, deliverables: String!, compensation: Int, payoutBy: String!): Campaign
   }
 `;
 
