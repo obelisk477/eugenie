@@ -1,11 +1,12 @@
-const { Creator, Chat, Brand } = require('../models');
+const { Creator, Chat, Brand, Campaign } = require('../models');
 const { signToken, AuthenticationError } = require('../utils');
 
 const resolvers = {
   Query: {
     currentCreator: async (parent, { email }) => Creator.findOne({ email }),
     currentBrand: async (parent, { email }) => Brand.findOne({ email }),
-    getChat: async (parent, {brand, creator}) => Chat.findOne({ brand, creator })
+    getChat: async (parent, {brand, creator}) => Chat.findOne({ brand, creator }),
+    getCampaign: async (parent, { brand }) => Campaign.findOne({ brand })
   },
 
   Mutation: {
@@ -62,6 +63,14 @@ const resolvers = {
       const token = signToken(brand);
 
       return { token, currentBrand: brand };
+    },
+    createCampaign: async (parent, { brand }) => {
+      const campaign = await Campaign.create({ brand })
+      return campaign
+    },
+    getAllCampaigns: async (parent) => {
+      const allCampaigns = await Campaign.find()
+      return allCampaigns
     },
   },
 };

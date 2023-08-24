@@ -31,3 +31,19 @@ export const QUERY_CURRENT_CHAT = gql`
     }
   }
 `;
+
+export const QUERY_CURRENT_CAMPAIGN = gql`
+  query getCampaign($brand: ID!) {
+    getCampaign(brand: $brand) {
+      _id
+      title
+      description
+      applyBy
+      postBy
+      requirements
+      deliverables
+      compensation
+      payoutBy
+    }
+  }
+`;

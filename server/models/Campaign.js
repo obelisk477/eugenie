@@ -5,6 +5,10 @@ const moment = require('moment');
 
 const campaignSchema = new Schema(
   {
+    brand: {
+      type: Schema.Types.ObjectId,
+      ref: 'Brand'
+    },
     title: {
         type: String,
         required: true,
@@ -43,18 +47,19 @@ const campaignSchema = new Schema(
       get: (payoutByVal) => moment(payoutByVal).format('MMM DD, YYYY'),
       required: true,
       validate: {
-        validator: function(payoutDate) { 
+        validator(payoutDate) { 
           const payoutBy = moment(this.postBy).add(2, 'weeks');
           return moment(payoutDate).isSameOrBefore(payoutBy);
         },
+      },
     },
   },
   {
     toJSON: {
         getters: true
     },
-  },
-});
+  }
+);
 
 const Campaign = model('Campaign', campaignSchema);
 
