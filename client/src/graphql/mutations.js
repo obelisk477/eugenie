@@ -1,5 +1,16 @@
 import { gql } from '@apollo/client';
 
+export const CREATE_CHAT = gql`
+mutation createChat($brand: ID!, $creator: ID!, $chatLog: String!) {
+  createChat(brand: $brand, creator: $creator, chatLog: $chatLog) {
+    _id
+    brand
+    creator
+    chatLog
+  }
+}
+`;
+
 export const LOGIN_CREATOR = gql`
 mutation loginCreator($email: String!, $password: String!) {
   loginCreator(email: $email, password: $password) {
@@ -13,6 +24,7 @@ mutation loginCreator($email: String!, $password: String!) {
   }
 }
 `;
+
 export const LOGIN_BRAND = gql`
 mutation loginBrand($email: String!, $password: String!) {
   loginBrand(email: $email, password: $password) {
