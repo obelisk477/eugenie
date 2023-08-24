@@ -6,7 +6,7 @@ const resolvers = {
     currentCreator: async (parent, { email }) => Creator.findOne({ email }),
     currentBrand: async (parent, { email }) => Brand.findOne({ email }),
     getChat: async (parent, {brand, creator}) => Chat.findOne({ brand, creator }),
-    getCampaign: async (parent, { brand }) => Campaign.findOne({ brand })
+    getAllCampaignsByBrand: async (parent, { brand }) => Campaign.findOne({ brand })
   },
 
   Mutation: {
@@ -26,6 +26,7 @@ const resolvers = {
     registerBrand: async (parent, { brandName, email, password }) => {
       const brand = await Brand.create({ brandName, email, password });
       const token = signToken(brand);
+      console.log(token, brand)
       return { token, currentBrand: brand };
     },
 
@@ -64,14 +65,15 @@ const resolvers = {
 
       return { token, currentBrand: brand };
     },
-    createCampaign: async (parent, { brand }) => {
-      const campaign = await Campaign.create({ brand })
-      return campaign
+    createCampaign: async (parent, { brand, title, description, applyBy, postBy, requirements, deliverables, compensation, payoutBy }) => {
+      console.log(brand, title, description, applyBy, postBy, requirements, deliverables, compensation, payoutBy, ">>>>>>")
+      const createCampaign = await Campaign.create({ brand, title, description, applyBy, postBy, requirements, deliverables, compensation, payoutBy })
+      return createCampaign
     },
-    getAllCampaigns: async (parent) => {
-      const allCampaigns = await Campaign.find()
-      return allCampaigns
-    },
+    // getAllCampaignsByBrand: async (parent) => {
+    //   const allCampaignsByBrand = await Campaign.find()
+    //   return allCampaignsByBrand
+    // },
   },
 };
 

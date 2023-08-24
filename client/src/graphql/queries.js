@@ -32,10 +32,12 @@ export const QUERY_CURRENT_CHAT = gql`
   }
 `;
 
-export const QUERY_CURRENT_CAMPAIGN = gql`
-  query getCampaign($brand: ID!) {
-    getCampaign(brand: $brand) {
+// Get all for creators 
+export const QUERY_ALL_CAMPAIGN = gql`
+  query getAllCampaignsByBrand($brand: ID!) {
+    allCampaignsByBrand(brand: $brand) {
       _id
+      brand
       title
       description
       applyBy

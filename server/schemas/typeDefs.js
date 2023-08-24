@@ -49,7 +49,7 @@ const typeDefs = `#graphql
     currentCreator(email: String!): Creator
     currentBrand(email: String!): Brand
     getChat(brand: ID!, creator: ID!): Chat
-    getCampaign(brand: ID!): Campaign
+    getAllCampaignsByBrand(brand: ID!): Campaign
   }
 
   type Mutation {
