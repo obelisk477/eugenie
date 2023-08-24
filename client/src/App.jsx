@@ -9,7 +9,7 @@ import { setContext } from "@apollo/client/link/context";
 import { Outlet } from "react-router-dom";
 import { useCookies } from "react-cookie";
 
-import Header from "./components/Header";
+import MainHeader from "./components/Header";
 import Footer from "./components/Footer";
 
 import { StyleProvider } from '@ant-design/cssinjs'
@@ -36,7 +36,7 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <StyleProvider hashPriority="high">
-      <Header />
+      <MainHeader />
       <main>
         <Outlet />
       </main>
