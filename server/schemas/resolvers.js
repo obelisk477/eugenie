@@ -1,5 +1,5 @@
 const { Creator, Chat, Brand, Campaign } = require('../models');
-const { signToken, AuthenticationError } = require('../utils');
+const { signBrandToken, signCreatorToken, AuthenticationError } = require('../utils');
 
 const resolvers = {
   Query: {
@@ -19,13 +19,13 @@ const resolvers = {
 
     registerCreator: async (parent, { firstName, lastName, email, password }) => {
       const creator = await Creator.create({ firstName, lastName, email, password });
-      const token = signToken(creator);
+      const token = signCreatorToken(creator);
       return { token, currentCreator: creator };
     },
 
     registerBrand: async (parent, { brandName, email, password }) => {
       const brand = await Brand.create({ brandName, email, password });
-      const token = signToken(brand);
+      const token = signBrandToken(brand);
       console.log(token, brand)
       return { token, currentBrand: brand };
     },
@@ -43,7 +43,7 @@ const resolvers = {
         throw AuthenticationError;
       }
 
-      const token = signToken(creator);
+      const token = signCreatorToken(creator);
 
       return { token, currentCreator: creator };
     },
@@ -61,19 +61,16 @@ const resolvers = {
         throw AuthenticationError;
       }
 
-      const token = signToken(brand);
+      // const brandUser = {...brand, isBrand: true }
+      const token = signBrandToken(brand);
 
       return { token, currentBrand: brand };
     },
-    createCampaign: async (parent, { brand, title, description, applyBy, postBy, requirements, deliverables, compensation, payoutBy }) => {
-      console.log(brand, title, description, applyBy, postBy, requirements, deliverables, compensation, payoutBy, ">>>>>>")
-      const createCampaign = await Campaign.create({ brand, title, description, applyBy, postBy, requirements, deliverables, compensation, payoutBy })
+    createCampaign: async (parent, args) => {
+      const createCampaign = await Campaign.create(args)
       return createCampaign
     },
-    // getAllCampaignsByBrand: async (parent) => {
-    //   const allCampaignsByBrand = await Campaign.find()
-    //   return allCampaignsByBrand
-    // },
+
   },
 };
 
