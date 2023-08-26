@@ -1,7 +1,11 @@
 
 function CreatorDashboard() {
     return (
-        <h1 className="page-title"> Creator Dashboard</h1>
+    
+          
+    <h1 className="page-title"> Creator Dashboard</h1> 
+        
+  
     )
   }
   
