@@ -1,16 +1,18 @@
 import { useCurrentUserContext } from '../context/CurrentUser';
+
 import BrandDashboard from '../components/BrandDashboard'
 import CreatorDashboard from '../components/CreatorDashboard'
 
+
 function Dashboard() {
 
-  let userType = useCurrentUserContext().currentUser?.brandName ? 'brand' : 'creator'
+  const isBrand = useCurrentUserContext().isBrand
 
   const renderDashboard = () => {
-    if (userType === 'brand') {
+    if (isBrand) {
       return <BrandDashboard />
     }
-    if (userType === 'creator') {
+    if (!isBrand) {
       return <CreatorDashboard />
     }
   }

@@ -30,7 +30,6 @@ export default function Login() {
         },
       });
       let mutationObj = mutationResponse.data[Object.keys(mutationResponse.data)[0]]
-      console.log(mutationObj)
       const { token } = mutationObj;
       const user = mutationObj[Object.keys(mutationObj)[Object.keys(mutationObj).findIndex(el => el.includes('current'))]]
       loginUser(user, token);
