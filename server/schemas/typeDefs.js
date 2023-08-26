@@ -57,7 +57,7 @@ const typeDefs = `#graphql
     loginCreator(email: String!, password: String!): creatorAuth
     registerBrand(brandName: String!, email: String!, password: String!): brandAuth
     loginBrand(email: String!, password: String!): brandAuth
-    createCampaign(brand: ID!, title: String!, description: String!, applyBy: String!, postBy: String!, requirements: String!, deliverables: String!, compensation: Int, payoutBy: String!): Campaign
+    createCampaign(brand: ID!, title: String!, description: String!, applyBy: String!, postBy: String!, requirements: String!, deliverables: String!, compensation: Int!, payoutBy: String!): Campaign
   }
 `;
 

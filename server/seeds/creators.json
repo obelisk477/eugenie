@@ -10,5 +10,35 @@
     "lastName": "Danvers",
     "email": "captainmarvel@example.com",
     "password": "passwords1"
+  },
+  {
+    "firstName": "Olivia",
+    "lastName": "Jensen",
+    "email": "ojensen@example.com",
+    "password": "passwords1"
+  },
+  {
+    "firstName": "Ethan",
+    "lastName": "Wave",
+    "email": "wave@example.com",
+    "password": "passwords1"
+  },
+  {
+    "firstName": "Mia",
+    "lastName": "Ramos",
+    "email": "mammamia@example.com",
+    "password": "passwords1"
+  },
+  {
+    "firstName": "Ava",
+    "lastName": "Williams",
+    "email": "ava@example.com",
+    "password": "passwords1"
+  },
+  {
+    "firstName": "Jackson",
+    "lastName": "Sparrow",
+    "email": "jsparrow@example.com",
+    "password": "passwords1"
   }
 ]
