@@ -2,7 +2,7 @@ import { List } from 'antd';
 
 const styles = {
 footer: {
-  paddingBottom: '8em',
+  paddingBottom: '5em',
 },
 list: {
   marginTop: '2.5em',

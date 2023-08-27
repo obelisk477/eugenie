@@ -1,0 +1,50 @@
+[
+  {
+    "id": "64ea6253b0e90077060743f7",
+    "brandName": "Lost It",
+    "email": "lostit@example.com",
+    "password": "passwords1"
+  },
+  {
+    "id": "64ea6253b0e90077060743f3",
+    "brandName": "Toy Yoda",
+    "email": "toyyoda@example.com",
+    "password": "passwords1"
+  },
+  {
+    "id": "64ea6253b0e90077060743f6",
+    "brandName": "Damn",
+    "email": "damn@example.com",
+    "password": "passwords1"
+  },
+  {
+    "id": "64ea6253b0e90077060743f9",
+    "brandName": "The Gap",
+    "email": "thegap@example.com",
+    "password": "passwords1"
+  },
+  {
+    "id": "64ea6253b0e90077060743f5",
+    "brandName": "Lowcost",
+    "email": "lowcost@example.com",
+    "password": "passwords1"
+  },
+  {
+    "id": "64ea6253b0e90077060743fa",
+    "brandName": "Instant Babe",
+    "email": "instantbabe@example.com",
+    "password": "passwords1"
+  },
+  {
+    "id": "64ea6253b0e90077060743f4",
+    "brandName": "NOWAY",
+    "email": "noway@example.com",
+    "password": "passwords1"
+  },
+  {
+    "id": "64ea6253b0e90077060743d1",
+    "brandName": "Stay Inn",
+    "email": "stayinn@example.com",
+    "password": "passwords1"
+  }
+]
