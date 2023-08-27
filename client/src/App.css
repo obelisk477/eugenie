@@ -76,6 +76,10 @@ button {
   text-align: center;
 }
 
+main {
+  background-color: #7e7e7e;
+}
+
 /* Nav Styling */
 .logo {
   /* margin-top: 2rem; */
