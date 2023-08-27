@@ -18,7 +18,14 @@ import Login from "./pages/Login";
 import BrandRegister from "./pages/BrandRegister";
 import CreatorRegister from "./pages/CreatorRegister";
 
-import ProtectedRoute from "./components/ProtectedRoute";
+import GenericProtectedRoute from "./components/GenericProtectedRoute";
+import CreatorProtectedRoute from "./components/CreatorProtectedRoute";
+import BrandProtectedRoute from "./components/BrandProtectedRoute";
+import Chats from './pages/Chats'
+import CreatorSearch from './pages/CreatorSearch'
+import MyCampaigns from './pages/MyCampaigns'
+import CampaignSearch from './pages/CampaignSearch'
+import ActiveCampaigns from './pages/ActiveCampaigns'
 
 // maybe change?
 const router = createBrowserRouter(
@@ -31,11 +38,16 @@ const router = createBrowserRouter(
       <Route
         path="dashboard"
         element={
-          <ProtectedRoute>
+          <GenericProtectedRoute>
             <Dashboard />
-          </ProtectedRoute>
+          </GenericProtectedRoute>
         }
       />
+      <Route path="dashboard/chats" element={<GenericProtectedRoute><Chats /></GenericProtectedRoute>} />
+      <Route path="dashboard/creator-search" element={<BrandProtectedRoute><CreatorSearch /></BrandProtectedRoute>} />
+      <Route path="dashboard/my-campaigns" element={<BrandProtectedRoute><MyCampaigns /></BrandProtectedRoute>} />
+      <Route path="dashboard/campaign-search" element={<CreatorProtectedRoute><CampaignSearch /></CreatorProtectedRoute>} />
+      <Route path="dashboard/active-campaigns" element={<CreatorProtectedRoute><ActiveCampaigns /></CreatorProtectedRoute>} />
     </Route>
   )
 );
