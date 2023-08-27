@@ -32,8 +32,8 @@ export const QUERY_CURRENT_CHAT = gql`
   }
 `;
 
-// Get all for creators 
-export const QUERY_ALL_CAMPAIGN = gql`
+// Get all campaigns for brands
+export const QUERY_ALL_BRAND_CAMPAIGNS = gql`
   query getAllCampaignsByBrand($brand: ID!) {
     allCampaignsByBrand(brand: $brand) {
       _id
@@ -49,3 +49,4 @@ export const QUERY_ALL_CAMPAIGN = gql`
     }
   }
 `;
+

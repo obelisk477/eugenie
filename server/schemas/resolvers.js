@@ -6,7 +6,8 @@ const resolvers = {
     currentCreator: async (parent, { email }) => Creator.findOne({ email }),
     currentBrand: async (parent, { email }) => Brand.findOne({ email }),
     getChat: async (parent, {brand, creator}) => Chat.findOne({ brand, creator }),
-    getAllCampaignsByBrand: async (parent, { brand }) => Campaign.findOne({ brand })
+    getAllCampaigns: async () => Campaign.find({}),
+    getAllCampaignsByBrand: async (parent, { brand }) => Campaign.find({ brand })
   },
 
   Mutation: {
