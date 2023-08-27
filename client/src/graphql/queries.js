@@ -33,20 +33,20 @@ export const QUERY_CURRENT_CHAT = gql`
 `;
 
 // Get all campaigns for brands
-export const QUERY_ALL_BRAND_CAMPAIGNS = gql`
-  query getAllCampaignsByBrand($brand: ID!) {
-    allCampaignsByBrand(brand: $brand) {
-      _id
-      brand
-      title
-      description
-      applyBy
-      postBy
-      requirements
-      deliverables
-      compensation
-      payoutBy
-    }
-  }
-`;
+// export const QUERY_ALL_BRAND_CAMPAIGNS = gql`
+//   query getAllCampaignsByBrand($brand: ID!) {
+//     allCampaignsByBrand(brand: $brand) {
+//       _id
+//       brand
+//       title
+//       description
+//       applyBy
+//       postBy
+//       requirements
+//       deliverables
+//       compensation
+//       payoutBy
+//     }
+//   }
+// `;
 
