@@ -1,18 +1,27 @@
+
 import { Link } from 'react-router-dom';
 import { useCurrentUserContext } from '../context/CurrentUser';
 import { Layout, Menu } from 'antd'
+
+
 
 const { Header } = Layout
  function MainHeader() {
   const { isLoggedIn, logoutUser } = useCurrentUserContext();
   return (
-    <Header
-      style = {{
-      }}
-    >
-      {isLoggedIn() ? (
+  <Header
+style = {{
+        
+  }}
+>
+
+{isLoggedIn() ? (
         <>
-        <Menu
+        <Menu 
+        style = {{
+         
+        }}
+
           mode="horizontal"
           theme="dark">
           <Menu.Item key='dashboard'>
@@ -31,9 +40,9 @@ const { Header } = Layout
             <Menu.Item key='brand-registration'><Link to="/brand-registration">Brand Signup</Link></Menu.Item>
         </Menu>
         </>
-      )}
-    </Header>
-  );
+      )} 
+ </Header>
+);
  }
  export default MainHeader;
 
