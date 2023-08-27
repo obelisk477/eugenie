@@ -1,4 +1,4 @@
-import { Card, List } from 'antd';
+import { List } from 'antd';
 
 const styles = {
 footer: {
