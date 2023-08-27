@@ -76,7 +76,6 @@ button {
   text-align: center;
 }
 
-/* #switch {
-  height: 40px;
-  width: 300px;
-} */
+main {
+  background-color: #7e7e7e;
+}
