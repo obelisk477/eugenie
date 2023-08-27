@@ -76,7 +76,55 @@ button {
   text-align: center;
 }
 
-/* #switch {
-  height: 40px;
-  width: 300px;
-} */
+/* Nav Styling */
+.logo {
+  /* margin-top: 2rem; */
+  width: 18.5rem;
+}
+#outerNav {
+  background-color: white;
+}
+
+#innerNav {
+  background-color: white;
+  border: none;
+}
+
+#menuItem {
+  border-bottom: none;
+}
+
+/* Hero */
+
+#heroSection {
+  margin-top: 1rem;
+  padding: .5rem;
+}
+.subHeader {
+  margin-top: -3rem;
+  width: 80%;
+}
+
+#heroTitle {
+  font-family: Montserrat;
+  font-size: 72pt;
+  font-weight: bolder;
+  text-align: center;
+  margin: auto;
+}
+
+#heroSubTitleDiv {
+  margin-top: -10rem;
+}
+#heroSubTitle {
+  font-size: 24pt;
+  font-weight: lighter;
+  text-align: center;
+  margin-top: 5px;
+}
+
+#heroButtons {
+  margin: 2rem;
+  width: 80%;
+  background-color: #C492B1;
+}
