@@ -1,5 +1,5 @@
-import { List } from "antd";
-import { Layout } from "antd";
+import { List, Col, Layout, Row } from "antd";
+
 const { Footer } = Layout;
 
 const styles = {
@@ -8,7 +8,7 @@ const styles = {
   },
   list: {
     marginTop: "2.5em",
-    display: "flex",
+    // display: "flex",
     flexDirection: "column",
   },
 };
@@ -33,9 +33,9 @@ const footerData = [
 function generateString(contentArray) {
   let result = "";
   for (let i = 0; i < contentArray.length; i++) {
-    result += contentArray[i] + "\n";
+    result +=  contentArray[i] + "\n" ;
   }
-  return result;
+  return  result ;
   // return contentArray.join("\n");
 }
 
@@ -47,11 +47,16 @@ function FooterSection() {
           grid={{ gutter: 140, column: 3 }}
           dataSource={footerData}
           renderItem={(item) => (
-            <List.Item style={styles.list}>
+            <Row style={styles.list}>
+              <Col span={12}>
+            <List.Item >
               <List.Item.Meta title={item.title} />
-
-              {generateString(item.content)}
+              
+            {generateString(item.content)}
+           
             </List.Item>
+            </Col>
+            </Row>
           )}
         />
       </Footer>
