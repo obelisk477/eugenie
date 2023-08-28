@@ -1,12 +1,17 @@
 const { Creator, Chat, Brand, Campaign } = require('../models');
 const { signBrandToken, signCreatorToken, AuthenticationError } = require('../utils');
+const moment = require('moment');
 
 const resolvers = {
   Query: {
     currentCreator: async (parent, { email }) => Creator.findOne({ email }),
     currentBrand: async (parent, { email }) => Brand.findOne({ email }),
     getChat: async (parent, {brand, creator}) => Chat.findOne({ brand, creator }),
-    getAllCampaigns: async () => Campaign.find({}),
+    getAllCampaigns: async () => {
+      const today = moment().startOf('day');
+      const campaigns = await Campaign.find({ applyBy: {$gt: today }})
+      return campaigns;
+    },
     getAllCampaignsByBrand: async (parent, { brand }) => Campaign.find({ brand })
   },
 
