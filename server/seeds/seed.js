@@ -9,7 +9,9 @@ const campaigns = require('./campaigns.json');
 db.once('open', async () => {
   await cleanDB('Creator', 'creators');
   await cleanDB('Brand', 'brands');
-  await cleanDB('Campaign', 'campaign');
+  await cleanDB('Campaign', 'campaigns');
+
+  console.log('awaited')
 
   await Creator.insertMany(creators);
   await Brand.insertMany(brands);
