@@ -7,14 +7,14 @@ const {Content} = Layout
 function CreatorDashboard() {
 
     const big_styles={
-        backgroundColor:'white',
+        backgroundColor:'lightgray',
         alignSelf: 'center',
         height: '76vh',
         padding: '4vh',
         margin: '2vh'
       }
     const styles={
-        backgroundColor:'white',
+        backgroundColor:'lightgray',
         height: '37vh',
         padding: '4vh',
         margin: '2vh',
@@ -22,27 +22,29 @@ function CreatorDashboard() {
 
     return (
         <>
-    <Row justify="center" align="top" style={{alignItems: 'center'}}>
-        <Col span={18} >
-            <Content title="Content title" bordered={false} style={big_styles}  >
-                <p>Content content</p>
-                <p>Content content</p>
-                <p>Content content</p>
-            </Content>
-        </Col>
-        <Col span={6}>
-            <Content title="Content title" bordered={false} style={styles}>
-                <p>Content content</p>
-                <p>Content content</p>
-                <p>Content content</p>
-            </Content>
-            <Content title="Content title" bordered={false} style={styles}>
-                <p>Content content</p>
-                <p>Content content</p>
-                <p>Content content</p>
-            </Content>
-        </Col>
-    </Row>
+        <main id="brandDashboard">
+            <Row justify="center" align="top" style={{alignItems: 'center'}}>
+            <Col span={18} >
+                <Content title="Content title" bordered={false} style={big_styles}  >
+                    <p>Content content</p>
+                    <p>Content content</p>
+                    <p>Content content</p>
+                </Content>
+            </Col>
+            <Col span={6}>
+                <Content title="Content title" bordered={false} style={styles}>
+                    <p>Content content</p>
+                    <p>Content content</p>
+                    <p>Content content</p>
+                </Content>
+                <Content title="Content title" bordered={false} style={styles}>
+                    <p>Content content</p>
+                    <p>Content content</p>
+                    <p>Content content</p>
+                </Content>
+            </Col>
+        </Row>
+        </main>
             {/* <Card
             title={<Link to="/dashboard/chats">Chats</Link>}
             style={{
