@@ -5,21 +5,22 @@ const {Content} = Layout
 function BrandDashboard() {
     
     const big_styles={
-        backgroundColor:'white',
+        backgroundColor:'lightgray',
         alignSelf: 'center',
         height: '76vh',
         padding: '4vh',
         margin: '2vh'
       }
     const styles={
-        backgroundColor:'white',
+        backgroundColor:'lightgrey',
         height: '37vh',
         padding: '4vh',
         margin: '2vh',
       }
     return (
         <>
-            <Row justify="center" align="top" style={{alignItems: 'center'}}>
+        <main id="brandDashboard">
+        <Row justify="center" align="top" style={{alignItems: 'center'}}>
         <Col span={18} >
             <Content title="Content title" bordered={false} style={big_styles}  >
                 <p>Content content</p>
@@ -40,6 +41,8 @@ function BrandDashboard() {
             </Content>
         </Col>
     </Row>
+
+        </main>
             {/* <Card
             title={<Link to="/dashboard/chats">Chats</Link>}
             style={{
