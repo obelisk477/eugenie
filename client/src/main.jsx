@@ -15,17 +15,17 @@ import Error from "./pages/Error";
 import Landing from "./pages/Landing";
 import Dashboard from "./pages/Dashboard";
 import Login from "./pages/Login";
-import BrandRegister from "./pages/BrandRegister";
-import CreatorRegister from "./pages/CreatorRegister";
+import BrandRegister from "./pages/brand-pages/BrandRegister";
+import CreatorRegister from "./pages/creator-pages/CreatorRegister";
 
 import GenericProtectedRoute from "./components/GenericProtectedRoute";
-import CreatorProtectedRoute from "./components/CreatorProtectedRoute";
-import BrandProtectedRoute from "./components/BrandProtectedRoute";
+import CreatorProtectedRoute from "./components/creator-components/CreatorProtectedRoute";
+import BrandProtectedRoute from "./components/brand-components/BrandProtectedRoute";
 import Chats from './pages/Chats'
-import CreatorSearch from './pages/CreatorSearch'
-import MyCampaigns from './pages/MyCampaigns'
-import CampaignSearch from './pages/CampaignSearch'
-import ActiveCampaigns from './pages/ActiveCampaigns'
+import CreatorSearch from './pages/brand-pages/CreatorSearch'
+import MyCampaigns from './pages/brand-pages/MyCampaigns'
+import CampaignSearch from './pages/creator-pages/CampaignSearch'
+import ActiveCampaigns from './pages/creator-pages/ActiveCampaigns'
 
 // maybe change?
 const router = createBrowserRouter(
