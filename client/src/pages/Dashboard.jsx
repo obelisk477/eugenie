@@ -1,12 +1,7 @@
 import { useCurrentUserContext } from '../context/CurrentUser';
 
-import BrandDashboard from '../components/BrandDashboard'
-import CreatorDashboard from '../components/CreatorDashboard'
-
-// import { Route, Routes } from "react-router-dom";
-// import Chats from "./Chats"
-
-
+import BrandDashboard from '../components/brand-components/BrandDashboard'
+import CreatorDashboard from '../components/creator-components/CreatorDashboard'
 
 function Dashboard() {
 

@@ -12,9 +12,8 @@ const styles = {
 function Landing() {
   return (
     <div style={styles.container} className="brandDetails">
- <SubHeader/>
+      <SubHeader/>
     </div>
-  
   )
 }
 
