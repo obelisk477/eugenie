@@ -1,4 +1,4 @@
-import BrandRegistrationForm from "../components/BrandRegistrationForm"
+import BrandRegistrationForm from "../../components/brand-components/BrandRegistrationForm"
 
 function BrandRegister() {
   return (

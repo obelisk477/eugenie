@@ -2,33 +2,38 @@ import { useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { Link, useNavigate } from 'react-router-dom';
 
-import { REGISTER_BRAND } from '../graphql/mutations';
+import { REGISTER_CREATOR } from '../../graphql/mutations';
 
-import { useCurrentUserContext } from '../context/CurrentUser';
+import { useCurrentUserContext } from '../../context/CurrentUser';
 
 export default function Registration() {
   const { loginUser } = useCurrentUserContext();
   const navigate = useNavigate();
   const [formState, setFormState] = useState({
-    brandName: '',
+    firstName: '',
+    lastName: '',
     email: '',
     password: ''
   });
 
-  const [registerBrand, { error }] = useMutation(REGISTER_BRAND);
+  const [registerCreator, { error }] = useMutation(REGISTER_CREATOR);
 
   const handleFormSubmit = async event => {
     event.preventDefault();
     try {
-      const mutationResponse = await registerBrand({
+      const mutationResponse = await registerCreator({
         variables: {
-          brandName: formState.brandName,
+          firstName: formState.firstName,
+          lastName: formState.lastName,
           email: formState.email,
           password: formState.password,
         },
       });
-      const { token, currentBrand } = mutationResponse.data.registerBrand;
-      loginUser(currentBrand, token);
+      console.log(mutationResponse.data)
+      const { token, currentCreator } = mutationResponse.data.registerCreator;
+      console.log(token)
+      console.log(currentCreator)
+      loginUser(currentCreator, token);
       navigate('/dashboard');
     } catch (e) {
     // eslint-disable-next-line no-console
@@ -50,13 +55,23 @@ export default function Registration() {
       ) : null}
       <form id="registration-form" onSubmit={handleFormSubmit}>
         <h2>Register</h2>
-        <label htmlFor="brandName">
-          Brand name:
+        <label htmlFor="firstName">
+          First name:
           <input
             type="text"
-            id="brandName"
-            name="brandName"
-            value={formState.brandName}
+            id="firstName"
+            name="firstName"
+            value={formState.firstName}
+            onChange={handleChange}
+          />
+        </label>
+        <label htmlFor="lastName">
+          Last name:
+          <input
+            type="text"
+            id="lastName"
+            name="lastName"
+            value={formState.lastName}
             onChange={handleChange}
           />
         </label>
@@ -86,7 +101,7 @@ export default function Registration() {
         <p>
           Already have an account? Login
           {' '}
-          <Link to="/login">here</Link>
+          <Link to="/register">here</Link>
         </p>
       </form>
     </>
