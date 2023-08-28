@@ -76,6 +76,71 @@ button {
   text-align: center;
 }
 
-main {
+/* main {
   background-color: #7e7e7e;
+} */
+
+/* Nav Styling */
+.logo {
+  /* margin-top: 2rem; */
+  position: absolute;
+  width: 18.5rem;
+}
+#outerNav {
+  background-color: white;
+}
+
+#innerNav {
+  background-color: white;
+  border: none;
+  /* display: 'flex'; */
+  /* justifyContent: 'space-between' */
+
+}
+
+#menuItem {
+  border-bottom: none;
+  display: block;
+  text-align: right;
+}
+
+/* Hero */
+
+#heroSection {
+  margin-top: 1rem;
+  padding: .5rem;
+}
+.subHeader {
+  margin-top: -3rem;
+  width: 80%;
+}
+
+#heroTitle {
+  font-family: Montserrat;
+  font-size: 72pt;
+  font-weight: bolder;
+  text-align: center;
+  margin: auto;
+}
+
+#heroSubTitleDiv {
+  margin-top: -10rem;
+}
+#heroSubTitle {
+  font-size: 24pt;
+  font-weight: lighter;
+  text-align: center;
+  margin-top: 5px;
+}
+
+#heroButtons {
+  margin: 2rem;
+  width: 80%;
+  background-color: #C492B1;
+}
+
+/* Dashboard */
+
+#brandDashboard {
+  margin-top: 5rem;
 }
