@@ -1,6 +1,6 @@
+const moment = require('moment');
 const { Creator, Chat, Brand, Campaign } = require('../models');
 const { signBrandToken, signCreatorToken, AuthenticationError } = require('../utils');
-const moment = require('moment');
 
 const resolvers = {
   Query: {

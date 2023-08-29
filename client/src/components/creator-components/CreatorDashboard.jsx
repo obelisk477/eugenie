@@ -2,6 +2,9 @@ import { Link } from 'react-router-dom';
 import { Row, Col, Layout } from 'antd';
 const {Content} = Layout
 
+import CampaignCards from '../../components/CampaignCards';
+
+
 function CreatorDashboard() {
 
     const big_styles = {
@@ -25,8 +28,7 @@ function CreatorDashboard() {
                     <Col span={16} >
                         <Content title="Content title" bordered={false} style={big_styles}  >
                             <h2>{<Link to="/dashboard/campaign-search">Find Campaigns & Brands</Link>}</h2>
-                            <p>Content content</p>
-                            <p>Content content</p>
+                            <CampaignCards />
                         </Content>
                     </Col>
                     <Col span={8}>

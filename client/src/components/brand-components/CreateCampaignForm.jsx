@@ -1,0 +1,95 @@
+// import { useState } from 'react';
+// import { useMutation } from '@apollo/client';
+
+// import { CREATE_CAMPAIGN } from '../../graphql/mutations';
+
+// import { useCurrentUserContext } from '../../context/CurrentUser';
+
+const { TextArea } = Input;
+import {
+    DatePicker,
+    Form,
+    Input,
+    InputNumber,
+    Button
+} from 'antd';
+
+
+function CreateCampaignForm() {
+
+    // const { currentUser } = useCurrentUserContext();
+    // const [formState, setFormState] = useState({
+    //     brand: '',
+    //     title: '',
+    //     description: '',
+    //     applyBy: null,
+    //     postBy: null,
+    //     requirements: '',
+    //     deliverables: '',
+    //     compensation: 0,
+    // });
+
+    // const [createCampaign, { error }] = useMutation(CREATE_CAMPAIGN);
+
+    // const handleFormCreate = async event => {
+    //     event.preventDefault();
+    //     try {
+    //       const mutationResponse = await createCampaign({
+    //         variables: {
+    //             brand: formState._id,
+    //             title: formState.title,
+    //             description: formState.description,
+    //             applyBy: formState.applyBy,
+    //             postBy: formState.postBy,
+    //             requirements: formState.requirements,
+    //             deliverables: formState.deliverables,
+    //             compensation: formState.compensation,
+    //         },
+    //       });
+    //       const { token, currentBrand } = mutationResponse.data.createCampaign;
+    //       currentUser(currentBrand, token);
+    //     } catch (e) {
+    //     // eslint-disable-next-line no-console
+    //       console.log(e);
+    //     }
+    //   };
+    
+    //   const handleChange = event => {
+    //     const { key, value } = event.target;
+    //     setFormState({ ...formState, [key]: value });
+    //   };
+    
+
+    
+    return (
+        <>
+        {/* {error ? (
+        <div>
+          <p className="error-text">Ops something went wrong, try again!</p>
+        </div>
+      ) : null} */}
+        <Form
+      labelCol={{ span: 4,}} wrapperCol={{ span: 14,}} layout="horizontal" style={{ maxWidth: 600,}}>
+      <Form.Item key="title" label="Title"><Input /></Form.Item>
+      <Form.Item key="description" label="Description"><TextArea rows={4} /></Form.Item>
+      <Form.Item key="applyBy" label="Apply By">
+        <DatePicker />
+      </Form.Item>
+      <Form.Item key="postBy" label="Post By">
+        <DatePicker />
+      </Form.Item>
+      <Form.Item key="requirements" label="Requirements"><TextArea rows={4} /></Form.Item>
+      <Form.Item key="deliverables" label="Deliverables"><TextArea rows={4} /></Form.Item>
+      <Form.Item key="compensation" label="Compensation">
+        <InputNumber />
+      </Form.Item>
+      <Form.Item>
+        <Button type="submit">Create Campaign</Button>
+      </Form.Item>
+
+    </Form>
+        </>
+    )
+  }
+  
+  export default CreateCampaignForm
