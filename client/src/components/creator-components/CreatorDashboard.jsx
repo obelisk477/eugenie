@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { Row, Col, Layout } from 'antd';
+import CreatorMessages from './CreatorMessages';
 const {Content} = Layout
 
 function CreatorDashboard() {
@@ -37,8 +38,7 @@ function CreatorDashboard() {
                         </Content>
                         <Content title="Content title" bordered={false} style={styles}>
                             <h2>{<Link to="/dashboard/chats">Chats</Link>}</h2>
-                            <p>Content content</p>
-                            <p>Content content</p>
+                            <CreatorMessages />
                         </Content>
                     </Col>
                 </Row>
