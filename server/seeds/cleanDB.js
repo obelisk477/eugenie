@@ -6,6 +6,8 @@ module.exports = async (modelName, collectionName) => {
     .listCollections({ name: collectionName }).toArray()
 
     if (modelExists.length) {
-      await db.dropCollection(collectionName);
+      console.log(collectionName)
+      const dropped = await db.dropCollection(collectionName);
+      console.log(dropped)
     }
 }
