@@ -1,68 +1,63 @@
-import { List } from 'antd';
+import { List } from "antd";
+import { Layout } from "antd";
+const { Footer } = Layout;
 
 const styles = {
-footer: {
-  paddingBottom: '5em',
-},
-list: {
-  marginTop: '2.5em',
-  display: 'flex',
-  flexDirection: 'column' 
-
-}
-
-}
+  footer: {
+    height: "15vh",
+  },
+  list: {
+    margin: '20vh'
+  },
+  li: {
+    listStyleType: 'none',
+    padding: 0,
+    margin: 0
+  },
+  ul: {
+    padding: 0
+  },
+  h2: {
+    marginTop: 10
+  }
+};
 const footerData = [
-{
-  title: 'Support',
-  content: [ 'FAQ', 'How It Works', 'Features', 'Contact']
-},
+  {
+    title: "Support",
+    content: ["FAQ", "How It Works", "Features", "Contact"],
+  },
 
-{
-  title: 'Links',
-  content: ['GitHub'],
-},
+  {
+    title: "Links",
+    content: ["GitHub"],
+  },
 
-{
-  title: 'Contact',
-  content: [ '123 456 789 10', '007 Genie Rd, Lamp City USA']
-}
-]
+  {
+    title: "Contact",
+    content: ["123 456 789 10", "007 Genie Rd, Lamp City USA"],
+  },
+];
 // const contentList = footerData.map(( content, index ) => content)
 
-function generateString(contentArray) {
-  let result = '';
-  for (let i = 0; i < contentArray.length; i++ ) {
-    result += contentArray[i] +  '\n'; 
-  }
-  return result;
-  // return contentArray.join('\n');
-}
-
-function Footer() {
-
+function FooterSection() {
   return (
-    <footer style={styles.footer}>
-<List 
-grid={{ gutter: 140, column: 3 }}
-dataSource = {footerData}
-renderItem= {(item) => (
-<List.Item style={styles.list}>
-
-<List.Item.Meta 
-title = {item.title}
-// description = {item.content}
-/>
-{/* {item.content} */}
-{generateString(item.content)}
-
-</List.Item>
-
-)}
-/>
-
-    </footer>
-  )
+      <Footer style={styles.footer}>
+        <List
+          grid={{ gutter: 140, column: 3 }}
+          dataSource={footerData}
+          style={styles.list}
+          renderItem={(item) => (
+            <List.Item>
+              <h2 style={styles.h2}>{item.title}</h2>
+              <ul style={styles.ul}>
+                {item.content.map(item => <li key={item} style={styles.li}>{item}</li>)}
+              </ul>
+              
+            </List.Item>
+          )}
+        />
+      </Footer>
+  );
 }
 
-export default Footer
+export default FooterSection;
