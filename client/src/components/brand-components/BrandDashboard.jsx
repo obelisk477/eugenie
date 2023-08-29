@@ -11,15 +11,15 @@ const {Content} = Layout
 
 function BrandDashboard() {
 
-    const { currentUser } = useCurrentUserContext();
-    console.log(currentUser._id)
+    // const { currentUser } = useCurrentUserContext();
+    // console.log(currentUser._id)
 
-    const { data } = useQuery(QUERY_ALL_BRAND_CAMPAIGNS, {
-        variables: { brand:  currentUser._id }
-    });
-    const allBrandCampaigns = data?.getAllCampaignsByBrand || [];
+    // const { data } = useQuery(QUERY_ALL_BRAND_CAMPAIGNS, {
+    //     variables: { brand:  currentUser._id }
+    // });
+    // const allBrandCampaigns = data?.getAllCampaignsByBrand || [];
 
-    console.log(allBrandCampaigns)
+    // console.log(allBrandCampaigns)
 
     const big_styles = {
         backgroundColor:'lightgray',

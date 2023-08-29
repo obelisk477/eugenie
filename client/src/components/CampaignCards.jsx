@@ -12,15 +12,27 @@ const { Meta } = Card;
 function CampaignCards() {
 
     const { currentUser } = useCurrentUserContext();
-    console.log(currentUser._id)
+    console.log(currentUser)
+    console.log(currentUser.brandName)
 
-    const userType = currentUser.isBrand ? 'brand' : 'creator';
+    let userType = ""
 
-    const query = userType === 'brand' ? QUERY_ALL_BRAND_CAMPAIGNS : QUERY_ALL_CAMPAIGNS;
+    if ( currentUser.brandName == null ) {
+        userType = 'creator'
+    } else  {
+        userType = 'brand'
+    }
+
+    console.log(userType)
+
+    const query = userType === 'brand' ?  QUERY_ALL_BRAND_CAMPAIGNS : QUERY_ALL_CAMPAIGNS;
 
     const { data } = useQuery(query, {
-        variables: { [userType]:  currentUser._id }
+        variables: { 'brand':  currentUser._id }
+
     });
+
+    console.log(data)
     const campaigns = data? (userType === 'brand' ? data.getAllCampaignsByBrand : data.getAllCampaigns) : [];
 
       
@@ -62,19 +74,3 @@ function CampaignCards() {
   }
   
   export default CampaignCards
-
-
-
-//   {allBrandCampaigns.length > 0 ? (
-//     <>
-//         {allBrandCampaigns.map(campaign => (
-//              <li key={campaign._id}>
-//                           <h3>{campaign.title}</h3>
-//                           <p>{campaign.description}</p>
-//                           {campaign.applyBy} 
-//                         </li>
-//                 ))}
-//     </>
-//             ) : (
-//                 <p>No campaigns available.</p>
-//         )}
