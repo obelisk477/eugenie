@@ -168,3 +168,14 @@ button {
 #brandDashboard {
   margin-top: 5rem;
 }
+
+/* Cards Styling */
+
+.mainContainer .ant-card {
+  display: flex; 
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
