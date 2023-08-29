@@ -7,13 +7,7 @@ const styles = {
     height: "15vh",
   },
   list: {
-<<<<<<< HEAD
-    marginTop: "2.5em",
-    // display: "flex",
-    flexDirection: "column",
-=======
     margin: '20vh'
->>>>>>> 1c2d8a22119ff54f05ab0a455718f0c6ff31de11
   },
   li: {
     listStyleType: 'none',
