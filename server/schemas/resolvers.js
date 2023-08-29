@@ -37,8 +37,9 @@ const resolvers = {
         throw AuthenticationError;
       }
 
+      console.log(creator)
       const correctPw = await creator.isCorrectPassword(password);
-
+      console.log()
       if (!correctPw) {
         throw AuthenticationError;
       }

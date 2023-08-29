@@ -4,13 +4,22 @@ const { Footer } = Layout;
 
 const styles = {
   footer: {
-    paddingBottom: "5em",
+    height: "15vh",
   },
   list: {
-    marginTop: "2.5em",
-    display: "flex",
-    flexDirection: "column",
+    margin: '20vh'
   },
+  li: {
+    listStyleType: 'none',
+    padding: 0,
+    margin: 0
+  },
+  ul: {
+    padding: 0
+  },
+  h2: {
+    marginTop: 10
+  }
 };
 const footerData = [
   {
@@ -30,32 +39,24 @@ const footerData = [
 ];
 // const contentList = footerData.map(( content, index ) => content)
 
-function generateString(contentArray) {
-  let result = "";
-  for (let i = 0; i < contentArray.length; i++) {
-    result += contentArray[i] + "\n";
-  }
-  return result;
-  // return contentArray.join("\n");
-}
-
 function FooterSection() {
   return (
-    <Layout>
       <Footer style={styles.footer}>
         <List
           grid={{ gutter: 140, column: 3 }}
           dataSource={footerData}
+          style={styles.list}
           renderItem={(item) => (
-            <List.Item style={styles.list}>
-              <List.Item.Meta title={item.title} />
-
-              {generateString(item.content)}
+            <List.Item>
+              <h2 style={styles.h2}>{item.title}</h2>
+              <ul style={styles.ul}>
+                {item.content.map(item => <li key={item} style={styles.li}>{item}</li>)}
+              </ul>
+              
             </List.Item>
           )}
         />
       </Footer>
-    </Layout>
   );
 }
 
