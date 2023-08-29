@@ -1,6 +1,8 @@
+import ErrorAlert from './ErrorAlert'
 import { useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { Link, useNavigate } from 'react-router-dom';
+
 
 import { LOGIN_CREATOR } from '../graphql/mutations';
 import { LOGIN_BRAND } from '../graphql/mutations';
@@ -47,9 +49,7 @@ export default function Login() {
   return (
     <>
       {(creatorError || brandError) ? (
-        <div>
-          <p className="error-text">The provided credentials are incorrect</p>
-        </div>
+         <ErrorAlert  />
       ) : null}
       <form id="login-form" onSubmit={handleFormSubmit}>
         <h2>Login</h2>
