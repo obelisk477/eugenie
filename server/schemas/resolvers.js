@@ -1,11 +1,16 @@
+const moment = require('moment');
 const { Creator, Chat, Brand, Campaign } = require('../models');
 const { signBrandToken, signCreatorToken, AuthenticationError } = require('../utils');
+
+
+/* eslint-disable object-shorthand */
 
 const resolvers = {
   Query: {
     currentCreator: async (parent, { email }) => Creator.findOne({ email }),
     currentBrand: async (parent, { email }) => Brand.findOne({ email }),
     getChat: async (parent, {brand, creator}) => Chat.findOne({ brand, creator }),
+
     getAllCampaignsByBrand: async (parent, { brand }) => Campaign.findOne({ brand }),
     getCreators: async () => { 
       const creators = await Creator.find()
@@ -18,6 +23,12 @@ const resolvers = {
         }
         return creator.audience
   },
+    getAllCampaigns: async () => {
+      const today = moment().startOf('day');
+      const campaigns = await Campaign.find({ applyBy: {$gt: today }})
+      return campaigns;
+    },
+    getAllCampaignsByBrand: async (parent, { brand }) => Campaign.find({ brand })
   },
 
   Mutation: {
@@ -82,6 +93,14 @@ const resolvers = {
       const createCampaign = await Campaign.create(args)
       return createCampaign
     },
+    applyToCampaign: async (parent, {_id, applicants}) => {
+      const applyToCampaign = await Campaign.findOneAndUpdate(
+        { _id: _id },
+        {$addToSet: { applicants: applicants }},
+        {new: true}
+      )
+      return applyToCampaign
+    }
 
   },
 };

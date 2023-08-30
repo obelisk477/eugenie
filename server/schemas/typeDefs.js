@@ -55,6 +55,7 @@ const typeDefs = `#graphql
     description: String!
     applyBy: String!
     postBy: String!
+    applicants: [ID!]
     requirements: String!
     deliverables: String!
     compensation: Int!
@@ -66,9 +67,10 @@ const typeDefs = `#graphql
     currentCreator(email: String!): Creator
     currentBrand(email: String!): Brand
     getChat(brand: ID!, creator: ID!): Chat
-    getAllCampaignsByBrand(brand: ID!): Campaign
     getCreators: [Creator]!
     getAudienceByCreator(creatorId: ID!) : Int!
+    getAllCampaigns: [Campaign]
+    getAllCampaignsByBrand(brand: ID!): [Campaign]
   }
 
   type Mutation {
@@ -78,6 +80,7 @@ const typeDefs = `#graphql
     registerBrand(brandName: String!, email: String!, password: String!): brandAuth
     loginBrand(email: String!, password: String!): brandAuth
     createCampaign(brand: ID!, title: String!, description: String!, applyBy: String!, postBy: String!, requirements: String!, deliverables: String!, compensation: Int!, payoutBy: String!): Campaign
+    applyToCampaign(_id: ID!, applicants: ID!): Campaign
   }
 `;
 

@@ -32,10 +32,10 @@ export const QUERY_CURRENT_CHAT = gql`
   }
 `;
 
-// Get all for creators 
-export const QUERY_ALL_CAMPAIGN = gql`
+// Get all campaigns for brands
+export const QUERY_ALL_BRAND_CAMPAIGNS = gql`
   query getAllCampaignsByBrand($brand: ID!) {
-    allCampaignsByBrand(brand: $brand) {
+    getAllCampaignsByBrand(brand: $brand) {
       _id
       brand
       title
@@ -50,6 +50,7 @@ export const QUERY_ALL_CAMPAIGN = gql`
   }
 `;
 
+
 export const QUERY_CREATORS = gql`
   query getCreators {
     creators {
@@ -59,9 +60,25 @@ export const QUERY_CREATORS = gql`
       email
       audience
       platforms
+          }
+  }
+`;
+
+// Get all campaigns for creator
+export const QUERY_ALL_CAMPAIGNS = gql`
+  query getAllCampaigns {
+    getAllCampaigns {
+      _id
+      brand
+      title
+      description
+      applyBy
+      postBy
+      requirements
+      deliverables
+      compensation
+      payoutBy
 
     }
   }
 `;
-
-

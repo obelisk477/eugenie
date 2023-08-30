@@ -42,6 +42,11 @@ const campaignSchema = new Schema(
       type: Number,
       required: true,
     },
+    applicants: [{
+      type: Schema.Types.ObjectId,
+      required: true,
+      ref: 'Creator'
+    }],
     payoutBy: {
       type: Date,
       get: (payoutByVal) => moment(payoutByVal).format('MMM DD, YYYY'),

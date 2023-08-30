@@ -1,5 +1,5 @@
-import { List } from "antd";
-import { Layout } from "antd";
+import { List, Layout, } from "antd";
+
 const { Footer } = Layout;
 
 const styles = {
