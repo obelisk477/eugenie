@@ -134,6 +134,10 @@ button {
 .registrationButtons{
   justify-content: center;
 }
+
+#message{
+  padding-top: 5em;
+}
 #heroTitle {
   font-family: Montserrat;
   font-size: 72pt;
@@ -174,4 +178,18 @@ button {
   height: 100%;
   flex-wrap: wrap;
   margin-bottom: 10px;
+}
+
+.messagesPage {
+  display: flex;
+
+}
+
+.messageResponse {
+padding-top: 15em
+  
+}
+
+.sendMessage {
+  padding: 5
 }
