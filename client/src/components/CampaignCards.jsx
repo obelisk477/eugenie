@@ -66,7 +66,7 @@ function CampaignCards() {
 
     const query = userType === 'brand' ?  QUERY_ALL_BRAND_CAMPAIGNS : QUERY_ALL_CAMPAIGNS;
 
-    const { data } = useQuery(query, {
+    const { data, refetch } = useQuery(query, {
         variables: { 'brand':  currentUser._id }
 
     });
@@ -75,16 +75,28 @@ function CampaignCards() {
 
     //Delete campaign 
 
-    const [deleteCampaign] = useMutation(DELETE_CAMPAIGN);
+    const [deleteCampaign] = useMutation(DELETE_CAMPAIGN, {
+        refetchQueries: [{ query }]
+    }
+        );
+    const [setCampaigns] = useState([]);
+
 
     const handleDelete = async campaign => {
-       await deleteCampaign({
-        variables: {
+    
+        await deleteCampaign({
+            variables: {
             _id: campaign
-        },
-       })
-    //    sorry about this I just can't get refetch to work
-       window.location = window.location.href; 
+            },
+        });
+
+         await refetch(); 
+       if (userType === 'brand') {
+           setCampaigns(data.getAllCampaignsByBrand);
+       } else {
+           setCampaigns(data.getAllCampaigns);
+       }
+    setCampaigns();
     }
 
 

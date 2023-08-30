@@ -1,8 +1,9 @@
 import { useState } from 'react';
-import { useMutation } from '@apollo/client';
+import { useMutation, useQuery } from '@apollo/client';
 import moment from 'moment'; 
 
 import { CREATE_CAMPAIGN } from '../../graphql/mutations';
+import { QUERY_ALL_BRAND_CAMPAIGNS } from '../../graphql/queries';
 
 import { useCurrentUserContext } from '../../context/CurrentUser';
 
@@ -32,12 +33,13 @@ function CreateCampaignForm() {
 
     const [createCampaign] = useMutation(CREATE_CAMPAIGN);
 
-
     const handleFormCreate = async event => {
         event.preventDefault();
         try {
           const postBy = formState.postBy;
           const payoutBy = moment(postBy).add(2, 'weeks');
+
+          
 
 
           await createCampaign({
@@ -53,8 +55,8 @@ function CreateCampaignForm() {
                 payoutBy: payoutBy.toISOString(),
             },
           });
-           //    sorry about this I just can't get refetch to work
-            window.location = window.location.href; 
+           // will change later
+            window.location.reload(); 
 
         } catch (e) {
         // eslint-disable-next-line no-console
