@@ -73,10 +73,17 @@ const resolvers = {
 
       return { token, currentBrand: brand };
     },
+
     createCampaign: async (parent, args) => {
       const createCampaign = await Campaign.create(args)
       return createCampaign
     },
+
+    // deleteCampaign: async (parent, args ) => {
+    //   const deleteCampaign = await Campaign.deleteOne(args)
+    //   return deleteCampaign
+    // }
+    
 
   },
 };
