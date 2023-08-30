@@ -1,4 +1,6 @@
 const moment = require('moment');
+const mongoose = require("mongoose");
+
 const { Creator, Chat, Brand, Campaign } = require('../models');
 const { signBrandToken, signCreatorToken, AuthenticationError } = require('../utils');
 
@@ -88,13 +90,13 @@ const resolvers = {
         {new: true}
       )
       return applyToCampaign
-    }
+    },
 
-    // deleteCampaign: async (parent, args ) => {
-    //   const deleteCampaign = await Campaign.deleteOne(args)
-    //   return deleteCampaign
-    // }
-    
+    deleteCampaign: async (parent, {_id} ) => {
+     const deleteCampaign = await Campaign.findOneAndDelete({_id: new mongoose.Types.ObjectId(_id)})
+     return deleteCampaign
+    }
+      
 
   },
 };

@@ -84,3 +84,21 @@ mutation applyToCampaign($_id: ID!, $applicants: ID!) {
   }
 }
 `;
+
+// Delete Campaign
+export const DELETE_CAMPAIGN = gql`
+  mutation DeleteCampaign($_id: ID!) {
+    DeleteCampaign(_id: $_id ) {
+      _id
+      # brand
+      # title
+      # description
+      # applyBy
+      # postBy
+      # requirements
+      # deliverables
+      # compensation
+      # payoutBy
+    }
+  }
+`;
