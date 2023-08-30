@@ -1,11 +1,33 @@
-const { Creator, Chat, Brand } = require('../models');
-const { signToken, AuthenticationError } = require('../utils');
+const moment = require('moment');
+const { Creator, Chat, Brand, Campaign } = require('../models');
+const { signBrandToken, signCreatorToken, AuthenticationError } = require('../utils');
+
+
+/* eslint-disable object-shorthand */
 
 const resolvers = {
   Query: {
     currentCreator: async (parent, { email }) => Creator.findOne({ email }),
     currentBrand: async (parent, { email }) => Brand.findOne({ email }),
-    getChat: async (parent, {brand, creator}) => Chat.findOne({ brand, creator })
+    getChat: async (parent, {brand, creator}) => Chat.findOne({ brand, creator }),
+    getCreators: async () => { 
+      const creators = await Creator.find()
+      return creators 
+    },
+    getAudienceByCreator: async (parent, { creatorId }) => {
+        const creator = await Creator.findById(creatorId);
+        if (!creator) {
+          throw new Error('Creator not found')
+        }
+        return creator.audience
+  },
+    getAllCampaigns: async () => {
+      const today = moment().startOf('day');
+      const campaigns = await Campaign.find({ applyBy: {$gt: today }})
+      return campaigns;
+    },
+    getAllCampaignsByBrand: async (parent, { brand }) => Campaign.find({ brand }).populate('applicants'),
+  
   },
 
   Mutation: {
@@ -16,15 +38,16 @@ const resolvers = {
       
     },
 
-    registerCreator: async (parent, { firstName, lastName, email, password }) => {
-      const creator = await Creator.create({ firstName, lastName, email, password });
-      const token = signToken(creator);
+    registerCreator: async (parent, { firstName, lastName, email, password, audience, platforms }) => {
+      const creator = await Creator.create({ firstName, lastName, email, password, audience, platforms });
+      const token = signCreatorToken(creator);
       return { token, currentCreator: creator };
     },
 
     registerBrand: async (parent, { brandName, email, password }) => {
       const brand = await Brand.create({ brandName, email, password });
-      const token = signToken(brand);
+      const token = signBrandToken(brand);
+      console.log(token, brand)
       return { token, currentBrand: brand };
     },
 
@@ -35,13 +58,14 @@ const resolvers = {
         throw AuthenticationError;
       }
 
+      console.log(creator)
       const correctPw = await creator.isCorrectPassword(password);
-
+      console.log()
       if (!correctPw) {
         throw AuthenticationError;
       }
 
-      const token = signToken(creator);
+      const token = signCreatorToken(creator);
 
       return { token, currentCreator: creator };
     },
@@ -59,10 +83,33 @@ const resolvers = {
         throw AuthenticationError;
       }
 
-      const token = signToken(brand);
+      // const brandUser = {...brand, isBrand: true }
+      const token = signBrandToken(brand);
 
       return { token, currentBrand: brand };
     },
+    createCampaign: async (parent, args) => {
+      const createCampaign = await Campaign.create(args)
+      return createCampaign
+    },
+    applyToCampaign: async (parent, {_id, applicants}) => {
+      const applyToCampaign = await Campaign.findOneAndUpdate(
+        { _id: _id },
+        {$addToSet: { applicants: applicants }},
+        {new: true}
+      )
+      return applyToCampaign
+    },
+    addToAccepted: async (parent, {_id, accepted}) => {
+      const addToAccepted = await Campaign.findOneAndUpdate(
+        { _id: _id },
+        {$addToSet: { accepted: accepted }},
+        {new: true}
+      )
+      console.log(accepted)
+      return addToAccepted
+    },
+
   },
 };
 

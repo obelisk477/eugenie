@@ -1,5 +1,5 @@
 {
-  "name": "vite-apollo-mongo",
+  "name": "Eugenie",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -12,16 +12,17 @@
     "lint": "eslint . --ext .js,.jsx"
   },
   "dependencies": {
+    "@cloudinary/react": "^1.11.2",
+    "@cloudinary/url-gen": "^1.11.2",
+    "antd": "^5.8.4",
+    "cloudinary": "^1.40.0",
+    "moment": "^2.29.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.14.2"
   },
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/jbohde/vite-apollo-mongo/issues"
-  },
-  "homepage": "https://github.com/jbohde/vite-apollo-mongo#readme",
   "devDependencies": {
     "concurrently": "^8.2.0",
     "eslint": "^8.47.0",

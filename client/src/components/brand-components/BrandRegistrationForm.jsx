@@ -2,9 +2,9 @@ import { useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { Link, useNavigate } from 'react-router-dom';
 
-import { REGISTER_BRAND } from '../graphql/mutations';
+import { REGISTER_BRAND } from '../../graphql/mutations';
 
-import { useCurrentUserContext } from '../context/CurrentUser';
+import { useCurrentUserContext } from '../../context/CurrentUser';
 
 export default function Registration() {
   const { loginUser } = useCurrentUserContext();

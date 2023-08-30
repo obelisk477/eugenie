@@ -1,7 +1,8 @@
 const { GraphQLError } = require('./error');
-const { signToken } = require('./jwt');
+const { signBrandToken, signCreatorToken } = require('./jwt');
 
 module.exports = {
   GraphQLError,
-  signToken
+  signBrandToken,
+  signCreatorToken
 }

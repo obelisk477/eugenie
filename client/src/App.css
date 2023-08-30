@@ -61,6 +61,8 @@ button {
   background-color: #007bff;
 }
 
+
+
 #login-form,
 #registration-form {
   display: flex;
@@ -74,4 +76,121 @@ button {
 
 .page-title {
   text-align: center;
+}
+
+/* main {
+  background-color: #7e7e7e;
+} */
+
+/* Nav Styling */
+.logo {
+  /* margin-top: 2rem; */
+  position: absolute;
+  width: 18.5rem;
+}
+#outerNav {
+  background-color: white;
+}
+
+#innerNav {
+  background-color: white;
+  border: none;
+  /* display: 'flex'; */
+  /* justifyContent: 'space-between' */
+
+}
+
+#menuItem {
+  border-bottom: none;
+  display: block;
+  text-align: right;
+}
+
+/* Hero */
+
+#heroSection {
+  margin-top: 1rem;
+  padding: .5rem;
+}
+.subHeader {
+  margin-top: -3rem;
+  width: 80%;
+}
+
+.card-section {
+  height: 100%;
+  padding: 5px;
+ justify-content: center;
+}
+
+.info {
+  max-width: 100%;
+  background:#C492B1;;
+  text-align: center;
+  justify-content: center;
+
+}
+
+.registrationButtons{
+  justify-content: center;
+}
+
+#message{
+  padding-top: 5em;
+}
+#heroTitle {
+  font-family: Montserrat;
+  font-size: 72pt;
+  font-weight: bolder;
+  text-align: center;
+  margin: auto;
+}
+
+#heroSubTitleDiv {
+  margin-top: -10rem;
+}
+#heroSubTitle {
+  font-size: 24pt;
+  font-weight: lighter;
+  text-align: center;
+  margin-top: 5px;
+}
+
+#heroButtons {
+  margin: 2rem;
+  width: 80%;
+  background-color: #C492B1;
+  align-items: center;
+}
+
+/* Dashboard */
+
+#brandDashboard {
+  margin-top: 5rem;
+}
+
+/* Cards Styling */
+
+.mainContainer .ant-card {
+  display: flex; 
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+
+
+.messagesPage {
+  display: flex;
+
+}
+
+.messageResponse {
+padding-top: 15em
+  
+}
+
+.sendMessage {
+  padding: 5
 }

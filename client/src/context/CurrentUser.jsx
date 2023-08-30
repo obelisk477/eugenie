@@ -24,6 +24,7 @@ export default function CurrentUserContextProvider({ children }) {
   }
 
   const [currentUser, setCurrentUser] = useState(initialUser);
+  const isBrand = currentUser?.brandName != undefined
 
   const loginUser = useCallback((user, token) => {
     setCurrentUser({ ...user, isAuthenticated: true });
@@ -37,14 +38,19 @@ export default function CurrentUserContextProvider({ children }) {
 
   const isLoggedIn = useCallback(() => currentUser.isAuthenticated, [currentUser.isAuthenticated]);
 
+  const updateUser = useCallback((newUser) => setCurrentUser(newUser), [])
+
   const contextValue = useMemo(() =>
   ({
     currentUser,
+    isBrand,
+    updateUser,
     loginUser,
     logoutUser,
-    isLoggedIn
+    isLoggedIn,
   }),
-    [currentUser, isLoggedIn, loginUser, logoutUser]);
+    [currentUser, isBrand, updateUser, isLoggedIn, loginUser, logoutUser]);
+
 
   return (
     <CurrentUserContext.Provider value={contextValue}>

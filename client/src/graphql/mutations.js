@@ -39,8 +39,8 @@ mutation loginBrand($email: String!, $password: String!) {
 `;
 
 export const REGISTER_CREATOR = gql`
-mutation registerCreator($firstName: String!, $lastName: String!, $email: String!, $password: String!) {
-  registerCreator(firstName: $firstName, lastName: $lastName, email: $email, password: $password) {
+mutation registerCreator($firstName: String!, $lastName: String!, $email: String!, $password: String!, $audience: Int!, $platforms: PlatformsInput!) {
+  registerCreator(firstName: $firstName, lastName: $lastName, email: $email, password: $password, audience: $audience, platforms: $platforms) {
     currentCreator {
       firstName
       lastName
@@ -57,6 +57,47 @@ mutation registerBrand($brandName: String!, $email: String!, $password: String!)
       brandName
     }
     token
+  }
+}
+`;
+
+export const CREATE_CAMPAIGN = gql`
+mutation createCampaign($brand: ID!, $title: String!, $description: String!, $applyBy: String!, $postBy: String!, $requirements: String!, $deliverables: String!, $compensation: Int!, $payoutBy: String!) {
+  createCampaign( brand: $brand, title: $title, description: $description, applyBy: $applyBy, postBy: $postBy, requirements: $requirements, deliverables: $deliverables, compensation: $compensation, payoutBy: $payoutBy) {
+    _id
+    title
+    description
+    applyBy
+    postBy
+    requirements
+    deliverables
+    compensation
+    payoutBy
+  }
+}
+`;
+export const APPLY_TO_CAMPAIGN = gql`
+mutation applyToCampaign($_id: ID!, $applicants: ID!) {
+  applyToCampaign(_id: $_id, applicants: $applicants) {
+    _id
+    applicants {
+      _id
+      firstName
+      lastName
+    }
+  }
+}
+`;
+
+export const ADD_TO_ACCEPTED = gql`
+mutation addToAccepted($_id: ID!, $accepted: ID!) {
+  addToAccepted(_id: $_id, accepted: $accepted) {
+    _id
+    accepted {
+      _id
+      firstName
+      lastName
+    }
   }
 }
 `;

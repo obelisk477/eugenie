@@ -2,8 +2,9 @@ import { Navigate, useLocation } from "react-router-dom";
 
 import { useCurrentUserContext } from "../context/CurrentUser";
 
-function ProtectedRoute({ children }) {
+function GenericProtectedRoute({ children }) {
   const { isLoggedIn } = useCurrentUserContext();
+
   const location = useLocation();
   if (!isLoggedIn()) {
     // Redirect them to the /login page, but save the current location they were
@@ -16,4 +17,4 @@ function ProtectedRoute({ children }) {
   return children;
 }
 
-export default ProtectedRoute;
+export default GenericProtectedRoute;

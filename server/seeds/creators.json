@@ -10,5 +10,59 @@
     "lastName": "Danvers",
     "email": "captainmarvel@example.com",
     "password": "passwords1"
+  },
+  {
+    "firstName": "Olivia",
+    "lastName": "Jensen",
+    "email": "ojensen@example.com",
+    "password": "passwords1"
+  },
+  {
+    "firstName": "Ethan",
+    "lastName": "Wave",
+    "email": "wave@example.com",
+    "password": "passwords1"
+  },
+  {
+    "firstName": "Mia",
+    "lastName": "Ramos",
+    "email": "mammamia@example.com",
+    "password": "passwords1",
+    "audience": "600000",
+    "platforms": {
+      "instagram": "false",
+      "youtube": "false",
+      "facebook": "true",
+      "tiktok": "false",
+      "snapchat": "false"
+    }
+  },
+  {
+    "firstName": "Ava",
+    "lastName": "Williams",
+    "email": "ava@example.com",
+    "password": "passwords1",
+    "audience": "200000",
+    "platforms": {
+      "instagram": "false",
+      "youtube": "false",
+      "facebook": "true",
+      "tiktok": "true",
+      "snapchat": "true"
+    }
+  },
+  {
+    "firstName": "Jackson",
+    "lastName": "Sparrow",
+    "email": "jsparrow@example.com",
+    "password": "passwords1",
+    "audience": "100000",
+    "platforms": {
+      "instagram": "true",
+      "youtube": "false",
+      "facebook": "true",
+      "tiktok": "true",
+      "snapchat": "false"
+    }
   }
 ]
