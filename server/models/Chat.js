@@ -9,7 +9,7 @@ const chatSchema = new Schema({
       },
     creator: {
         type: Schema.Types.ObjectId,
-        ref: 'Brand'
+        ref: 'Creator'
       },
     chatLog: {
         type: String,
