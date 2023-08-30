@@ -50,6 +50,20 @@ export const QUERY_ALL_BRAND_CAMPAIGNS = gql`
   }
 `;
 
+
+export const QUERY_CREATORS = gql`
+  query getCreators {
+    creators {
+      _id
+      firstName
+      lastName
+      email
+      audience
+      platforms
+          }
+  }
+`;
+
 // Get all campaigns for creator
 export const QUERY_ALL_CAMPAIGNS = gql`
   query getAllCampaigns {
@@ -64,8 +78,8 @@ export const QUERY_ALL_CAMPAIGNS = gql`
       deliverables
       compensation
       payoutBy
+
     }
   }
 `;
-
 

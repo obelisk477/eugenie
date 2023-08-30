@@ -1,6 +1,8 @@
+import CreatorsCard from "../../components/brand-components/CreatorsCard"
+
 function CreatorSearch() {
     return (
-      <h1>Search for Creators</h1>
+      <CreatorsCard />
     )
   }
   

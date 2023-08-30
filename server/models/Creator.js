@@ -25,6 +25,18 @@ const creatorSchema = new Schema({
     required: true,
     minlength: 5,
   },
+  audience: {
+    type: Number,
+    // required: true,
+  },
+  platforms: {
+    instagram: { type: Boolean, default: false },
+    youtube: { type: Boolean, default: false },
+    facebook: { type: Boolean, default: false },
+    tiktok: { type: Boolean, default: false},
+    snapchat: { type: Boolean, default: false}
+  },
+
 });
 
 creatorSchema.pre('save', async function (next) {
