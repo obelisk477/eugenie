@@ -11,9 +11,8 @@ const { Meta } = Card;
 
 function CampaignCards() {
 
+
     const { currentUser } = useCurrentUserContext();
-    console.log(currentUser)
-    console.log(currentUser.brandName)
 
     let userType = ""
 
@@ -23,7 +22,6 @@ function CampaignCards() {
         userType = 'brand'
     }
 
-    console.log(userType)
 
     const query = userType === 'brand' ?  QUERY_ALL_BRAND_CAMPAIGNS : QUERY_ALL_CAMPAIGNS;
 
@@ -31,8 +29,7 @@ function CampaignCards() {
         variables: { 'brand':  currentUser._id }
 
     });
-
-    console.log(data)
+    
     const campaigns = data? (userType === 'brand' ? data.getAllCampaignsByBrand : data.getAllCampaigns) : [];
 
       
@@ -44,7 +41,7 @@ function CampaignCards() {
                 {campaigns.map(campaign => (  
                     // eslint-disable-next-line react/jsx-key
                     <Col key={campaign._id} span={8}>
-                        <Card id='card' title={campaign.title} bordered={false} actions={userType === 'brand' ? [ 
+                        <Card title={campaign.title} actions={userType === 'brand' ? [ 
                             <EditOutlined key="edit" />,
                             <DeleteOutlined key="delete" />,
                                 ] : [

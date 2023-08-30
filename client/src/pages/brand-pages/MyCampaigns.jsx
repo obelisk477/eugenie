@@ -19,13 +19,13 @@ function MyCampaigns() {
             <main className="dashboard">
                 <Row justify="center" align="top" style={{alignItems: 'center'}}>
                     <Col span={18} >
-                        <Content title="Content title" bordered={false} style={big_styles}  >
+                        <Content title="Content title" style={big_styles}  >
                             <h2>My Campaigns</h2>
                             <CampaignCards />
                         </Content>
                     </Col>
                     <Col span={6} >
-                        <Content title="Content title" bordered={false} style={big_styles}  >
+                        <Content title="Content title" style={big_styles}  >
                             <h2>New Campaign</h2>
                             <CreateCampaignForm />
                             
