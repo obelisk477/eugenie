@@ -1,10 +1,12 @@
-// import { useState } from 'react';
+import { useState } from 'react';
 import { useQuery } from '@apollo/client';
 import { QUERY_ALL_BRAND_CAMPAIGNS, QUERY_ALL_CAMPAIGNS } from '../graphql/queries';
+import { useMutation } from '@apollo/client';
+import { APPLY_TO_CAMPAIGN } from '../graphql/mutations';
 import { useCurrentUserContext } from '../context/CurrentUser';
 // import { Link } from 'react-router-dom';
-import { Row, Col, Card } from 'antd';
-import { EditOutlined, DeleteOutlined, PlusOutlined } from '@ant-design/icons';
+import { Row, Col, Card, Modal } from 'antd';
+import { EditOutlined, DeleteOutlined } from '@ant-design/icons';
 const { Meta } = Card;
 // const {Content} = Layout
 
@@ -12,8 +14,45 @@ const { Meta } = Card;
 function CampaignCards() {
 
     const { currentUser } = useCurrentUserContext();
-    console.log(currentUser)
-    console.log(currentUser.brandName)
+
+    const [applyToCampaign, { error: applicationError }] = useMutation(APPLY_TO_CAMPAIGN);
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const showModal = () => {
+      setIsModalOpen(true);
+    };
+    const handleOk = () => {
+      setIsModalOpen(false);
+    };
+    const handleCancel = () => {
+      setIsModalOpen(false);
+    };
+
+    const handleClick = async event => {
+        event.preventDefault();
+        // Set single login function to handle 
+        try {
+            const mutationResponse = await applyToCampaign({
+                variables: {
+                    _id: event.target.dataset.id,
+                    applicants: currentUser._id
+                },
+            });
+            showModal()
+        } catch (e) {
+          console.log(applicationError);
+        }
+      };
+
+
+    const styles = {
+        row: {
+            justifyContent: 'space-evenly'
+        },
+        col: {
+            marginLeft: '20vh'
+        }
+    }
+
 
     let userType = ""
 
@@ -23,8 +62,6 @@ function CampaignCards() {
         userType = 'brand'
     }
 
-    console.log(userType)
-
     const query = userType === 'brand' ?  QUERY_ALL_BRAND_CAMPAIGNS : QUERY_ALL_CAMPAIGNS;
 
     const { data } = useQuery(query, {
@@ -32,7 +69,6 @@ function CampaignCards() {
 
     });
 
-    console.log(data)
     const campaigns = data? (userType === 'brand' ? data.getAllCampaignsByBrand : data.getAllCampaigns) : [];
 
       
@@ -40,15 +76,15 @@ function CampaignCards() {
         <>
         {campaigns.length > 0 ? (
             <>
-            <Row className='mainContainer' gutter={16}>
+            <Row className='mainContainer' gutter={20} style = {styles.row}>
                 {campaigns.map(campaign => (  
                     // eslint-disable-next-line react/jsx-key
-                    <Col key={campaign._id} span={8}>
-                        <Card id='card' title={campaign.title} bordered={false} actions={userType === 'brand' ? [ 
+                    <Col key={campaign._id} span={8} >
+                        <Card  id='card' title={campaign.title} bordered={false} actions={userType === 'brand' ? [ 
                             <EditOutlined key="edit" />,
                             <DeleteOutlined key="delete" />,
                                 ] : [
-                            <PlusOutlined key='apply' />,
+                            <h2 key='' data-id={campaign._id} onClick={handleClick}>Apply</h2>,
                                 ]} >
                                     <Meta description={campaign.description}/>
                                     <br></br>
@@ -61,13 +97,16 @@ function CampaignCards() {
                                     <br></br>
                                     <br></br>
                                     <Meta title={'Compensation: $' + campaign.compensation} description={'Payout By: ' + campaign.payoutBy}/>
-                                </Card>
+                        </Card>
                     </Col>
                         ))}
             </Row>
+            <Modal title="Success" open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
+                <p>Successfully applied!</p>
+            </Modal>
             </>
-                    ) : (
-                        <p>No campaigns available.</p>
+                ) : (
+                    <p>No campaigns available.</p>
          )}
         </>
     )
