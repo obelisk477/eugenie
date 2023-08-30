@@ -111,7 +111,7 @@ function CampaignCards() {
 
                     <Col key={campaign._id} span={8}>
                         <Card id='card' title={campaign.title} actions={userType === 'brand' ? [ 
-                            <EditOutlined key="edit" />,
+                            // <EditOutlined key="edit" />,
                             <DeleteOutlined key="delete" onClick={() => handleDelete(campaign._id)}/>,
                                 ] : [
                             <h2 key='' data-id={campaign._id} onClick={handleClick}>Apply</h2>,
