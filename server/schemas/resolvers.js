@@ -10,8 +10,6 @@ const resolvers = {
     currentCreator: async (parent, { email }) => Creator.findOne({ email }),
     currentBrand: async (parent, { email }) => Brand.findOne({ email }),
     getChat: async (parent, {brand, creator}) => Chat.findOne({ brand, creator }),
-
-    getAllCampaignsByBrand: async (parent, { brand }) => Campaign.findOne({ brand }),
     getCreators: async () => { 
       const creators = await Creator.find()
       return creators 
@@ -28,7 +26,8 @@ const resolvers = {
       const campaigns = await Campaign.find({ applyBy: {$gt: today }})
       return campaigns;
     },
-    getAllCampaignsByBrand: async (parent, { brand }) => Campaign.find({ brand })
+    getAllCampaignsByBrand: async (parent, { brand }) => Campaign.find({ brand }).populate('applicants'),
+  
   },
 
   Mutation: {
@@ -100,7 +99,16 @@ const resolvers = {
         {new: true}
       )
       return applyToCampaign
-    }
+    },
+    addToAccepted: async (parent, {_id, accepted}) => {
+      const addToAccepted = await Campaign.findOneAndUpdate(
+        { _id: _id },
+        {$addToSet: { accepted: accepted }},
+        {new: true}
+      )
+      console.log(accepted)
+      return addToAccepted
+    },
 
   },
 };

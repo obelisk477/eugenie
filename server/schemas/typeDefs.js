@@ -7,6 +7,7 @@ const typeDefs = `#graphql
     password: String
     audience: Int
     platforms: Platforms
+    activeCampaigns: [Campaign]
 
   }
   type Platforms {  # Define a new type for platforms
@@ -55,7 +56,8 @@ const typeDefs = `#graphql
     description: String!
     applyBy: String!
     postBy: String!
-    applicants: [ID!]
+    applicants: [Creator]
+    accepted: [Creator]
     requirements: String!
     deliverables: String!
     compensation: Int!
@@ -81,6 +83,7 @@ const typeDefs = `#graphql
     loginBrand(email: String!, password: String!): brandAuth
     createCampaign(brand: ID!, title: String!, description: String!, applyBy: String!, postBy: String!, requirements: String!, deliverables: String!, compensation: Int!, payoutBy: String!): Campaign
     applyToCampaign(_id: ID!, applicants: ID!): Campaign
+    addToAccepted(_id: ID!, accepted: ID!): Campaign
   }
 `;
 
