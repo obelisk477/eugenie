@@ -13,6 +13,7 @@ const { Meta } = Card;
 
 function CampaignCards() {
 
+
     const { currentUser } = useCurrentUserContext();
 
     const [applyToCampaign, { error: applicationError }] = useMutation(APPLY_TO_CAMPAIGN);
@@ -79,8 +80,9 @@ function CampaignCards() {
             <Row className='mainContainer' gutter={20} style = {styles.row}>
                 {campaigns.map(campaign => (  
                     // eslint-disable-next-line react/jsx-key
-                    <Col key={campaign._id} span={8} >
-                        <Card  id='card' title={campaign.title} bordered={false} actions={userType === 'brand' ? [ 
+
+                    <Col key={campaign._id} span={8}>
+                        <Card id='card' title={campaign.title} actions={userType === 'brand' ? [ 
                             <EditOutlined key="edit" />,
                             <DeleteOutlined key="delete" />,
                                 ] : [
