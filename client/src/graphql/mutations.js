@@ -76,3 +76,11 @@ mutation createCampaign($brand: ID!, $title: String!, $description: String!, $ap
   }
 }
 `;
+export const APPLY_TO_CAMPAIGN = gql`
+mutation applyToCampaign($_id: ID!, $applicants: ID!) {
+  applyToCampaign(_id: $_id, applicants: $applicants) {
+    _id
+    applicants
+  }
+}
+`;

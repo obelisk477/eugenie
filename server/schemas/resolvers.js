@@ -2,6 +2,9 @@ const moment = require('moment');
 const { Creator, Chat, Brand, Campaign } = require('../models');
 const { signBrandToken, signCreatorToken, AuthenticationError } = require('../utils');
 
+
+/* eslint-disable object-shorthand */
+
 const resolvers = {
   Query: {
     currentCreator: async (parent, { email }) => Creator.findOne({ email }),
@@ -77,6 +80,14 @@ const resolvers = {
       const createCampaign = await Campaign.create(args)
       return createCampaign
     },
+    applyToCampaign: async (parent, {_id, applicants}) => {
+      const applyToCampaign = await Campaign.findOneAndUpdate(
+        { _id: _id },
+        {$addToSet: { applicants: applicants }},
+        {new: true}
+      )
+      return applyToCampaign
+    }
 
   },
 };

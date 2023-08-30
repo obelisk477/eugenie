@@ -1,10 +1,7 @@
-import React from 'react'
 import {AdvancedImage} from '@cloudinary/react';
 import {Cloudinary} from "@cloudinary/url-gen";
 import { Carousel, Col, Row, Input } from 'antd';
 import { useCurrentUserContext } from "../context/CurrentUser";
-
-
 
 const { TextArea } = Input;
 
