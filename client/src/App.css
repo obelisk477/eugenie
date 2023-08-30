@@ -179,3 +179,17 @@ button {
   flex-wrap: wrap;
   margin-bottom: 10px;
 }
+
+.messagesPage {
+  display: flex;
+
+}
+
+.messageResponse {
+padding-top: 15em
+  
+}
+
+.sendMessage {
+  padding: 5
+}

@@ -1,15 +1,17 @@
-import { Layout, Button, Form, Mentions, Space } from "antd";
+import { Layout, Button, Form, Mentions, Space, Avatar, List } from "antd";
 
 const { getMentions } = Mentions;
 
 const { Content, Sider } = Layout;
 const contentStyle = {
   textAlign: "center",
-  minHeight: 120,
+  // minHeight: 120,
   lineHeight: "120px",
   color: "#fff",
   backgroundColor: "#108ee9",
   maxHeight: "100%",
+  display: 'flex',
+ justifyContent: 'center'
 };
 const siderStyle = {
   textAlign: "center",
@@ -18,7 +20,19 @@ const siderStyle = {
   backgroundColor: "#3ba0e9",
 };
 
-function Chats() {
+const data = [
+  {
+    title: "Ant Design Title 1",
+  },
+  {
+    title: "Ant Design Title 2",
+  },
+  {
+    title: "Ant Design Title 3",
+  },
+];
+
+function ChatMessages() {
   const [form] = Form.useForm();
 
   const onFinish = async () => {
@@ -38,14 +52,33 @@ function Chats() {
   return (
     <>
       <h1>Chats</h1>
-      <Layout>
-        <Layout hasSider>
-          <Sider style={siderStyle}>Sider</Sider>
+      <Layout className="messagesPage">
+        <Layout hasSider >
+          <Sider style={siderStyle}>
+            Your Messages
+            <List
+              itemLayout="horizontal"
+              dataSource={data}
+              renderItem={(item, index) => (
+                <List.Item>
+                  <List.Item.Meta
+                    avatar={
+                      <Avatar
+                        src={`https://xsgames.co/randomusers/avatar.php?g=pixel&key=${index}`}
+                      />
+                    }
+                    title={<a href="https://ant.design">{item.title}</a>}
+                    description="Ant Design, a design language for background applications, is refined by Ant UED Team"
+                  />
+                </List.Item>
+              )}
+            />
+          </Sider>
           <Content style={contentStyle}>
-            <Form form={form} layout="horizontal" onFinish={onFinish}>
-              <Form.Item  
+            <Form form={form} layout="horizontal" onFinish={onFinish} className="messagesForm">
+              <Form.Item
+                className="messageResponse"
                 name="message"
-                label="Response"
                 labelCol={{
                   span: 6,
                 }}
@@ -62,21 +95,7 @@ function Chats() {
                 <Mentions
                   rows={3}
                   placeholder="You can use @ to ref user here"
-                  className='messagesForm' 
-                  options={[
-                    {
-                      value: "afc163",
-                      label: "afc163",
-                    },
-                    {
-                      value: "zombieJ",
-                      label: "zombieJ",
-                    },
-                    {
-                      value: "yesmeck",
-                      label: "yesmeck",
-                    },
-                  ]}
+                  className="messagesForm"
                 />
               </Form.Item>
               <Form.Item
@@ -86,7 +105,7 @@ function Chats() {
                 }}
               >
                 <Space wrap>
-                  <Button htmlType="submit" type="primary">
+                  <Button  htmlType="submit" type="primary" className="sendMessage">
                     Send
                   </Button>
                 </Space>
@@ -99,4 +118,4 @@ function Chats() {
   );
 }
 
-export default Chats;
+export default ChatMessages;
