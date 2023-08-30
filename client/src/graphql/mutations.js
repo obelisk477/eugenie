@@ -39,8 +39,8 @@ mutation loginBrand($email: String!, $password: String!) {
 `;
 
 export const REGISTER_CREATOR = gql`
-mutation registerCreator($firstName: String!, $lastName: String!, $email: String!, $password: String!) {
-  registerCreator(firstName: $firstName, lastName: $lastName, email: $email, password: $password) {
+mutation registerCreator($firstName: String!, $lastName: String!, $email: String!, $password: String!, $audience: Int!, $platforms: PlatformsInput!) {
+  registerCreator(firstName: $firstName, lastName: $lastName, email: $email, password: $password, audience: $audience, platforms: $platforms) {
     currentCreator {
       firstName
       lastName

@@ -6,7 +6,18 @@ const resolvers = {
     currentCreator: async (parent, { email }) => Creator.findOne({ email }),
     currentBrand: async (parent, { email }) => Brand.findOne({ email }),
     getChat: async (parent, {brand, creator}) => Chat.findOne({ brand, creator }),
-    getAllCampaignsByBrand: async (parent, { brand }) => Campaign.findOne({ brand })
+    getAllCampaignsByBrand: async (parent, { brand }) => Campaign.findOne({ brand }),
+    getCreators: async () => { 
+      const creators = await Creator.find()
+      return creators 
+    },
+    getAudienceByCreator: async (parent, { creatorId }) => {
+        const creator = await Creator.findById(creatorId);
+        if (!creator) {
+          throw new Error('Creator not found')
+        }
+        return creator.audience
+  },
   },
 
   Mutation: {
@@ -17,8 +28,8 @@ const resolvers = {
       
     },
 
-    registerCreator: async (parent, { firstName, lastName, email, password }) => {
-      const creator = await Creator.create({ firstName, lastName, email, password });
+    registerCreator: async (parent, { firstName, lastName, email, password, audience, platforms }) => {
+      const creator = await Creator.create({ firstName, lastName, email, password, audience, platforms });
       const token = signCreatorToken(creator);
       return { token, currentCreator: creator };
     },

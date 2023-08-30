@@ -49,3 +49,19 @@ export const QUERY_ALL_CAMPAIGN = gql`
     }
   }
 `;
+
+export const QUERY_CREATORS = gql`
+  query getCreators {
+    creators {
+      _id
+      firstName
+      lastName
+      email
+      audience
+      platforms
+
+    }
+  }
+`;
+
+
