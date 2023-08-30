@@ -65,9 +65,6 @@ export const CREATE_CAMPAIGN = gql`
 mutation createCampaign($brand: ID!, $title: String!, $description: String!, $applyBy: String!, $postBy: String!, $requirements: String!, $deliverables: String!, $compensation: Int!, $payoutBy: String!) {
   createCampaign( brand: $brand, title: $title, description: $description, applyBy: $applyBy, postBy: $postBy, requirements: $requirements, deliverables: $deliverables, compensation: $compensation, payoutBy: $payoutBy) {
     _id
-    brand {
-      _id
-    }
     title
     description
     applyBy
