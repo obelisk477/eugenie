@@ -80,7 +80,24 @@ export const APPLY_TO_CAMPAIGN = gql`
 mutation applyToCampaign($_id: ID!, $applicants: ID!) {
   applyToCampaign(_id: $_id, applicants: $applicants) {
     _id
-    applicants
+    applicants {
+      _id
+      firstName
+      lastName
+    }
+  }
+}
+`;
+
+export const ADD_TO_ACCEPTED = gql`
+mutation addToAccepted($_id: ID!, $accepted: ID!) {
+  addToAccepted(_id: $_id, accepted: $accepted) {
+    _id
+    accepted {
+      _id
+      firstName
+      lastName
+    }
   }
 }
 `;

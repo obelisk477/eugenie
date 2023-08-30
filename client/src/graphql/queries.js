@@ -46,10 +46,14 @@ export const QUERY_ALL_BRAND_CAMPAIGNS = gql`
       deliverables
       compensation
       payoutBy
+      applicants {
+        _id
+        firstName
+        lastName
+      }
     }
   }
 `;
-
 
 export const QUERY_CREATORS = gql`
   query getCreators {
@@ -78,7 +82,11 @@ export const QUERY_ALL_CAMPAIGNS = gql`
       deliverables
       compensation
       payoutBy
-
+      accepted {
+        _id
+        firstName
+        lastName
+      }
     }
   }
 `;
