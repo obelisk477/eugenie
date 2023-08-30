@@ -53,6 +53,8 @@ function CreateCampaignForm() {
                 payoutBy: payoutBy.toISOString(),
             },
           });
+           //    sorry about this I just can't get refetch to work
+            window.location = window.location.href; 
 
         } catch (e) {
         // eslint-disable-next-line no-console

@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useQuery } from '@apollo/client';
 import { QUERY_ALL_BRAND_CAMPAIGNS, QUERY_ALL_CAMPAIGNS } from '../graphql/queries';
 import { useMutation } from '@apollo/client';
-import { APPLY_TO_CAMPAIGN } from '../graphql/mutations';
+import { APPLY_TO_CAMPAIGN, DELETE_CAMPAIGN } from '../graphql/mutations';
 import { useCurrentUserContext } from '../context/CurrentUser';
 // import { Link } from 'react-router-dom';
 import { Row, Col, Card, Modal } from 'antd';
@@ -13,9 +13,10 @@ const { Meta } = Card;
 
 function CampaignCards() {
 
-
+    
     const { currentUser } = useCurrentUserContext();
 
+    //Apply to campaign
     const [applyToCampaign, { error: applicationError }] = useMutation(APPLY_TO_CAMPAIGN);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const showModal = () => {
@@ -54,7 +55,7 @@ function CampaignCards() {
         }
     }
 
-
+    //Show campaigns based on which user is logged In
     let userType = ""
 
     if ( currentUser.brandName == null ) {
@@ -72,6 +73,21 @@ function CampaignCards() {
 
     const campaigns = data? (userType === 'brand' ? data.getAllCampaignsByBrand : data.getAllCampaigns) : [];
 
+    //Delete campaign 
+
+    const [deleteCampaign] = useMutation(DELETE_CAMPAIGN);
+
+    const handleDelete = async campaign => {
+       await deleteCampaign({
+        variables: {
+            _id: campaign
+        },
+       })
+    //    sorry about this I just can't get refetch to work
+       window.location = window.location.href; 
+    }
+
+
       
     return (
         <>
@@ -84,7 +100,7 @@ function CampaignCards() {
                     <Col key={campaign._id} span={8}>
                         <Card id='card' title={campaign.title} actions={userType === 'brand' ? [ 
                             <EditOutlined key="edit" />,
-                            <DeleteOutlined key="delete" />,
+                            <DeleteOutlined key="delete" onClick={() => handleDelete(campaign._id)}/>,
                                 ] : [
                             <h2 key='' data-id={campaign._id} onClick={handleClick}>Apply</h2>,
                                 ]} >
