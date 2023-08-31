@@ -1,19 +1,17 @@
 import { Link } from 'react-router-dom';
 import { Row, Col, Layout, Card} from 'antd';
+import { FileAddOutlined } from '@ant-design/icons';
 import CreatorMessages from './CreatorMessages';
 const {Content} = Layout
 
-
-import CampaignCards from '../../components/CampaignCards';
 import { QUERY_ALL_BRAND_CAMPAIGNS, QUERY_ALL_CAMPAIGNS } from '../../graphql/queries';
-// import { APPLY_TO_CAMPAIGN, ADD_TO_ACCEPTED } from '../../graphql/mutations';
 // import { useMutation } from '@apollo/client';
 import { useQuery } from '@apollo/client';
 import { useCurrentUserContext } from '../../context/CurrentUser';
 const { Meta } = Card;
 
-function CreatorDashboard() {
 
+function CreatorDashboard() {
 
     const { currentUser } = useCurrentUserContext();
     const isBrand = useCurrentUserContext().isBrand
@@ -44,21 +42,21 @@ function CreatorDashboard() {
     // console.log(newData)
 
     const big_styles = {
-        backgroundColor:'lightgray',
+        backgroundColor:'#efeded',
         alignSelf: 'center',
-        height: '76vh',
+        height: '85vh',
         padding: '4vh',
         margin: '2vh'
       }
       const little_styles = {
-        backgroundColor:'lightgray',
-        height: '10vh',
+        backgroundColor:'#efeded',
+        height: '14vh',
         padding: '2vh',
         margin: '2vh'
       }
     const styles = {
-        backgroundColor:'lightgrey',
-        height: '64vh',
+        backgroundColor:'#efeded',
+        height: '68vh',
         padding: '2vh',
         margin: '2vh',
       }
@@ -70,9 +68,27 @@ function CreatorDashboard() {
                     <Col id='bigSquare' span={18} >
                         <Content title="Content title" style={big_styles}  >
                         <h2 id='dashboardTitle'>My Campaigns</h2>
-                            {totalCampaigns.map(campaign => (
-                                <Meta key={campaign._id} title={campaign.title}/>
-                            ))}
+                        <Row className='mainContainer' gutter={20} style = {styles.row}>
+                {totalCampaigns.map((campaign, i) => (  
+                    // eslint-disable-next-line react/jsx-key
+                    <Col key={campaign._id} span={8}>
+                        <Card className='tears' id='card' title={campaign.title} actions={[<FileAddOutlined key="setting" />]} >
+                                    <Meta description={campaign.description}/>
+                                    <br></br>
+                                    <Meta title={'Apply By: ' + campaign.applyBy + " | " + " Post By: " + campaign.applyBy }/>
+                                    <br></br>
+                                    <Meta title='Requirements:'/>{campaign.requirements}
+                                    <br></br>
+                                    <br></br>
+                                    <Meta title='Deliverables:'/>{campaign.deliverables}
+                                    <br></br>
+                                    <br></br>
+                                    <Meta title={'Compensation: $' + campaign.compensation} description={'Payout By: ' + campaign.payoutBy}/>
+                                    <br></br>
+                        </Card>
+                    </Col>
+                        ))}
+            </Row>
                         </Content>
                     </Col>
                     <Col span={6}>

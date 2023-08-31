@@ -9,14 +9,14 @@ const {Content} = Layout
 function BrandDashboard() {
 
     const big_styles = {
-        backgroundColor:'lightgray',
+        backgroundColor:'#efeded',
         alignSelf: 'center',
         height: '76vh',
         padding: '4vh',
         margin: '2vh'
       }
     const styles = {
-        backgroundColor:'lightgrey',
+        backgroundColor:'#efeded',
         height: '37vh',
         padding: '4vh',
         margin: '2vh',

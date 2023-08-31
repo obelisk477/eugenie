@@ -29,7 +29,7 @@ body {
 
 nav {
   height: 50px;
-  background-color: lightgray;
+  background-color: #efeded;
   display: flex;
   justify-content: end;
   align-items: center;
@@ -226,6 +226,10 @@ padding-top: 15em
   width: 100%;
 }
 
+/* #card .ant-card-bordered {
+  border: none;
+} */
+
 .tears {
   background-color: var(--cards) !important ;
 }
@@ -261,8 +265,11 @@ Meta {
   text-align: center;
 }
 
-.ant-col-18 {
-  /* background-color: red; */
-  /* margin-top: 1.6rem; */
 
+#applyTitle {
+  color: #C492B1; 
+}
+
+.css-dev-only-do-not-override-17a39f8 a {
+  color: black;
 }

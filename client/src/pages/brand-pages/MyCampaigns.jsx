@@ -7,7 +7,7 @@ const {Content} = Layout;
 function MyCampaigns() {
 
     const big_styles = {
-        backgroundColor:'lightgray',
+        backgroundColor:'#efeded',
         alignSelf: 'center',
         height: '76vh',
         padding: '4vh',
