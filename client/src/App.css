@@ -214,12 +214,16 @@ button  {
 }
 
 .messageResponse {
-padding-top: 15em
-  
+padding-top: 15em;
+
 }
 
-.sendMessage {
-  padding: 5
+.messagesForm {
+  width: 100%;
+}
+
+.ant-form-item-row{
+  justify-content: space-evenly;
 }
 
  #card .ant-card-actions {
@@ -231,9 +235,9 @@ padding-top: 15em
   width: 100%;
 }
 
-/* #card .ant-card-bordered {
-  border: none;
-} */
+#sendMessage {
+  justify-content: center;
+}
 
 .tears {
   background-color: var(--cards) !important ;

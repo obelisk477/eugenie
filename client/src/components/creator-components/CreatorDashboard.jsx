@@ -7,10 +7,13 @@ import { FileAddOutlined,
 import CreatorMessages from './CreatorMessages';
 const {Content} = Layout
 
-import { QUERY_ALL_BRAND_CAMPAIGNS, QUERY_ALL_CAMPAIGNS } from '../../graphql/queries';
+import { QUERY_ALL_BRAND_CAMPAIGNS, QUERY_ALL_CAMPAIGNS, QUERY_ALL_CHATS,
+       // QUERY_CURRENT_CHAT,
+        // QUERY_BRANDS
+       } from '../../graphql/queries';
 // import { useMutation } from '@apollo/client';
-import { useQuery } from '@apollo/client';
-import { useCurrentUserContext } from '../../context/CurrentUser';
+import { useQuery } from "@apollo/client";
+import { useCurrentUserContext } from "../../context/CurrentUser";
 const { Meta } = Card;
 
 
@@ -22,47 +25,71 @@ function CreatorDashboard() {
     const query = isBrand ?  QUERY_ALL_BRAND_CAMPAIGNS : QUERY_ALL_CAMPAIGNS;
 
 
-    const { data } = useQuery(query, {
-        variables: { 'brand':  currentUser._id }
+  const { data } = useQuery(query, {
+    variables: { brand: currentUser._id },
+  });
 
+  let totalCampaigns = [];
+
+  if (data) {
+    let campaignArr = data.getAllCampaigns;
+    campaignArr.forEach((campaign) => {
+      campaign.accepted.forEach((accepted) => {
+        if (accepted._id == currentUser._id) {
+          totalCampaigns.push(campaign);
+        }
+      });
     });
-    
-    let totalCampaigns = []
+  } 
+  
+  // let newData = data? data.getAllCampaigns.map(campaign => campaign.accepted) : false
 
-    if (data) {
-        let campaignArr =  data.getAllCampaigns
-        campaignArr.forEach(campaign => {
-            campaign.accepted.forEach(accepted => {
-                if (accepted._id == currentUser._id) {
-                    totalCampaigns.push(campaign)
-                }
-            })
-        })
-    }
+  // console.log(newData)
 
-    // let newData = data? data.getAllCampaigns.map(campaign => campaign.accepted) : false
-
-    // console.log(newData)
-
-    const big_styles = {
-        backgroundColor:'#efeded',
-        alignSelf: 'center',
-        height: '85vh',
-        padding: '4vh',
-        margin: '2vh'
-      }
-      const little_styles = {
-        backgroundColor:'#efeded',
-        height: '14vh',
-        padding: '2vh',
-        margin: '2vh'
-      }
-    const styles = {
-        backgroundColor:'#efeded',
-        height: '68vh',
-        padding: '2vh',
-        margin: '2vh',
-      }
+  const { loading, data: chatData } = useQuery(QUERY_ALL_CHATS);
+  const chats = chatData?.getAllChats || [];
+  console.log(chatData);
+  console.log('>>>>>>>>',chats);
+  // console.log('>>>>>>>>>>>>', chats[0].creator._id);
+  // const connectedBrand = chats[0].brand._id;
+  // const connectedUser = chats[0].creator._id;
+//   const { loading, data:brand } = useQuery(QUERY_BRANDS);
+//   const brandData = brand?.getAllBrands || [];
+// if (!loading) {
+//   console.log(brandData)
+// } else {
+//   console.log('brands here')
+// }
+  // const { data:singleChat } = useQuery(QUERY_CURRENT_CHAT, {
+  //   variables: { creator: currentUser._id, brand: chats[0].brand._id }
+  // });
+  // const usersChat = singleChat?.getChat || [];
+  // console.log('>>>>>>>>', usersChat);
+  // if (!loading) {
+  //   console.log(chatData.getAllChats);
+  // } else {
+  //   console.log('it works')
+  // }
+  
+  const big_styles = {
+    backgroundColor:'#efeded',
+    alignSelf: 'center',
+    height: '85vh',
+    padding: '4vh',
+    margin: '2vh'
+  }
+  const little_styles = {
+    backgroundColor:'#efeded',
+    height: '14vh',
+    padding: '2vh',
+    margin: '2vh'
+  }
+const styles = {
+    backgroundColor:'#efeded',
+    height: '68vh',
+    padding: '2vh',
+    margin: '2vh',
+  }
 
     return (
             <main className="dashboard">
@@ -108,19 +135,15 @@ function CreatorDashboard() {
                         <Content title="Content title" style={styles}>
                             <h2 id='dashboardTitle'>{<Link to="/dashboard/chats"><Avatar style={{ backgroundColor: '#efeded', color: 'black' }} icon={<MessageOutlined />} />
                                 Chats</Link>}</h2>
-                            <CreatorMessages />
+                            {loading ? (
+                <div>Loading...</div>
+              ) : (
+                <CreatorMessages chats={chats} />
+              )}
                         </Content>
                     </Col>
                 </Row>
             </main>
     )
-  }
-  
-  export default CreatorDashboard
-
-
-
-
-
-
-
+              }
+export default CreatorDashboard

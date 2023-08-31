@@ -36,8 +36,8 @@ const typeDefs = `#graphql
 
   type Chat {
     _id: ID
-    brand: ID
-    creator: ID
+    brand: Brand
+    creator: Creator
     chatLog: String
   }
 
@@ -69,7 +69,9 @@ const typeDefs = `#graphql
     currentCreator(email: String!): Creator
     currentBrand(email: String!): Brand
     getChat(brand: ID!, creator: ID!): Chat
+    getAllChats: [Chat]
     getCreators: [Creator]!
+    getAllBrands: [Brand]
     getAudienceByCreator(creatorId: ID!) : Int!
     getAllCampaigns: [Campaign]
     getAllCampaignsByBrand(brand: ID!): [Campaign]
