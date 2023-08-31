@@ -3,21 +3,27 @@
 import CampaignCards from '../../components/CampaignCards';
 
 import { Link } from 'react-router-dom';
-import { Row, Col, Layout } from 'antd';
-const {Content} = Layout
+import { Row, Col, Layout, Avatar } from 'antd';
+const {Content} = Layout;
+import { BookOutlined,
+    SearchOutlined,
+    MessageOutlined,
+ } from '@ant-design/icons';
+
+
 
 function BrandDashboard() {
 
     const big_styles = {
         backgroundColor:'#efeded',
         alignSelf: 'center',
-        height: '76vh',
+        height: '100vh',
         padding: '4vh',
         margin: '2vh'
       }
     const styles = {
         backgroundColor:'#efeded',
-        height: '37vh',
+        height: '49vh',
         padding: '4vh',
         margin: '2vh',
       }
@@ -26,20 +32,24 @@ function BrandDashboard() {
         <>
             <main className="dashboard">
                 <Row justify="center" align="top" style={{alignItems: 'center'}}>
-                    <Col span={18} >
+                    <Col id='bigSquare' span={18} >
                         <Content title="Content title" style={big_styles}  >
-                            <h2>{<Link to="/dashboard/my-campaigns">My Campaigns</Link>}</h2>
+                            <h2 id='dashboardTitle'>{<Link to="/dashboard/my-campaigns"><Avatar style={{ backgroundColor: '#efeded', color: 'black' }} icon={<BookOutlined />} />
+                                My Campaigns</Link>}</h2>
                             <CampaignCards />
                         </Content>
                     </Col>
                     <Col span={6}>
                         <Content title="Content title" style={styles}>
-                            <h2>{<Link to="/dashboard/creator-search">Find Creators</Link>}</h2>
+                            <h2>{<Link to="/dashboard/creator-search">
+                            <Avatar style={{ backgroundColor: '#efeded', color: 'black' }} icon={<SearchOutlined />} />
+                                Find Creators</Link>}</h2>
                             <p>Content content</p>
                             <p>Content content</p>
                         </Content>
                         <Content title="Content title" style={styles}>
-                            <h2>{<Link to="/dashboard/chats">Chats</Link>}</h2>
+                            <h2>{<Link to="/dashboard/chats"><Avatar style={{ backgroundColor: '#efeded', color: 'black' }} icon={<MessageOutlined />} />
+                                Chats</Link>}</h2>
                             <p>Content content</p>
                             <p>Content content</p>
                         </Content>

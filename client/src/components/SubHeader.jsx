@@ -1,11 +1,14 @@
 import { Link } from "react-router-dom";
-import { Col, Row, Button, Card } from "antd";
+import { Col, Row, Button, Card, Avatar, Layout } from "antd";
 import {
   UserOutlined,
   TeamOutlined,
+  CommentOutlined,
+  SmileOutlined,
+  SolutionOutlined
+
 } from "@ant-design/icons";
-import { Layout } from 'antd'
-// const { Content } = Layout;
+
 
 function SubHeader() {
   return (
@@ -24,7 +27,7 @@ function SubHeader() {
           Flies you away on a carpet and shows you the world.
         </Col>
         <Col span={24} id="heroSubTitle">
-          Shining, Shimmering, splendid
+          Shining, Shimmering, Splendid
         </Col>
       </Row>
 
@@ -36,8 +39,7 @@ function SubHeader() {
             type="primary"
             shape="round"
             size={"large"}
-            icon={<UserOutlined />}
-          >
+            icon={<UserOutlined />}>
             Creator Signup
           </Button>
         </Link>
@@ -48,46 +50,31 @@ function SubHeader() {
             type="primary"
             shape="round"
             size={"large"}
-            icon={<TeamOutlined />}
-          >
+            icon={<TeamOutlined />}>
             Brand Signup
           </Button>
         </Link>
       </Row>
       <div className="info">
-      <h2>How It Works</h2>
-      <h1>Influencer Marketing Made Easy</h1>
+      <h3 id='subTitleh3'>HOW IT WORKS</h3>
+      <h1 id='subTitleh1'>Influencer Marketing <br/> Made Easy</h1>
       <Row className="card-section" gutter={60}>
+        <Card style={{ width: 280, margin: 10 }}>
+        <Avatar style={{ backgroundColor: '#90fdc7', color: 'black' }} icon={<SolutionOutlined />} />
+          <h3> Create & Find Campaigns </h3>
+          <p>Browse through and find what sparks your interest!</p>
+        </Card>
+        <Card style={{ width: 280, margin: 10}}>
+        <Avatar style={{ backgroundColor: '#90fdc7', color: 'black' }} icon={<CommentOutlined />} />
+            <h3> Negotiate & Accept Terms </h3>
+            <p>Ensure that the deal is the right fit for you!</p>
+          </Card>
         <Card
-          style={{ width: 300, margin: 35 }}
-          cover={
-            <img
-              alt="example"
-              src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
-            />
-          }
-          title="Create and Find Campaigns"
-        ></Card>
-        <Card
-          style={{ width: 300, margin: 35}}
-          cover={
-            <img
-              alt="example"
-              src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
-            />
-          }
-          title="Negotiate and Accept Terms"
-        ></Card>
-        <Card
-          style={{ width: 300, margin: 35}}
-          cover={
-            <img
-              alt="example"
-              src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
-            />
-          }
-          title="Enjoy the Results"
-        ></Card>
+          style={{ width: 280, margin: 10}}>
+            <Avatar style={{ backgroundColor: '#90fdc7', color: 'black' }} icon={<SmileOutlined />} />
+            <h3>Enjoy the Results</h3>
+            <p>Need we say more?</p>
+          </Card>
       </Row>
       </div>
     </Layout>

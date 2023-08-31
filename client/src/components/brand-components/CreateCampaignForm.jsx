@@ -75,7 +75,7 @@ function CreateCampaignForm() {
     
     return (
         <>
-        <Form
+        <Form id='createForm'
       labelCol={{ span: 4,}} wrapperCol={{ span: 14,}} layout="horizontal" style={{ maxWidth: 600,}}>
       <Form.Item key="title" label="Title"><Input onChange={event => handleChange('title', event.target.value)} /></Form.Item>
       <Form.Item key="description" label="Description"><TextArea rows={4} onChange={event => handleChange('description', event.target.value)} /></Form.Item>
