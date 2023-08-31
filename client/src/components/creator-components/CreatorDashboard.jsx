@@ -71,6 +71,9 @@ function CreatorDashboard() {
                     <Col id='bigSquare' span={18} >
                         <Content title="Content title" style={big_styles}  >
                         <h2 id='dashboardTitle'>My Campaigns</h2>
+                        {totalCampaigns.length === 0 ? (
+                            <p>Genie says you're not part of any campaign. Search for some!</p>
+                        ) : (
                         <Row className='mainContainer' gutter={20} style = {styles.row}>
                 {totalCampaigns.map((campaign, i) => (  
                     // eslint-disable-next-line react/jsx-key
@@ -92,6 +95,7 @@ function CreatorDashboard() {
                     </Col>
                         ))}
             </Row>
+                        )}
                         </Content>
                     </Col>
                     <Col span={6}>
