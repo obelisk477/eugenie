@@ -7,6 +7,7 @@ export const QUERY_CURRENT_CREATOR = gql`
       email
       firstName
       lastName
+      creativeLibrary
     }
   }
 `;
@@ -90,4 +91,3 @@ export const QUERY_ALL_CAMPAIGNS = gql`
     }
   }
 `;
-
