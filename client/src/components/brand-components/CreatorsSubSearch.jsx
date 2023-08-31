@@ -13,7 +13,8 @@ function CreatorsSubSearch(){
         </div>
       </div>
     </Card>
-    <Card style={{ width: 300, }}>
+    <br></br>
+    <Card  size='small' style={{ width: 300, }}>
       <div style={{ display: 'flex', alignItems: 'center', marginBottom: 16 }}>
         <Avatar size={32} icon={<UserOutlined />} />
         <div style={{ marginLeft: 16 }}>
@@ -21,7 +22,8 @@ function CreatorsSubSearch(){
         </div>
       </div>
     </Card>
-    <Card style={{ width: 300, }}>
+    <br></br>
+    <Card  size='small' style={{ width: 300, }}>
       <div style={{ display: 'flex', alignItems: 'center', marginBottom: 16 }}>
         <Avatar size={32} icon={<UserOutlined />} />
         <div style={{ marginLeft: 16 }}>
@@ -29,7 +31,8 @@ function CreatorsSubSearch(){
         </div>
       </div>
     </Card>
-    <Card style={{ width: 300, }}>
+    <br></br>
+    <Card  size='small' style={{ width: 300, }}>
       <div style={{ display: 'flex', alignItems: 'center', marginBottom: 16 }}>
         <Avatar size={32} icon={<UserOutlined />} />
         <div style={{ marginLeft: 16 }}>

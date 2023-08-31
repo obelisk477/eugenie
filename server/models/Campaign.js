@@ -56,12 +56,6 @@ const campaignSchema = new Schema(
       type: Date,
       get: (payoutByVal) => moment(payoutByVal).format('MMM DD, YYYY'),
       required: true,
-      validate: {
-        validator(payoutDate) { 
-          const payoutBy = moment(this.postBy).add(2, 'weeks');
-          return moment(payoutDate).isSameOrBefore(payoutBy);
-        },
-      },
     },
   },
   {

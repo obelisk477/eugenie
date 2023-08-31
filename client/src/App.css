@@ -343,3 +343,12 @@ Meta {
 #createForm {
   display:contents;
 }
+
+#collabForm {
+  margin: auto;
+  padding: 5rem;
+}
+
+.css-dev-only-do-not-override-17a39f8.ant-card-small >.ant-card-body {
+  height: 5rem;
+}
