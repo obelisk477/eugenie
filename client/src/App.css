@@ -235,6 +235,31 @@ padding-top: 15em
 }
 
 Meta {
+  background-color: #C492B1;
+}
+
+.checkbox-container {
+  display: flex;
+  flex-direction: column;
+  justify-content:left;
+  align-items:center;
+
+}
+.checkbox-icon {
+  font-size: 25px; 
+  margin-left: 2px;
+  padding-left: 10px;
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  margin-right: 250px; 
+  width: 65px;
+  padding: 10px;
+}
+
+
   background-color: var(--cards);
 }
 
@@ -273,3 +298,4 @@ Meta {
 .css-dev-only-do-not-override-17a39f8 a {
   color: black;
 }
+

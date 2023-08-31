@@ -82,7 +82,7 @@ export default function Login() {
         <p>
           Need an account? Sign up
           {' '}
-          <Link to="/register">here</Link>
+          <Link to="/">here</Link>
         </p>
       </form>
     </>
