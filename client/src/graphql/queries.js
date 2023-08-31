@@ -90,3 +90,4 @@ export const QUERY_ALL_CAMPAIGNS = gql`
     }
   }
 `;
+
