@@ -42,6 +42,13 @@ function CreatorDashboard() {
     });
   } 
   
+  // let newData = data? data.getAllCampaigns.map(campaign => campaign.accepted) : false
+
+  // console.log(newData)
+
+  const handleClick = (e) => {
+    window.location = 'dashboard/collab'
+  }
 
   const { loading, data: chatData } = useQuery(QUERY_ALL_CHATS);
   const chats = chatData?.getAllChats || [];
@@ -83,7 +90,7 @@ const styles = {
                 {totalCampaigns.map((campaign, i) => (  
                     // eslint-disable-next-line react/jsx-key
                     <Col key={campaign._id} span={8}>
-                        <Card className='tears' id='card' title={campaign.title} actions={[<FileAddOutlined key="setting" />]} >
+                        <Card className='tears' id='card' title={campaign.title} actions={[<FileAddOutlined key="setting" onClick={handleClick} />]} >
                                     <Meta description={campaign.description}/>
                                     <br></br>
                                     <Meta title={'Apply By: ' + campaign.applyBy + " | " + " Post By: " + campaign.applyBy }/>
