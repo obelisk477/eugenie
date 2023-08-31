@@ -30,7 +30,7 @@ const { Header } = Layout
         <Layout className="layout">
           <Header id='innerNav'>
           <div>
-            <Link to="/"><img className='logo' src='/eugenie.png' alt='brand-image'></img></Link>
+            <Link to="/dashboard"><img className='logo' src='/eugenie.png' alt='brand-image'></img></Link>
           </div>
           <Menu selectedKeys={[current]} onClick={onClick} mode="horizontal" theme="light" id="menuItem">
             <Menu.Item key='dashboard' icon={<HomeOutlined />}><Link to="/dashboard">Dashboard</Link></Menu.Item>

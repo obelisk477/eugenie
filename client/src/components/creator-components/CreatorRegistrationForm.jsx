@@ -7,14 +7,14 @@ import { REGISTER_CREATOR } from "../../graphql/mutations";
 import { useCurrentUserContext } from "../../context/CurrentUser";
 import { Checkbox, Button } from "antd";
 
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// import {
-//   faInstagram,
-//   faYoutube,
-//   faFacebook,
-//   faTiktok,
-//   faSnapchatGhost,
-// } from "@fortawesome/free-brands-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faInstagram,
+  faYoutube,
+  faFacebook,
+  faTiktok,
+  faSnapchatGhost,
+} from "@fortawesome/free-brands-svg-icons";
 import ErrorAlert from "../ErrorAlert";
 export default function Registration() {
   const { loginUser } = useCurrentUserContext();
@@ -193,8 +193,6 @@ export default function Registration() {
           </label>
         </div>
         <Button type="primary" htmlType="submit">Sign Up</Button>
-
-        <button type="submit">Sign Up</button>
         <p>
           Already have an account? Login <Link to="/login">here</Link>
         </p>
