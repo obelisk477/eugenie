@@ -16,7 +16,7 @@ import {
   faTiktok,
   faSnapchatGhost,
 } from "@fortawesome/free-brands-svg-icons";
-
+import ErrorAlert from "../ErrorAlert";
 export default function Registration() {
   const { loginUser } = useCurrentUserContext();
   const navigate = useNavigate();
