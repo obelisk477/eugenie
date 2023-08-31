@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { Row, Col, Layout, Card } from "antd";
+import { FileAddOutlined } from '@ant-design/icons';
 import CreatorMessages from "./CreatorMessages";
 const { Content } = Layout;
 
@@ -15,11 +16,14 @@ import { useQuery } from "@apollo/client";
 import { useCurrentUserContext } from "../../context/CurrentUser";
 const { Meta } = Card;
 
-function CreatorDashboard() {
-  const { currentUser } = useCurrentUserContext();
-  const isBrand = useCurrentUserContext().isBrand;
 
-  const query = isBrand ? QUERY_ALL_BRAND_CAMPAIGNS : QUERY_ALL_CAMPAIGNS;
+function CreatorDashboard() {
+
+    const { currentUser } = useCurrentUserContext();
+    const isBrand = useCurrentUserContext().isBrand
+    
+    const query = isBrand ?  QUERY_ALL_BRAND_CAMPAIGNS : QUERY_ALL_CAMPAIGNS;
+
 
   const { data } = useQuery(query, {
     variables: { brand: currentUser._id },
@@ -50,21 +54,25 @@ function CreatorDashboard() {
   } else {
     console.log('it works')
   }
-
-
-  const big_styles = {
-    backgroundColor: "lightgray",
-    alignSelf: "center",
-    height: "76vh",
-    padding: "4vh",
-    margin: "2vh",
-  };
-  const styles = {
-    backgroundColor: "lightgrey",
-    height: "37vh",
-    padding: "4vh",
-    margin: "2vh",
-  };
+    const big_styles = {
+        backgroundColor:'#efeded',
+        alignSelf: 'center',
+        height: '85vh',
+        padding: '4vh',
+        margin: '2vh'
+      }
+      const little_styles = {
+        backgroundColor:'#efeded',
+        height: '14vh',
+        padding: '2vh',
+        margin: '2vh'
+      }
+    const styles = {
+        backgroundColor:'#efeded',
+        height: '68vh',
+        padding: '2vh',
+        margin: '2vh',
+      }
 
   return (
     <>
@@ -83,7 +91,7 @@ function CreatorDashboard() {
             </Content>
           </Col>
           <Col span={6}>
-            <Content title="Content title" style={styles}>
+            <Content title="Content title" style={little_styles}>
               <h2>
                 {
                   <Link to="/dashboard/active-campaigns">
