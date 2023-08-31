@@ -1,18 +1,24 @@
 [
     {
        "brand": "64ea6253b0e90077060743f7",
-        "creator": "64efe0e9e7915209e2581c9f",
+       "brandName": "Lost It",
+        "creator": "64f0afe90f5fbbb83b56e4e1",
+        "firstName": "Steve",
        "chatLog": "Great work Steve! It's been great working with you!"
     },
     {
         "brand": "64ea6253b0e90077060743f3",
-        "creator": "64efe0e9e7915209e2581ca0",
-       "chatLog": "I love how you incorporated the Yoda into your Vlog Carol. Is there a way you can make it a little more subtle?"
+        "brandName": "Toy Yoda",
+        "creator": "64f0afe90f5fbbb83b56e4e0",
+        "firstName": "Mia",
+       "chatLog": "I love how you incorporated the Yoda into your Vlog Mia. Is there a way you can make it a little more subtle?"
     },
     { 
     "brand": "64ea6253b0e90077060743f9",
-    "creator": "64efe0e9e7915209e2581ca1",
-   "chatLog": "Nice work Olivia! Can you just make the promo video a little longer?"
+    "brandName": "The Gap",
+    "creator": "64f0afe90f5fbbb83b56e4e2",
+    "firstName": "Jackson",
+   "chatLog": "Nice work Jackson! Can you just make the promo video a little longer?"
     }
 
 ]

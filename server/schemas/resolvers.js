@@ -11,14 +11,18 @@ const resolvers = {
   Query: {
     currentCreator: async (parent, { email }) => Creator.findOne({ email }),
     currentBrand: async (parent, { email }) => Brand.findOne({ email }),
-    getChat: async (parent, {brand, creator}) => Chat.findOne({ brand, creator }),
-    getAllChats: async () => {
-      const chats = await Chat.find()
+    getChat: async (parent, {brand, creator}) => Chat.findOne({ brand, creator }).populate('brand'),
+    getAllChats: async (parent, {brand}) => {
+      const chats = await Chat.find(brand).populate('brand')
       return chats
     },
     getCreators: async () => { 
       const creators = await Creator.find()
       return creators 
+    },
+    getAllBrands: async () => {
+      const brands = await Brand.find()
+      return brands
     },
     getAudienceByCreator: async (parent, { creatorId }) => {
         const creator = await Creator.findById(creatorId);

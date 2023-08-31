@@ -23,11 +23,17 @@ export const QUERY_CURRENT_BRAND = gql`
 `;
 
 export const QUERY_CURRENT_CHAT = gql`
-  query getChat($brand: ID!, $creator: ID!) {
+  query getChat( $creator: ID!) {
     getChat(brand: $brand, creator: $creator) {
       _id
-      brand
-      creator
+      brand {
+        _id
+        brandName
+      }
+      creator {
+        _id
+        firstName
+      }
       chatLog
     }
   }
@@ -37,8 +43,14 @@ export const QUERY_ALL_CHATS = gql`
   query getAllChats {
     getAllChats {
       _id
-      brand
-      creator
+      brand {
+      _id
+      brandName
+      }
+      creator {
+      _id
+      firstName
+      }
       chatLog
     }
   }
@@ -77,6 +89,13 @@ export const QUERY_CREATORS = gql`
       audience
       platforms
     }
+  }
+`;
+
+export const QUERY_BRANDS = gql`
+  query getAllBrands {
+    _id
+    brandName
   }
 `;
 

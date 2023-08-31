@@ -13,7 +13,7 @@ return (
     <List.Item key={item._id}>
       <List.Item.Meta
         avatar={<Avatar src={`https://xsgames.co/randomusers/avatar.php?g=pixel&key=${index}`} />}
-        title={<Link to="/dashboard/chats/">{item.brand}</Link>}
+        title={<Link to="/dashboard/chats/">{item.brand.brandName}</Link>}
         description={item.chatLog}
       />
     </List.Item>
