@@ -197,3 +197,20 @@ padding-top: 15em
 .sendMessage {
   padding: 5
 }
+
+ #card .ant-card-actions {
+  background-color: #C492B1;
+  width: 100% ; 
+}
+
+#card .ant-card-body {
+  width: 100%;
+}
+
+.tears {
+  background-color: #C492B1 !important ;
+}
+
+Meta {
+  background-color: #C492B1;
+}

@@ -6,7 +6,7 @@ import { APPLY_TO_CAMPAIGN, DELETE_CAMPAIGN, ADD_TO_ACCEPTED } from '../graphql/
 import { useCurrentUserContext } from '../context/CurrentUser';
 // import { Link } from 'react-router-dom';
 import { Row, Col, Card, Modal, Button } from 'antd';
-import { EditOutlined, DeleteOutlined } from '@ant-design/icons';
+import { DeleteOutlined } from '@ant-design/icons';
 const { Meta } = Card;
 // const {Content} = Layout
 
@@ -152,8 +152,7 @@ function CampaignCards() {
                     // eslint-disable-next-line react/jsx-key
 
                     <Col key={campaign._id} span={8}>
-                        <Card id='card' title={campaign.title} actions={userType === 'brand' ? [ 
-                            // <EditOutlined key="edit" />,
+                        <Card className='tears' id='card' title={campaign.title} actions={userType === 'brand' ? [ 
                             <DeleteOutlined key="delete" onClick={() => handleDelete(campaign._id)}/>,
                                 ] : hasApplied[i]? [<h2 style={styles.h2} key={i}>Applied</h2>]:[<h2 key={i} data-id={campaign._id} onClick={handleClick}>Apply</h2>]} >
                                     <Meta description={campaign.description}/>
@@ -184,6 +183,7 @@ function CampaignCards() {
                                         <br />
                                     )}
                         </Card>
+                        
                     </Col>
                         ))}
             </Row>
