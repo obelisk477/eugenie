@@ -110,3 +110,13 @@ export const DELETE_CAMPAIGN = gql`
     }
   }
 `;
+
+
+export const ADD_CREATIVE = gql`
+  mutation addCreative($_id: ID!, $creativeLibrary: String!) {
+    addCreative(_id: $_id, creativeLibrary: $creativeLibrary ) {
+      _id
+      creativeLibrary
+    }
+  }
+`;

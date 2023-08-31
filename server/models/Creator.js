@@ -36,6 +36,9 @@ const creatorSchema = new Schema({
     tiktok: { type: Boolean, default: false},
     snapchat: { type: Boolean, default: false}
   },
+  creativeLibrary: [{
+    type: String,
+  }],
 
 });
 
