@@ -217,16 +217,22 @@ Meta {
 
 .checkbox-container {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  justify-content:left;
+  align-items:center;
+
 }
 .checkbox-icon {
-  font-size: 24px; 
-  margin-left: 10px;
+  font-size: 25px; 
+  margin-left: 2px;
+  padding-left: 10px;
 }
 
 .checkbox-label {
   display: flex;
   align-items: center;
-  margin-right: 20px; 
+  margin-right: 250px; 
+  width: 65px;
+  padding: 10px;
 }
 

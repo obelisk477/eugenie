@@ -142,7 +142,7 @@ export default function Registration() {
             onChange={handleChange}
           />
         </label>
-        <label htmlFor="platforms">Platforms:</label>
+        <label htmlFor="platforms">Platforms <br></br>(Select all that apply):</label>
         <div className="checkbox-container">
           <label className="checkbox-label">
             <Checkbox
