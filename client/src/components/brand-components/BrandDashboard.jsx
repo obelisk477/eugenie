@@ -9,8 +9,9 @@ import { BookOutlined,
     SearchOutlined,
     MessageOutlined,
  } from '@ant-design/icons';
-
-
+import BrandMessages from './BrandMessages';
+import { useQuery } from "@apollo/client";
+import { QUERY_ALL_CHATS } from '../../graphql/queries';
 
 function BrandDashboard() {
 
@@ -28,6 +29,10 @@ function BrandDashboard() {
         margin: '2vh',
       }
 
+      const { loading, data: chatData } = useQuery(QUERY_ALL_CHATS)
+      const chats = chatData?.getAllChats || [];
+
+      console.log(chatData);
     return (
         <>
             <main className="dashboard">
@@ -49,8 +54,11 @@ function BrandDashboard() {
                         <Content title="Content title" style={styles}>
                             <h2>{<Link to="/dashboard/chats"><Avatar style={{ backgroundColor: '#efeded', color: 'black' }} icon={<MessageOutlined />} />
                                 Chats</Link>}</h2>
-                            <p>Content content</p>
-                            <p>Content content</p>
+                                {loading ? (
+                <div>Loading...</div>
+              ) : (
+                <BrandMessages chats={chats} />
+              )}
                         </Content>
                     </Col>
                 </Row>

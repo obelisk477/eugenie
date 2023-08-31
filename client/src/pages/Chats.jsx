@@ -1,19 +1,17 @@
 import { Layout, Button, Form, Mentions, Space, Avatar, List } from "antd";
 import { useQuery} from "@apollo/client";
-import { QUERY_ALL_CHATS, 
-        QUERY_CURRENT_CHAT } from "../graphql/queries";
-import { useCurrentUserContext } from "../context/CurrentUser";
-import { useParams } from "react-router-dom";
+import { QUERY_ALL_CHATS } from "../graphql/queries";
+
 
 const { getMentions } = Mentions;
 
 const { Content, Sider } = Layout;
 const contentStyle = {
   textAlign: "center",
-  // minHeight: 120,
+  font: '20px',
   lineHeight: "120px",
   color: "#fff",
-  backgroundColor: "#108ee9",
+  backgroundColor: "#BCE7FD",
   maxHeight: "100%",
   display: 'flex',
  justifyContent: 'center'
@@ -22,7 +20,12 @@ const siderStyle = {
   textAlign: "center",
   lineHeight: "120px",
   color: "#fff",
-  backgroundColor: "#3ba0e9",
+  backgroundColor: "#BCE7FD",
+  alignItems: "center",
+  paddingRight: '10px',
+  paddingLeft: '10px',
+  border: "solid white",
+  fontWeight: "bold"
 };
 
 function ChatMessages() {
@@ -43,21 +46,13 @@ function ChatMessages() {
     }
   };
 
-  // const { currentUser } = useCurrentUserContext();
 
-  // const { chatId } = useParams();
-  // const {data} = useQuery(QUERY_CURRENT_CHAT, {
-  //   variables: { creator: currentUser._id, brand: , chatId: chatId }
-  // });
-
-  // const singleChat = data?.getChat || []; 
-  // console.log(singleChat);
   const { data:chatData } = useQuery(QUERY_ALL_CHATS);
   const chats = chatData?.getAllChats || [];
 
   return (
     <>
-      <h1>Chats</h1>
+      <h1 className="">Chats</h1>
       <Layout className="messagesPage">
         <Layout hasSider >
           <Sider style={siderStyle}>
@@ -101,17 +96,20 @@ function ChatMessages() {
                   rows={3}
                   placeholder="What's your response"
                   className="messagesForm"
-             
+
+                  
                 />
               </Form.Item>
               <Form.Item
                 wrapperCol={{
                   span: 14,
-                  offset: 6,
+                 
                 }}
               >
-                <Space wrap id="sendMessage">
-                  <Button  htmlType="submit" type="primary" >
+                <Space wrap >
+                  <Button htmlType="submit" 
+                  id="sendMessage"
+                   type="primary" >
                     Send
                   </Button>
                 </Space>

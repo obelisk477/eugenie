@@ -1,25 +1,11 @@
 [
     {
        "brand": "64ea6253b0e90077060743f7",
-       "brandName": "Lost It",
+       "brandName": "Eugenie Is Messaging You",
         "creator": "64f0afe90f5fbbb83b56e4e1",
-        "firstName": "Steve",
-       "chatLog": "Great work Steve! It's been great working with you!"
-    },
-    {
-        "brand": "64ea6253b0e90077060743f3",
-        "brandName": "Toy Yoda",
-        "creator": "64f0afe90f5fbbb83b56e4e0",
-        "firstName": "Mia",
-       "chatLog": "I love how you incorporated the Yoda into your Vlog Mia. Is there a way you can make it a little more subtle?"
-    },
-    { 
-    "brand": "64ea6253b0e90077060743f9",
-    "brandName": "The Gap",
-    "creator": "64f0afe90f5fbbb83b56e4e2",
-    "firstName": "Jackson",
-   "chatLog": "Nice work Jackson! Can you just make the promo video a little longer?"
+       "chatLog": "Hi Chad, welcome to Eugenie!"
     }
+
 
 ]
 

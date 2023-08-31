@@ -13,8 +13,8 @@ const resolvers = {
     currentBrand: async (parent, { email }) => Brand.findOne({ email }),
     getChat: async (parent, {brand, creator}) => Chat.findOne({ brand, creator }).populate('brand'),
     getAllChats: async (parent, {brand}) => {
-      const chats = await Chat.find(brand).populate('brand')
-      return chats
+      const chats = await Chat.find(brand).populate('brand').populate('creator')
+      return chats 
     },
     getCreators: async () => { 
       const creators = await Creator.find()
