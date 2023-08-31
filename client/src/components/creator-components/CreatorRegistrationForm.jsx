@@ -2,9 +2,20 @@ import { useState } from "react";
 import { useMutation } from "@apollo/client";
 import { Link, useNavigate } from "react-router-dom";
 
+import "./../../App.css";
+
 import { REGISTER_CREATOR } from "../../graphql/mutations";
 
 import { useCurrentUserContext } from "../../context/CurrentUser";
+import { Checkbox } from "antd";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faInstagram,
+  faYoutube,
+  faFacebook,
+  faTiktok,
+  faSnapchatGhost,
+} from "@fortawesome/free-brands-svg-icons";
 
 export default function Registration() {
   const { loginUser } = useCurrentUserContext();
@@ -131,52 +142,57 @@ export default function Registration() {
             onChange={handleChange}
           />
         </label>
-        <label htmlFor="platforms">Platforms:</label>
-        <label>
-          <input
-            type="checkbox"
-            name="instagram"
-            checked={formState.platforms.instagram}
-            onChange={handleChange}
-          />
-          Instagram
-        </label>
-        <label>
-          <input
-            type="checkbox"
-            name="youtube"
-            checked={formState.platforms.youtube}
-            onChange={handleChange}
-          />
-          YouTube
-        </label>
-        <label>
-          <input
-            type="checkbox"
-            name="facebook"
-            checked={formState.platforms.facebook}
-            onChange={handleChange}
-          />
-          Facebook
-        </label>
-        <label>
-          <input
-            type="checkbox"
-            name="tiktok"
-            checked={formState.platforms.tiktok}
-            onChange={handleChange}
-          />
-          TikTok
-        </label>
-        <label>
-          <input
-            type="checkbox"
-            name="snapchat"
-            checked={formState.platforms.snapchat}
-            onChange={handleChange}
-          />
-          Snapchat
-        </label>
+        <label htmlFor="platforms">Platforms <br></br>(Select all that apply):</label>
+        <div className="checkbox-container">
+          <label className="checkbox-label">
+            <Checkbox
+              name="instagram"
+              checked={formState.platforms.instagram}
+              onChange={handleChange}
+            />
+            <FontAwesomeIcon icon={faInstagram} className="checkbox-icon" />
+            Instagram
+          </label>
+          <label className="checkbox-label">
+            <Checkbox
+              name="youtube"
+              checked={formState.platforms.youtube}
+              onChange={handleChange}
+            />
+            <FontAwesomeIcon icon={faYoutube} className="checkbox-icon" />
+            YouTube
+          </label>
+          <label className="checkbox-label">
+            <Checkbox
+              name="facebook"
+              checked={formState.platforms.facebook}
+              onChange={handleChange}
+            />
+            <FontAwesomeIcon icon={faFacebook} className="checkbox-icon" />
+            Facebook
+          </label>
+          <label className="checkbox-label">
+            <Checkbox
+              name="tiktok"
+              checked={formState.platforms.tiktok}
+              onChange={handleChange}
+            />
+            <FontAwesomeIcon icon={faTiktok} className="checkbox-icon" />
+            TikTok
+          </label>
+          <label className="checkbox-label">
+            <Checkbox
+              name="snapchat"
+              checked={formState.platforms.snapchat}
+              onChange={handleChange}
+            />
+            <FontAwesomeIcon
+              icon={faSnapchatGhost}
+              className="checkbox-icon"
+            />
+            Snapchat
+          </label>
+        </div>
         <button type="submit">Sign Up</button>
         <p>
           Already have an account? Login <Link to="/register">here</Link>
