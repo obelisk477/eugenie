@@ -34,8 +34,8 @@ const { Header } = Layout
           </div>
           <Menu selectedKeys={[current]} onClick={onClick} mode="horizontal" theme="light" id="menuItem">
             <Menu.Item key='dashboard' icon={<HomeOutlined />}><Link to="/dashboard">Dashboard</Link></Menu.Item>
-            <Menu.Item key='logout' onClick={logoutUser} icon={<LogoutOutlined />}>Logout</Menu.Item>
             <Menu.Item key='dashboard/library' icon={<BookOutlined />}><Link to="/dashboard/library">Library</Link></Menu.Item>
+            <Menu.Item key='logout' onClick={logoutUser} icon={<LogoutOutlined />}>Logout</Menu.Item>
             </Menu>
           </Header>
         </Layout>
