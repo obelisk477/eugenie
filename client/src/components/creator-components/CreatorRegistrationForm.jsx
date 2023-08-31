@@ -5,6 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { REGISTER_CREATOR } from "../../graphql/mutations";
 
 import { useCurrentUserContext } from "../../context/CurrentUser";
+import { Checkbox } from "antd";
 
 export default function Registration() {
   const { loginUser } = useCurrentUserContext();
@@ -132,51 +133,41 @@ export default function Registration() {
           />
         </label>
         <label htmlFor="platforms">Platforms:</label>
-        <label>
-          <input
-            type="checkbox"
-            name="instagram"
-            checked={formState.platforms.instagram}
-            onChange={handleChange}
-          />
+        <Checkbox
+          name="instagram"
+          checked={formState.platforms.instagram}
+          onChange={handleChange}
+        >
           Instagram
-        </label>
-        <label>
-          <input
-            type="checkbox"
-            name="youtube"
-            checked={formState.platforms.youtube}
-            onChange={handleChange}
-          />
+        </Checkbox>
+        <Checkbox
+          name="youtube"
+          checked={formState.platforms.youtube}
+          onChange={handleChange}
+        >
           YouTube
-        </label>
-        <label>
-          <input
-            type="checkbox"
-            name="facebook"
-            checked={formState.platforms.facebook}
-            onChange={handleChange}
-          />
+        </Checkbox>
+        <Checkbox
+          name="facebook"
+          checked={formState.platforms.facebook}
+          onChange={handleChange}
+        >
           Facebook
-        </label>
-        <label>
-          <input
-            type="checkbox"
-            name="tiktok"
-            checked={formState.platforms.tiktok}
-            onChange={handleChange}
-          />
+        </Checkbox>
+        <Checkbox
+          name="tiktok"
+          checked={formState.platforms.tiktok}
+          onChange={handleChange}
+        >
           TikTok
-        </label>
-        <label>
-          <input
-            type="checkbox"
-            name="snapchat"
-            checked={formState.platforms.snapchat}
-            onChange={handleChange}
-          />
+        </Checkbox>
+        <Checkbox
+          name="snapchat"
+          checked={formState.platforms.snapchat}
+          onChange={handleChange}
+        >
           Snapchat
-        </label>
+        </Checkbox>
         <button type="submit">Sign Up</button>
         <p>
           Already have an account? Login <Link to="/register">here</Link>
