@@ -83,6 +83,7 @@ const typeDefs = `#graphql
     loginBrand(email: String!, password: String!): brandAuth
     createCampaign(brand: ID!, title: String!, description: String!, applyBy: String!, postBy: String!, requirements: String!, deliverables: String!, compensation: Int!, payoutBy: String!): Campaign
     applyToCampaign(_id: ID!, applicants: ID!): Campaign
+    deleteCampaign(_id: ID!): Campaign
     addToAccepted(_id: ID!, accepted: ID!): Campaign
   }
 `;

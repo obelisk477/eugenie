@@ -101,3 +101,12 @@ mutation addToAccepted($_id: ID!, $accepted: ID!) {
   }
 }
 `;
+
+// Delete Campaign
+export const DELETE_CAMPAIGN = gql`
+  mutation deleteCampaign($_id: ID!) {
+    deleteCampaign(_id: $_id ) {
+      _id
+    }
+  }
+`;
