@@ -79,11 +79,11 @@ export default function Login() {
         <button type="submit" id="brand-login">
           Brand Login
         </button>
-        <p>
+        {/* <p>
           Need an account? Sign up
           {' '}
-          <Link to="/register">here</Link>
-        </p>
+          <Link to="/">here</Link>
+        </p> */}
       </form>
     </>
   );

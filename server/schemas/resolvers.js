@@ -1,4 +1,6 @@
 const moment = require('moment');
+const mongoose = require("mongoose");
+
 const { Creator, Chat, Brand, Campaign } = require('../models');
 const { signBrandToken, signCreatorToken, AuthenticationError } = require('../utils');
 
@@ -9,10 +11,18 @@ const resolvers = {
   Query: {
     currentCreator: async (parent, { email }) => Creator.findOne({ email }),
     currentBrand: async (parent, { email }) => Brand.findOne({ email }),
-    getChat: async (parent, {brand, creator}) => Chat.findOne({ brand, creator }),
+    getChat: async (parent, {brand, creator}) => Chat.findOne({ brand, creator }).populate('brand'),
+    getAllChats: async (parent, {brand}) => {
+      const chats = await Chat.find(brand).populate('brand')
+      return chats
+    },
     getCreators: async () => { 
       const creators = await Creator.find()
       return creators 
+    },
+    getAllBrands: async () => {
+      const brands = await Brand.find()
+      return brands
     },
     getAudienceByCreator: async (parent, { creatorId }) => {
         const creator = await Creator.findById(creatorId);
@@ -26,7 +36,7 @@ const resolvers = {
       const campaigns = await Campaign.find({ applyBy: {$gt: today }})
       return campaigns;
     },
-    getAllCampaignsByBrand: async (parent, { brand }) => Campaign.find({ brand }).populate('applicants'),
+    getAllCampaignsByBrand: async (parent, { brand }) => Campaign.find({ brand }).populate('applicants')      
   
   },
 
@@ -88,6 +98,7 @@ const resolvers = {
 
       return { token, currentBrand: brand };
     },
+
     createCampaign: async (parent, args) => {
       const createCampaign = await Campaign.create(args)
       return createCampaign
@@ -100,6 +111,11 @@ const resolvers = {
       )
       return applyToCampaign
     },
+
+    deleteCampaign: async (parent, {_id} ) => {
+     const deleteCampaign = await Campaign.findOneAndDelete({_id: new mongoose.Types.ObjectId(_id)})
+     return deleteCampaign
+    },
     addToAccepted: async (parent, {_id, accepted}) => {
       const addToAccepted = await Campaign.findOneAndUpdate(
         { _id: _id },
@@ -109,6 +125,15 @@ const resolvers = {
       console.log(accepted)
       return addToAccepted
     },
+    addCreative: async (parent, {_id, creativeLibrary}) => {
+      const addToAccepted = await Creator.findOneAndUpdate(
+        { _id: _id },
+        { $addToSet: { creativeLibrary: creativeLibrary }},
+        { new: true}
+      )
+      return addToAccepted
+    },
+      
 
   },
 };

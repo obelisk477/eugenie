@@ -5,6 +5,8 @@ import { Link, useNavigate } from 'react-router-dom';
 import { REGISTER_BRAND } from '../../graphql/mutations';
 
 import { useCurrentUserContext } from '../../context/CurrentUser';
+import { Button } from 'antd'
+import ErrorAlert from '../ErrorAlert';
 
 export default function Registration() {
   const { loginUser } = useCurrentUserContext();
@@ -45,7 +47,7 @@ export default function Registration() {
     <>
       {error ? (
         <div>
-          <p className="error-text">The provided credentials are incorrect</p>
+          <ErrorAlert message="Error" />
         </div>
       ) : null}
       <form id="registration-form" onSubmit={handleFormSubmit}>
@@ -80,9 +82,7 @@ export default function Registration() {
             onChange={handleChange}
           />
         </label>
-        <button type="submit">
-          Sign Up
-        </button>
+        <Button type="primary" htmlType="submit">Sign Up</Button>
         <p>
           Already have an account? Login
           {' '}

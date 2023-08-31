@@ -54,6 +54,7 @@ export const REGISTER_BRAND = gql`
 mutation registerBrand($brandName: String!, $email: String!, $password: String!) {
   registerBrand(brandName: $brandName, email: $email, password: $password) {
     currentBrand {
+      _id
       brandName
     }
     token
@@ -100,4 +101,23 @@ mutation addToAccepted($_id: ID!, $accepted: ID!) {
     }
   }
 }
+`;
+
+// Delete Campaign
+export const DELETE_CAMPAIGN = gql`
+  mutation deleteCampaign($_id: ID!) {
+    deleteCampaign(_id: $_id ) {
+      _id
+    }
+  }
+`;
+
+
+export const ADD_CREATIVE = gql`
+  mutation addCreative($_id: ID!, $creativeLibrary: String!) {
+    addCreative(_id: $_id, creativeLibrary: $creativeLibrary ) {
+      _id
+      creativeLibrary
+    }
+  }
 `;

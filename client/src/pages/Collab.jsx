@@ -2,19 +2,25 @@ import {AdvancedImage} from '@cloudinary/react';
 import {Cloudinary} from "@cloudinary/url-gen";
 import { Carousel, Col, Row, Input } from 'antd';
 import { useCurrentUserContext } from "../context/CurrentUser";
+import { useQuery } from '@apollo/client';
+import { QUERY_CURRENT_CREATOR} from '../graphql/queries';
+
+
+
 
 const { TextArea } = Input;
 
 function Collab() {
 
   const { isBrand } = useCurrentUserContext()
+  const { currentUser } = useCurrentUserContext()
 
 
-  const images = [
-    'test_image_zkrfrt',
-    'pexels-hatice-baran-16586894_vymsgz',
-    'pexels-emre-akyol-17774693_z8bws7'
-  ]
+  // const images = [
+  //   'test_image_zkrfrt',
+  //   'pexels-hatice-baran-16586894_vymsgz',
+  //   'pexels-emre-akyol-17774693_z8bws7'
+  // ]
 
   const styles = {
       img: {
@@ -24,7 +30,7 @@ function Collab() {
       },
       carousel: {
         marginTop: '10vh',
-        backgroundColor:'lightgray',
+        backgroundColor:'#efeded',
       },
       row: {
         margin: '4vh 7vw',
@@ -74,11 +80,23 @@ function Collab() {
   // });
 
 
-  const cld = new Cloudinary({
-    cloud: {
-      cloudName: 'dtmfixzij'
+  const { data } = useQuery(QUERY_CURRENT_CREATOR, {
+    variables: {
+        email:  currentUser.email
+        }
     }
-  });
+);
+let images = []
+
+if (data) {
+    images = data.currentCreator.creativeLibrary
+}
+
+const cld = new Cloudinary({
+cloud: {
+  cloudName: 'dtmfixzij'
+}
+});
 
   const onChange = (currentSlide) => {
     console.log(currentSlide);

@@ -1,8 +1,9 @@
 import { useState } from 'react';
-import { useMutation } from '@apollo/client';
+import { useMutation, useQuery } from '@apollo/client';
 import moment from 'moment'; 
 
 import { CREATE_CAMPAIGN } from '../../graphql/mutations';
+import { QUERY_ALL_BRAND_CAMPAIGNS } from '../../graphql/queries';
 
 import { useCurrentUserContext } from '../../context/CurrentUser';
 
@@ -19,6 +20,8 @@ import {
 function CreateCampaignForm() {
 
     const { currentUser } = useCurrentUserContext();
+
+    console.log(currentUser)
     
     const [formState, setFormState] = useState({
         title: '',
@@ -32,14 +35,11 @@ function CreateCampaignForm() {
 
     const [createCampaign] = useMutation(CREATE_CAMPAIGN);
 
-
     const handleFormCreate = async event => {
         event.preventDefault();
         try {
           const postBy = formState.postBy;
           const payoutBy = moment(postBy).add(2, 'weeks');
-
-
           await createCampaign({
             variables: {
                 brand: currentUser._id,
@@ -53,6 +53,8 @@ function CreateCampaignForm() {
                 payoutBy: payoutBy.toISOString(),
             },
           });
+           // will change later
+            window.location.reload(); 
 
         } catch (e) {
         // eslint-disable-next-line no-console
@@ -71,7 +73,7 @@ function CreateCampaignForm() {
     
     return (
         <>
-        <Form
+        <Form id='createForm'
       labelCol={{ span: 4,}} wrapperCol={{ span: 14,}} layout="horizontal" style={{ maxWidth: 600,}}>
       <Form.Item key="title" label="Title"><Input onChange={event => handleChange('title', event.target.value)} /></Form.Item>
       <Form.Item key="description" label="Description"><TextArea rows={4} onChange={event => handleChange('description', event.target.value)} /></Form.Item>

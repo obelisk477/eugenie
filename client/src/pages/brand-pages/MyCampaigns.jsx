@@ -7,26 +7,33 @@ const {Content} = Layout;
 function MyCampaigns() {
 
     const big_styles = {
-        backgroundColor:'lightgray',
+        backgroundColor:'#efeded',
         alignSelf: 'center',
-        height: '76vh',
+        height: '90vh',
         padding: '4vh',
         margin: '2vh'
       }
-      
+      const styles = {
+        backgroundColor:'#efeded',
+        height: '90vh',
+        padding: '2vh',
+        marginTop: '-25rem',
+        margin: '2vh',
+      }
+
     return (
         <>
             <main className="dashboard">
                 <Row justify="center" align="top" style={{alignItems: 'center'}}>
-                    <Col span={18} >
+                    <Col id='bigSquare' span={15} >
                         <Content title="Content title" style={big_styles}  >
-                            <h2>My Campaigns</h2>
+                            <h2 id='dashboardTitle'>My Campaigns</h2>
                             <CampaignCards />
                         </Content>
                     </Col>
-                    <Col span={6} >
-                        <Content title="Content title" style={big_styles}  >
-                            <h2>New Campaign</h2>
+                    <Col span={9} >
+                        <Content style={styles}  >
+                            <h2 id='newCampaignTitle'>New Campaign</h2>
                             <CreateCampaignForm />
                             
                         </Content>
