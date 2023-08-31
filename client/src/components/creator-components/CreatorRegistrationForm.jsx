@@ -7,7 +7,7 @@ import "./../../App.css";
 import { REGISTER_CREATOR } from "../../graphql/mutations";
 
 import { useCurrentUserContext } from "../../context/CurrentUser";
-import { Checkbox } from "antd";
+import { Checkbox, Button } from "antd";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faInstagram,
@@ -86,9 +86,9 @@ export default function Registration() {
   return (
     <>
       {error ? (
-        <div>
-          <p className="error-text">The provided credentials are incorrect</p>
-        </div>
+         <div>
+         <ErrorAlert  />
+       </div>
       ) : null}
       <form id="registration-form" onSubmit={handleFormSubmit}>
         <h2>Register</h2>
@@ -193,7 +193,7 @@ export default function Registration() {
             Snapchat
           </label>
         </div>
-        <button type="submit">Sign Up</button>
+        <Button type="primary" htmlType="submit">Sign Up</Button>
         <p>
           Already have an account? Login <Link to="/register">here</Link>
         </p>
