@@ -8,6 +8,7 @@ const typeDefs = `#graphql
     audience: Int
     platforms: Platforms
     activeCampaigns: [Campaign]
+    creativeLibrary: [String]
 
   }
   type Platforms {  # Define a new type for platforms
@@ -64,11 +65,11 @@ const typeDefs = `#graphql
     payoutBy: String!
 }
 
-
   type Query {
     currentCreator(email: String!): Creator
     currentBrand(email: String!): Brand
     getChat(brand: ID!, creator: ID!): Chat
+    getAllChats: [Chat]
     getCreators: [Creator]!
     getAudienceByCreator(creatorId: ID!) : Int!
     getAllCampaigns: [Campaign]
@@ -85,6 +86,7 @@ const typeDefs = `#graphql
     applyToCampaign(_id: ID!, applicants: ID!): Campaign
     deleteCampaign(_id: ID!): Campaign
     addToAccepted(_id: ID!, accepted: ID!): Campaign
+    addCreative(_id: ID!, creativeLibrary: String!): Creator
   }
 `;
 

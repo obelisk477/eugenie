@@ -1,4 +1,4 @@
-import { gql } from '@apollo/client';
+import { gql } from "@apollo/client";
 
 export const QUERY_CURRENT_CREATOR = gql`
   query getCurrentCreator($email: String!) {
@@ -7,6 +7,7 @@ export const QUERY_CURRENT_CREATOR = gql`
       email
       firstName
       lastName
+      creativeLibrary
     }
   }
 `;
@@ -24,6 +25,17 @@ export const QUERY_CURRENT_BRAND = gql`
 export const QUERY_CURRENT_CHAT = gql`
   query getChat($brand: ID!, $creator: ID!) {
     getChat(brand: $brand, creator: $creator) {
+      _id
+      brand
+      creator
+      chatLog
+    }
+  }
+`;
+
+export const QUERY_ALL_CHATS = gql`
+  query getAllChats {
+    getAllChats {
       _id
       brand
       creator
@@ -64,7 +76,7 @@ export const QUERY_CREATORS = gql`
       email
       audience
       platforms
-          }
+    }
   }
 `;
 
@@ -90,4 +102,3 @@ export const QUERY_ALL_CAMPAIGNS = gql`
     }
   }
 `;
-

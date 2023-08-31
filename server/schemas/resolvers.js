@@ -12,6 +12,10 @@ const resolvers = {
     currentCreator: async (parent, { email }) => Creator.findOne({ email }),
     currentBrand: async (parent, { email }) => Brand.findOne({ email }),
     getChat: async (parent, {brand, creator}) => Chat.findOne({ brand, creator }),
+    getAllChats: async () => {
+      const chats = await Chat.find()
+      return chats
+    },
     getCreators: async () => { 
       const creators = await Creator.find()
       return creators 
@@ -28,7 +32,7 @@ const resolvers = {
       const campaigns = await Campaign.find({ applyBy: {$gt: today }})
       return campaigns;
     },
-    getAllCampaignsByBrand: async (parent, { brand }) => Campaign.find({ brand }).populate('applicants'),
+    getAllCampaignsByBrand: async (parent, { brand }) => Campaign.find({ brand }).populate('applicants')      
   
   },
 
@@ -115,6 +119,14 @@ const resolvers = {
         {new: true}
       )
       console.log(accepted)
+      return addToAccepted
+    },
+    addCreative: async (parent, {_id, creativeLibrary}) => {
+      const addToAccepted = await Creator.findOneAndUpdate(
+        { _id: _id },
+        { $addToSet: { creativeLibrary: creativeLibrary }},
+        { new: true}
+      )
       return addToAccepted
     },
       

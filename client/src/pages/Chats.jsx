@@ -1,4 +1,6 @@
 import { Layout, Button, Form, Mentions, Space, Avatar, List } from "antd";
+import { useQuery} from "@apollo/client";
+import { QUERY_ALL_CHATS } from "../graphql/queries";
 
 const { getMentions } = Mentions;
 
@@ -20,18 +22,6 @@ const siderStyle = {
   backgroundColor: "#3ba0e9",
 };
 
-const data = [
-  {
-    title: "Ant Design Title 1",
-  },
-  {
-    title: "Ant Design Title 2",
-  },
-  {
-    title: "Ant Design Title 3",
-  },
-];
-
 function ChatMessages() {
   const [form] = Form.useForm();
 
@@ -49,6 +39,10 @@ function ChatMessages() {
       throw new Error("More than one must be selected!");
     }
   };
+
+  const { data:chatData } = useQuery(QUERY_ALL_CHATS);
+  const chats = chatData?.getAllChats || [];
+
   return (
     <>
       <h1>Chats</h1>
@@ -58,7 +52,7 @@ function ChatMessages() {
             Your Messages
             <List
               itemLayout="horizontal"
-              dataSource={data}
+              dataSource={chats}
               renderItem={(item, index) => (
                 <List.Item>
                   <List.Item.Meta
@@ -67,8 +61,8 @@ function ChatMessages() {
                         src={`https://xsgames.co/randomusers/avatar.php?g=pixel&key=${index}`}
                       />
                     }
-                    title={<a href="https://ant.design">{item.title}</a>}
-                    description="Ant Design, a design language for background applications, is refined by Ant UED Team"
+                    title={item.brand}
+                    description={item.chatLog}
                   />
                 </List.Item>
               )}
@@ -77,7 +71,6 @@ function ChatMessages() {
           <Content style={contentStyle}>
             <Form form={form} layout="horizontal" onFinish={onFinish} className="messagesForm">
               <Form.Item
-                className="messageResponse"
                 name="message"
                 labelCol={{
                   span: 6,
@@ -94,7 +87,7 @@ function ChatMessages() {
               >
                 <Mentions
                   rows={3}
-                  placeholder="You can use @ to ref user here"
+                  placeholder="What's your response"
                   className="messagesForm"
                 />
               </Form.Item>
@@ -104,8 +97,8 @@ function ChatMessages() {
                   offset: 6,
                 }}
               >
-                <Space wrap>
-                  <Button  htmlType="submit" type="primary" className="sendMessage">
+                <Space wrap id="sendMessage">
+                  <Button  htmlType="submit" type="primary" >
                     Send
                   </Button>
                 </Space>

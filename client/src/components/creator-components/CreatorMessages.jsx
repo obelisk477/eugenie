@@ -1,32 +1,26 @@
-import { Avatar, List } from 'antd'
+import { Avatar, List} from 'antd'
 import { Link } from 'react-router-dom'
 
-const data = [
-    {
-      title: 'Ant Design Title 1',
-    },
-    {
-      title: 'Ant Design Title 2',
-    },
-  ];
 
+  const Chats = ({ chats }) => {
+    
+return (
+  <>
+  <List
+  itemLayout="horizontal"
+  dataSource={chats}
+  renderItem={(item, index) => (
+    <List.Item key={item._id}>
+      <List.Item.Meta
+        avatar={<Avatar src={`https://xsgames.co/randomusers/avatar.php?g=pixel&key=${index}`} />}
+        title={<Link to="/dashboard/chats/">{item.brand}</Link>}
+        description={item.chatLog}
+      />
+    </List.Item>
+  )}
+/>
+  </>
+)
+};
 
-  const Chats = () => (
-    <>
-    <List
-      itemLayout="horizontal"
-      dataSource={data}
-      renderItem={(item, index) => (
-        <List.Item>
-          <List.Item.Meta
-            avatar={<Avatar src={`https://xsgames.co/randomusers/avatar.php?g=pixel&key=${index}`} />}
-            title={<Link to="/dashboard/chats/">{item.title}</Link>}
-            description="Ant Design, a design language for background applications, is refined by Ant UED Team"
-          />
-        </List.Item>
-      )}
-    />
-
-    </>
-  );
   export default Chats;

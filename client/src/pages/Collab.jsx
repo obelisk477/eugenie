@@ -24,7 +24,7 @@ function Collab() {
       },
       carousel: {
         marginTop: '10vh',
-        backgroundColor:'lightgray',
+        backgroundColor:'#efeded',
       },
       row: {
         margin: '4vh 7vw',
