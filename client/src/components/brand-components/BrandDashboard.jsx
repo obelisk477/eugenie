@@ -49,8 +49,7 @@ function BrandDashboard() {
                         <Content title="Content title" style={styles}>
                             <h2>{<Link to="/dashboard/chats"><Avatar style={{ backgroundColor: '#efeded', color: 'black' }} icon={<MessageOutlined />} />
                                 Chats</Link>}</h2>
-                            <p>Content content</p>
-                            <p>Content content</p>
+                            <p>So quiet here...</p>
                         </Content>
                     </Col>
                 </Row>
