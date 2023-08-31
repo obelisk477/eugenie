@@ -2,19 +2,21 @@ import { useState } from 'react';
 import { useQuery } from '@apollo/client';
 import { QUERY_ALL_BRAND_CAMPAIGNS, QUERY_ALL_CAMPAIGNS } from '../graphql/queries';
 import { useMutation } from '@apollo/client';
-import { APPLY_TO_CAMPAIGN, ADD_TO_ACCEPTED } from '../graphql/mutations';
+import { APPLY_TO_CAMPAIGN, DELETE_CAMPAIGN, ADD_TO_ACCEPTED } from '../graphql/mutations';
 import { useCurrentUserContext } from '../context/CurrentUser';
 // import { Link } from 'react-router-dom';
 import { Row, Col, Card, Modal, Button } from 'antd';
-import { EditOutlined, DeleteOutlined } from '@ant-design/icons';
+import { DeleteOutlined } from '@ant-design/icons';
 const { Meta } = Card;
 // const {Content} = Layout
 
 
 function CampaignCards() {
+
+    
     const { currentUser } = useCurrentUserContext();
-    
-    
+
+    //Apply to campaign
     const [applyToCampaign, { error: applicationError }] = useMutation(APPLY_TO_CAMPAIGN);
     const [addToAccepted, { error: acceptedError }] = useMutation(ADD_TO_ACCEPTED);
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -92,7 +94,7 @@ function CampaignCards() {
         }
     }
 
-
+    //Show campaigns based on which user is logged In
     let userType = ""
 
     if ( currentUser.brandName == null ) {
@@ -103,7 +105,7 @@ function CampaignCards() {
 
     const query = userType === 'brand' ?  QUERY_ALL_BRAND_CAMPAIGNS : QUERY_ALL_CAMPAIGNS;
 
-    const { data } = useQuery(query, {
+    const { data, refetch } = useQuery(query, {
         variables: { 'brand':  currentUser._id }
 
     });
@@ -112,8 +114,35 @@ function CampaignCards() {
 
 
     const campaigns = data? (userType === 'brand' ? data.getAllCampaignsByBrand : data.getAllCampaigns) : [];
+
+    //Delete campaign 
+
+    const [deleteCampaign] = useMutation(DELETE_CAMPAIGN, {
+        refetchQueries: [{ query }]
+    }
+        );
+    const [setCampaigns] = useState([]);
+
+
+    const handleDelete = async campaign => {
     
-    
+        await deleteCampaign({
+            variables: {
+            _id: campaign
+            },
+        });
+
+         await refetch(); 
+       if (userType === 'brand') {
+           setCampaigns(data.getAllCampaignsByBrand);
+       } else {
+           setCampaigns(data.getAllCampaigns);
+       }
+    setCampaigns();
+    }
+
+
+      
     return (
         <>
         {campaigns.length > 0 ? (
@@ -123,9 +152,8 @@ function CampaignCards() {
                     // eslint-disable-next-line react/jsx-key
 
                     <Col key={campaign._id} span={8}>
-                        <Card id='card' title={campaign.title} actions={userType === 'brand' ? [ 
-                            <EditOutlined key="edit" />,
-                            <DeleteOutlined key="delete" />,
+                        <Card className='tears' id='card' title={campaign.title} actions={userType === 'brand' ? [ 
+                            <DeleteOutlined key="delete" onClick={() => handleDelete(campaign._id)}/>,
                                 ] : hasApplied[i]? [<h2 style={styles.h2} key={i}>Applied</h2>]:[<h2 key={i} data-id={campaign._id} onClick={handleClick}>Apply</h2>]} >
                                     <Meta description={campaign.description}/>
                                     <br></br>
@@ -155,6 +183,7 @@ function CampaignCards() {
                                         <br />
                                     )}
                         </Card>
+                        
                     </Col>
                         ))}
             </Row>

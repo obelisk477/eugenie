@@ -34,7 +34,7 @@ const BASIC_LOGGING = {
 const server = new ApolloServer({
   typeDefs,
   resolvers,
-  plugins: [BASIC_LOGGING]
+  // plugins: [BASIC_LOGGING]
 });
 
 const startApolloServer = async () => {

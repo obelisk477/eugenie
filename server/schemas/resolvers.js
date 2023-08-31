@@ -1,4 +1,6 @@
 const moment = require('moment');
+const mongoose = require("mongoose");
+
 const { Creator, Chat, Brand, Campaign } = require('../models');
 const { signBrandToken, signCreatorToken, AuthenticationError } = require('../utils');
 
@@ -88,6 +90,7 @@ const resolvers = {
 
       return { token, currentBrand: brand };
     },
+
     createCampaign: async (parent, args) => {
       const createCampaign = await Campaign.create(args)
       return createCampaign
@@ -100,6 +103,11 @@ const resolvers = {
       )
       return applyToCampaign
     },
+
+    deleteCampaign: async (parent, {_id} ) => {
+     const deleteCampaign = await Campaign.findOneAndDelete({_id: new mongoose.Types.ObjectId(_id)})
+     return deleteCampaign
+    },
     addToAccepted: async (parent, {_id, accepted}) => {
       const addToAccepted = await Campaign.findOneAndUpdate(
         { _id: _id },
@@ -109,6 +117,7 @@ const resolvers = {
       console.log(accepted)
       return addToAccepted
     },
+      
 
   },
 };
