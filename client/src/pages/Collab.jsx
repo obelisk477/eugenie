@@ -39,6 +39,9 @@ function Collab() {
       },
       textArea: {
         margin: '0 auto;'
+      },
+      h3: {
+        marginTop: '40vh'
       }
   }
 
@@ -97,6 +100,8 @@ cloud: {
   cloudName: 'dtmfixzij'
 }
 });
+
+
 
   const onChange = (currentSlide) => {
     console.log(currentSlide);
