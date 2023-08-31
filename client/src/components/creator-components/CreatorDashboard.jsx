@@ -128,7 +128,7 @@ return (
                     <h2 id='dashboardTitle'>{<Link to="/dashboard/campaign-search">Find Campaigns & Brands</Link>}</h2>
                     </Content>
                     <Content title="Content title" style={styles}>
-                        <h2 id='dashboardTitle'>{<Link to="/dashboard/chats/:chatId">Chats</Link>}</h2>
+                        <h2 id='dashboardTitle'>{<Link to="/dashboard/chats">Chats</Link>}</h2>
                         {loading ? (
                 <div>Loading...</div>
               ) : (

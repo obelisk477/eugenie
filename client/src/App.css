@@ -215,6 +215,9 @@ padding-top: 15em;
 
 .messagesForm {
   width: 100%;
+  
+  /* position: absolute; */
+top: 23rem;
 }
 
 .ant-form-item-row{
@@ -231,7 +234,7 @@ padding-top: 15em;
 }
 
 #sendMessage {
-  justify-content: center;
+ top: 23rem;
 }
 
 .tears {
