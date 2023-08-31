@@ -30,12 +30,12 @@ const { Header } = Layout
         <Layout className="layout">
           <Header id='innerNav'>
           <div>
-            <Link to="/"><img className='logo' src='/eugenie.png' alt='brand-image' height='99px' width='66px'></img></Link>
+            <Link to="/"><img className='logo' src='/eugenie.png' alt='brand-image'></img></Link>
           </div>
           <Menu selectedKeys={[current]} onClick={onClick} mode="horizontal" theme="light" id="menuItem">
             <Menu.Item key='dashboard' icon={<HomeOutlined />}><Link to="/dashboard">Dashboard</Link></Menu.Item>
-            <Menu.Item key='logout' onClick={logoutUser} icon={<LogoutOutlined />}>Logout</Menu.Item>
             <Menu.Item key='dashboard/library' icon={<BookOutlined />}><Link to="/dashboard/library">Library</Link></Menu.Item>
+            <Menu.Item key='logout' onClick={logoutUser} icon={<LogoutOutlined />}>Logout</Menu.Item>
             </Menu>
           </Header>
         </Layout>

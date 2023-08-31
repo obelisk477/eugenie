@@ -3,6 +3,7 @@ import { Row, Col, Layout, Card} from 'antd';
 import CreatorMessages from './CreatorMessages';
 const {Content} = Layout
 
+
 import CampaignCards from '../../components/CampaignCards';
 import { QUERY_ALL_BRAND_CAMPAIGNS, QUERY_ALL_CAMPAIGNS } from '../../graphql/queries';
 // import { APPLY_TO_CAMPAIGN, ADD_TO_ACCEPTED } from '../../graphql/mutations';
@@ -49,39 +50,42 @@ function CreatorDashboard() {
         padding: '4vh',
         margin: '2vh'
       }
+      const little_styles = {
+        backgroundColor:'lightgray',
+        height: '10vh',
+        padding: '2vh',
+        margin: '2vh'
+      }
     const styles = {
         backgroundColor:'lightgrey',
-        height: '37vh',
-        padding: '4vh',
+        height: '64vh',
+        padding: '2vh',
         margin: '2vh',
       }
 
     return (
-        <>
             <main className="dashboard">
                 <Row justify="center" align="top" style={{alignItems: 'center'}}>
 
-                    <Col span={18} >
+                    <Col id='bigSquare' span={18} >
                         <Content title="Content title" style={big_styles}  >
-                            <h2>{<Link to="/dashboard/campaign-search">Find Campaigns & Brands</Link>}</h2>
-                            <CampaignCards />
-                        </Content>
-                    </Col>
-                    <Col span={6}>
-                        <Content title="Content title" style={styles}>
-                            <h2>{<Link to="/dashboard/active-campaigns">My Brands & Campaigns</Link>}</h2>
+                        <h2 id='dashboardTitle'>My Campaigns</h2>
                             {totalCampaigns.map(campaign => (
                                 <Meta key={campaign._id} title={campaign.title}/>
                             ))}
                         </Content>
+                    </Col>
+                    <Col span={6}>
+                        <Content title="Content title" style={little_styles}>
+                        <h2 id='dashboardTitle'>{<Link to="/dashboard/campaign-search">Find Campaigns & Brands</Link>}</h2>
+                        </Content>
                         <Content title="Content title" style={styles}>
-                            <h2>{<Link to="/dashboard/chats">Chats</Link>}</h2>
+                            <h2 id='dashboardTitle'>{<Link to="/dashboard/chats">Chats</Link>}</h2>
                             <CreatorMessages />
                         </Content>
                     </Col>
                 </Row>
             </main>
-        </>
     )
   }
   
