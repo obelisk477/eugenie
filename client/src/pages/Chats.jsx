@@ -1,9 +1,7 @@
 import { Layout, Button, Form, Mentions, Space, Avatar, List } from "antd";
 import { useQuery} from "@apollo/client";
-import { QUERY_ALL_CHATS, 
-        QUERY_CURRENT_CHAT } from "../graphql/queries";
-import { useCurrentUserContext } from "../context/CurrentUser";
-import { useParams } from "react-router-dom";
+import { QUERY_ALL_CHATS } from "../graphql/queries";
+
 
 const { getMentions } = Mentions;
 
@@ -48,15 +46,7 @@ function ChatMessages() {
     }
   };
 
-  // const { currentUser } = useCurrentUserContext();
 
-  // const { chatId } = useParams();
-  // const {data} = useQuery(QUERY_CURRENT_CHAT, {
-  //   variables: { creator: currentUser._id, brand: , chatId: chatId }
-  // });
-
-  // const singleChat = data?.getChat || []; 
-  // console.log(singleChat);
   const { data:chatData } = useQuery(QUERY_ALL_CHATS);
   const chats = chatData?.getAllChats || [];
 

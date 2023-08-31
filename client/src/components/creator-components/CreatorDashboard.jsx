@@ -42,34 +42,12 @@ function CreatorDashboard() {
     });
   } 
   
-  // let newData = data? data.getAllCampaigns.map(campaign => campaign.accepted) : false
-
-  // console.log(newData)
 
   const { loading, data: chatData } = useQuery(QUERY_ALL_CHATS);
   const chats = chatData?.getAllChats || [];
   console.log(chatData);
   console.log('>>>>>>>>',chats);
-  // console.log('>>>>>>>>>>>>', chats[0].creator._id);
-  // const connectedBrand = chats[0].brand._id;
-  // const connectedUser = chats[0].creator._id;
-//   const { loading, data:brand } = useQuery(QUERY_BRANDS);
-//   const brandData = brand?.getAllBrands || [];
-// if (!loading) {
-//   console.log(brandData)
-// } else {
-//   console.log('brands here')
-// }
-  // const { data:singleChat } = useQuery(QUERY_CURRENT_CHAT, {
-  //   variables: { creator: currentUser._id, brand: chats[0].brand._id }
-  // });
-  // const usersChat = singleChat?.getChat || [];
-  // console.log('>>>>>>>>', usersChat);
-  // if (!loading) {
-  //   console.log(chatData.getAllChats);
-  // } else {
-  //   console.log('it works')
-  // }
+
   
   const big_styles = {
     backgroundColor:'#efeded',
