@@ -20,6 +20,8 @@ import {
 function CreateCampaignForm() {
 
     const { currentUser } = useCurrentUserContext();
+
+    console.log(currentUser)
     
     const [formState, setFormState] = useState({
         title: '',
@@ -38,10 +40,6 @@ function CreateCampaignForm() {
         try {
           const postBy = formState.postBy;
           const payoutBy = moment(postBy).add(2, 'weeks');
-
-          
-
-
           await createCampaign({
             variables: {
                 brand: currentUser._id,
