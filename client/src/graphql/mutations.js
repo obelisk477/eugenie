@@ -44,6 +44,7 @@ mutation registerCreator($firstName: String!, $lastName: String!, $email: String
     currentCreator {
       firstName
       lastName
+      _id
     }
     token
   }
