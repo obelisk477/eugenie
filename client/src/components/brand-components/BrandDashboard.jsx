@@ -1,7 +1,7 @@
 // import { useState } from 'react';
 
 import CampaignCards from '../../components/CampaignCards';
-
+import CreatorsSubSearch from './CreatorsSubSearch';
 import { Link } from 'react-router-dom';
 import { Row, Col, Layout, Avatar } from 'antd';
 const {Content} = Layout;
@@ -44,8 +44,7 @@ function BrandDashboard() {
                             <h2>{<Link to="/dashboard/creator-search">
                             <Avatar style={{ backgroundColor: '#efeded', color: 'black' }} icon={<SearchOutlined />} />
                                 Find Creators</Link>}</h2>
-                            <p>Content content</p>
-                            <p>Content content</p>
+                            <CreatorsSubSearch />
                         </Content>
                         <Content title="Content title" style={styles}>
                             <h2>{<Link to="/dashboard/chats"><Avatar style={{ backgroundColor: '#efeded', color: 'black' }} icon={<MessageOutlined />} />
