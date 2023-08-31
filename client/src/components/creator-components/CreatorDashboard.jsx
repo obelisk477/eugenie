@@ -1,6 +1,9 @@
 import { Link } from 'react-router-dom';
-import { Row, Col, Layout, Card} from 'antd';
-import { FileAddOutlined } from '@ant-design/icons';
+import { Row, Col, Layout, Card, Avatar} from 'antd';
+import { FileAddOutlined,
+    SearchOutlined,
+    MessageOutlined,
+ } from '@ant-design/icons';
 import CreatorMessages from './CreatorMessages';
 const {Content} = Layout
 
@@ -93,10 +96,14 @@ function CreatorDashboard() {
                     </Col>
                     <Col span={6}>
                         <Content title="Content title" style={little_styles}>
-                        <h2 id='dashboardTitle'>{<Link to="/dashboard/campaign-search">Find Campaigns & Brands</Link>}</h2>
+                        
+                        <h2 id='dashboardTitle'>{<Link to="/dashboard/campaign-search">
+                        <Avatar style={{ backgroundColor: '#efeded', color: 'black' }} icon={<SearchOutlined />} />
+                         Find Campaigns & Brands </Link>}</h2>
                         </Content>
                         <Content title="Content title" style={styles}>
-                            <h2 id='dashboardTitle'>{<Link to="/dashboard/chats">Chats</Link>}</h2>
+                            <h2 id='dashboardTitle'>{<Link to="/dashboard/chats"><Avatar style={{ backgroundColor: '#efeded', color: 'black' }} icon={<MessageOutlined />} />
+                                Chats</Link>}</h2>
                             <CreatorMessages />
                         </Content>
                     </Col>

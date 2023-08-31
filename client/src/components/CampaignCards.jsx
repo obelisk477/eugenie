@@ -85,7 +85,7 @@ function CampaignCards() {
         },
         h2: {
             cursor: 'not-allowed',
-            color: 'grey'
+            color: 'lightgrey'
         },
         div: {
             display: 'flex',
@@ -154,7 +154,7 @@ function CampaignCards() {
                     <Col key={campaign._id} span={8}>
                         <Card className='tears' id='card' title={campaign.title} actions={userType === 'brand' ? [ 
                             <DeleteOutlined key="delete" onClick={() => handleDelete(campaign._id)}/>,
-                                ] : hasApplied[i]? [<h2 style={styles.h2} key={i}>Applied</h2>]:[<h2 id='applyTitle'key={i} data-id={campaign._id} onClick={handleClick}>Apply</h2>]} >
+                                ] : hasApplied[i]? [<h2 id='applyTitle' style={styles.h2} key={i}>Applied</h2>]:[<h2 id='applyTitle'key={i} data-id={campaign._id} onClick={handleClick}>Apply</h2>]} >
                                     <Meta description={campaign.description}/>
                                     <br></br>
                                     <Meta title={'Apply By: ' + campaign.applyBy + " | " + " Post By: " + campaign.applyBy }/>
