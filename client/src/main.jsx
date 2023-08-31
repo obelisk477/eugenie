@@ -27,6 +27,7 @@ import MyCampaigns from './pages/brand-pages/MyCampaigns'
 import CampaignSearch from './pages/creator-pages/CampaignSearch'
 import ActiveCampaigns from './pages/creator-pages/ActiveCampaigns'
 import Collab from './pages/Collab'
+import Library from './pages/Library'
 
 // maybe change?
 const router = createBrowserRouter(
@@ -50,6 +51,7 @@ const router = createBrowserRouter(
       <Route path="dashboard/campaign-search" element={<CreatorProtectedRoute><CampaignSearch /></CreatorProtectedRoute>} />
       <Route path="dashboard/active-campaigns" element={<CreatorProtectedRoute><ActiveCampaigns /></CreatorProtectedRoute>} />
       <Route path="dashboard/collab" element={<GenericProtectedRoute><Collab /></GenericProtectedRoute>} />
+      <Route path="dashboard/library" element={<CreatorProtectedRoute><Library /></CreatorProtectedRoute>} />
     </Route>
   )
 );

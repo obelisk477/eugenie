@@ -1,29 +1,5 @@
 [
   {
-    "firstName": "Steve",
-    "lastName": "Rogers",
-    "email": "captainamerica@example.com",
-    "password": "passwords1"
-  },
-  {
-    "firstName": "Carol",
-    "lastName": "Danvers",
-    "email": "captainmarvel@example.com",
-    "password": "passwords1"
-  },
-  {
-    "firstName": "Olivia",
-    "lastName": "Jensen",
-    "email": "ojensen@example.com",
-    "password": "passwords1"
-  },
-  {
-    "firstName": "Ethan",
-    "lastName": "Wave",
-    "email": "wave@example.com",
-    "password": "passwords1"
-  },
-  {
     "firstName": "Mia",
     "lastName": "Ramos",
     "email": "mammamia@example.com",
@@ -35,12 +11,17 @@
       "facebook": "true",
       "tiktok": "false",
       "snapchat": "false"
-    }
+    },
+    "creativeLibrary": [
+      "woman-on-a-football-field",
+      "chair-and-coffee-table",
+      "outdoor-woman"
+    ]
   },
   {
-    "firstName": "Ava",
-    "lastName": "Williams",
-    "email": "ava@example.com",
+    "firstName": "Steve",
+    "lastName": "Rogers",
+    "email": "captainamerica@example.com",
     "password": "passwords1",
     "audience": "200000",
     "platforms": {
@@ -49,7 +30,12 @@
       "facebook": "true",
       "tiktok": "true",
       "snapchat": "true"
-    }
+    },
+    "creativeLibrary": [
+      "pexels-emre-akyol-17774693_z8bws7",
+      "pexels-hatice-baran-16586894_vymsgz",
+      "test_image_zkrfrt"
+    ]
   },
   {
     "firstName": "Jackson",
@@ -63,6 +49,11 @@
       "facebook": "true",
       "tiktok": "true",
       "snapchat": "false"
-    }
+    },
+    "creativeLibrary": [
+      "car-interior-design",
+      "cat",
+      "spices"
+    ]
   }
 ]
