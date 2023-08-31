@@ -7,7 +7,11 @@ import "./../../App.css";
 import { REGISTER_CREATOR } from "../../graphql/mutations";
 
 import { useCurrentUserContext } from "../../context/CurrentUser";
+ randomAnting
+import { Checkbox, Button } from "antd";
+
 import { Checkbox } from "antd";
+ develop
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faInstagram,
@@ -16,7 +20,10 @@ import {
   faTiktok,
   faSnapchatGhost,
 } from "@fortawesome/free-brands-svg-icons";
+randomAnting
+import ErrorAlert from "../ErrorAlert";
 
+ develop
 export default function Registration() {
   const { loginUser } = useCurrentUserContext();
   const navigate = useNavigate();
@@ -86,9 +93,9 @@ export default function Registration() {
   return (
     <>
       {error ? (
-        <div>
-          <p className="error-text">The provided credentials are incorrect</p>
-        </div>
+         <div>
+         <ErrorAlert  />
+       </div>
       ) : null}
       <form id="registration-form" onSubmit={handleFormSubmit}>
         <h2>Register</h2>
@@ -193,9 +200,13 @@ export default function Registration() {
             Snapchat
           </label>
         </div>
+ randomAnting
+        <Button type="primary" htmlType="submit">Sign Up</Button>
+
         <button type="submit">Sign Up</button>
+ develop
         <p>
-          Already have an account? Login <Link to="/register">here</Link>
+          Already have an account? Login <Link to="/login">here</Link>
         </p>
       </form>
     </>
