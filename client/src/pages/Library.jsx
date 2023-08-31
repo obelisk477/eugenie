@@ -127,7 +127,9 @@ function Library() {
                 <AdvancedImage key={i} cldImg={cld.image(image)} style={styles.img}/>    
 
             ))}
-                <form style={styles.form} method="post" encType="multipart/form-data" onSubmit={handleSubmit}>
+                
+                <form id='collabForm' style={styles.form} method="post" encType="multipart/form-data" onSubmit={handleSubmit}>
+                <h1>Upload your Assets</h1>
                     <input type="file" name="files[]" multiple />
                     <input type="submit" value="Upload Files" name="submit" />
                 </form>
