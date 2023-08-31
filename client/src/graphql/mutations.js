@@ -54,6 +54,7 @@ export const REGISTER_BRAND = gql`
 mutation registerBrand($brandName: String!, $email: String!, $password: String!) {
   registerBrand(brandName: $brandName, email: $email, password: $password) {
     currentBrand {
+      _id
       brandName
     }
     token
