@@ -32,6 +32,8 @@ Empowering Creators and Enchanting Brands, that is the Eugenie way.
 
 ## Framework & Technologies: 
 
+The technologies that we used were React, GraphQL, Node.js, Express.js, Ant Design, Cloudinary, and Heroku.  
+
 ## Deployed Application
 
-[Live EugenieApplication]: (herokulinkhere)
+[Live EugenieApplication]:(https://pregnant-genie-619af0388864.herokuapp.com/)https://pregnant-genie-619af0388864.herokuapp.com/
