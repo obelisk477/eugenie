@@ -36,4 +36,6 @@ The technologies that we used were React, GraphQL, Node.js, Express.js, Ant Desi
 
 ## Deployed Application
 
-[Live EugenieApplication]:(https://pregnant-genie-619af0388864.herokuapp.com/)https://pregnant-genie-619af0388864.herokuapp.com/
+[Live Eugenie Application](https://pregnant-genie-619af0388864.herokuapp.com/)
+
+![Eugenie Home Page](/client/public/eugeniehome.png)
